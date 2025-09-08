@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 env:
-  DOCKER_IMAGE: dovber/pirate-content-bot
+  DOCKER_IMAGE: dov121212/pirate-content-bot
   DOCKER_TAG: latest
 
 jobs:
@@ -99,6 +99,7 @@ jobs:
         tags: |
           ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
           ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+
 
     - name: Deploy to server
       uses: appleboy/ssh-action@v1.0.0
