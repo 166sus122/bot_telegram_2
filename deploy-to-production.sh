@@ -62,8 +62,8 @@ docker-compose down || true
 docker system prune -f || true
 
 echo "📥 מוריד קבצי הגדרה מ-GitHub..."
-curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/docker-compose.yml -o docker-compose.yml
-curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/.env.example -o .env.template
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/docker-compose.yml -o docker-compose.yml
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/.env.example -o .env.template
 
 echo "⚙️ יוצר קובץ .env עם הגדרות בסיסיות..."
 cp .env.template .env

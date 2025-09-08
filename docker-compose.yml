@@ -3,9 +3,7 @@ version: '3.8'
 services:
   # בוט התמימים הפיראטים
   pirate-bot:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: dov121212/bot_telegram_2:latest
     container_name: pirate-content-bot
     restart: unless-stopped
     environment:
