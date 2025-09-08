@@ -149,14 +149,24 @@ jobs:
         script: |
           echo "🚀 Starting deployment..."
           
+          # Navigate to project directory
+          cd /home/dovber/pirate-content-bot/pirate_content_bot || exit 1
+          
           # Stop and remove existing containers
-          docker-compose -f /path/to/docker-compose.yml down || true
+          docker-compose down || true
           
           # Pull latest image
           docker pull ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
           
+          # Update docker-compose.yml to use new image
+          sed -i 's|image: .*pirate-bot.*|image: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}|g' docker-compose.yml || true
+          
           # Start services with new image
-          docker-compose -f /path/to/docker-compose.yml up -d
+          docker-compose up -d
+          
+          # Wait a bit and check health
+          sleep 10
+          docker-compose ps
           
           # Cleanup old images
           docker image prune -f
