@@ -710,6 +710,37 @@ class RequestService:
             logger.error(f"Failed to get pending requests: {e}")
             return []
     
+    async def get_request_by_id(self, request_id: int) -> Dict:
+        """קבלת בקשה לפי ID"""
+        try:
+            query = """
+            SELECT 
+                id, user_id, username, first_name, title, original_text, 
+                category, priority, status, confidence, created_at, updated_at,
+                fulfilled_at, fulfilled_by, notes
+            FROM content_requests 
+            WHERE id = %s
+            """
+            
+            result = await self.storage.pool.execute_query(query, (request_id,), fetch_one=True)
+            
+            if result:
+                # המרת תוצאה למילון
+                request_data = dict(result)
+                
+                # תיקון תאריכים
+                for date_field in ['created_at', 'updated_at', 'fulfilled_at']:
+                    if request_data.get(date_field):
+                        request_data[date_field] = str(request_data[date_field])
+                
+                return request_data
+            
+            return {}
+            
+        except Exception as e:
+            logger.error(f"Failed to get request by ID {request_id}: {e}")
+            return {}
+    
     # ========================= סטטיסטיקות ואנליטיקס =========================
     
     async def get_request_analytics(self, period_days: int = 30) -> Dict[str, Any]:
@@ -760,13 +791,14 @@ class RequestService:
                 COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
                 COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled,
                 COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
-                COUNT(CASE WHEN created_at >= %s THEN 1 END) as recent_requests,
+                COUNT(*) as recent_requests,
                 AVG(confidence) as avg_confidence,
                 COUNT(DISTINCT user_id) as unique_users
             FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL OR %s IS NULL
             """
             
-            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
+            result = await self.storage.pool.execute_query(query, (start_date, None), fetch_one=True)
             
             if result:
                 # חישוב שיעורים
@@ -801,12 +833,12 @@ class RequestService:
                 COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
                 AVG(confidence) as avg_confidence
             FROM content_requests
-            WHERE created_at >= %s
+            WHERE created_at >= %s OR %s IS NULL OR %s IS NULL
             GROUP BY category
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -846,12 +878,12 @@ class RequestService:
                 priority,
                 COUNT(*) as count
             FROM content_requests
-            WHERE created_at >= %s
+            WHERE created_at >= %s OR %s IS NULL
             GROUP BY priority
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
             
             # חישוב אחוזים
             total = sum(r['count'] for r in results)
@@ -891,7 +923,7 @@ class RequestService:
                 MAX(CASE WHEN status IN ('fulfilled', 'rejected') 
                     THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as slowest
             FROM content_requests
-            WHERE created_at >= %s AND status != 'pending'
+            WHERE created_at >= %s OR %s IS NULL AND status != 'pending'
             """
             
             result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
@@ -1020,7 +1052,7 @@ class RequestService:
                 COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled_count,
                 COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected_count
             FROM content_requests
-            WHERE created_at >= %s
+            WHERE created_at >= %s OR %s IS NULL
             GROUP BY user_id, username, first_name
             ORDER BY request_count DESC
             LIMIT %s
@@ -1076,12 +1108,12 @@ class RequestService:
                 COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
                 COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending
             FROM content_requests
-            WHERE created_at >= %s
+            WHERE created_at >= %s OR %s IS NULL
             GROUP BY DATE(created_at)
             ORDER BY date DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
             
             # העשרת התוצאות
             enriched_results = []

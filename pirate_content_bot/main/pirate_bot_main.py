@@ -1327,6 +1327,10 @@ class EnhancedPirateBot:
             # ניתוב מתקדם לפי סוג הכפתור
             if data.startswith("create_request:"):
                 await self._handle_create_request_button(query, data)
+            elif data.startswith("create_duplicate:"):
+                await self._handle_create_duplicate_button(query, data)
+            elif data.startswith("view_request:"):
+                await self._handle_view_request_button(query, data)
             elif data.startswith("edit_request:"):
                 await self._handle_edit_request_button(query, data)
             elif data.startswith("duplicate_action:"):
@@ -1423,6 +1427,134 @@ class EnhancedPirateBot:
     async def _handle_rating_button(self, query, data: str):
         """טיפול בכפתור דירוג"""
         await query.edit_message_text("🚧 מערכת דירוג בפיתוח")
+    
+    async def _handle_create_duplicate_button(self, query, data: str):
+        """טיפול בכפתור יצירת בקשה כפולה"""
+        try:
+            # חילוץ request_id מהנתונים
+            request_id = data.split(":", 1)[1] if ":" in data else ""
+            user = query.from_user
+            user_id = user.id
+            
+            logger.info(f"🔄 User {user_id} chose to create duplicate request (original: {request_id})")
+            
+            # קבלת הנתונים הזמניים של המשתמש מה-Cache
+            pending_data = self.cache_manager.get(f"pending_request:{user_id}")
+            if not pending_data:
+                await query.edit_message_text("❌ הבקשה לא נמצאה במטמון. נסה לכתוב שוב.")
+                return
+            
+            # יצירת הבקשה למרות הכפילות
+            analysis = pending_data.get('analysis', {})
+            analysis['force_duplicate'] = True  # סימון שזה בכוונה כפילות
+            
+            # יצירת הבקשה דרך RequestService
+            request_result = await self.request_service.create_request(
+                user_data=user,
+                content_text=pending_data['original_text'],
+                analysis=analysis
+            )
+            
+            if request_result:
+                success_text = f"""
+✅ **בקשה נוצרה בהצלחה!**
+
+📝 {analysis.get('title', 'בקשה חדשה')}
+🆔 מספר בקשה: #{request_result}
+⚠️ הבקשה נוצרה למרות הדמיון לבקשה #{request_id}
+
+🔔 תקבל הודעה כשהבקשה תמולא!
+                """
+                
+                await query.edit_message_text(success_text, parse_mode='Markdown')
+                
+                # הודעה למנהלים על כפילות מכוונת
+                if self.notification_service:
+                    await self.notification_service.notify_admins_new_request(
+                        request_result, user, analysis, is_duplicate=True, original_id=request_id
+                    )
+                
+                # ניקוי Cache
+                self.cache_manager.delete(f"pending_request:{user_id}")
+                
+                logger.info(f"✅ Duplicate request {request_result} created by user {user_id}")
+                
+            else:
+                await query.edit_message_text("❌ שגיאה ביצירת הבקשה")
+                
+        except Exception as e:
+            logger.error(f"❌ Error creating duplicate request: {e}")
+            await query.edit_message_text("❌ שגיאה ביצירת בקשה כפולה")
+    
+    async def _handle_view_request_button(self, query, data: str):
+        """טיפול בכפתור הצגת בקשה קיימת"""
+        try:
+            # חילוץ request_id מהנתונים
+            request_id = data.split(":", 1)[1] if ":" in data else ""
+            
+            if not request_id:
+                await query.edit_message_text("❌ מספר בקשה לא תקין")
+                return
+                
+            logger.info(f"👀 Viewing request {request_id}")
+            
+            # קבלת פרטי הבקשה
+            if self.request_service:
+                request_details = await self.request_service.get_request_by_id(int(request_id))
+                
+                if request_details:
+                    status_emoji = {
+                        'pending': '⏳',
+                        'fulfilled': '✅',
+                        'rejected': '❌',
+                        'in_progress': '🔄'
+                    }.get(request_details.get('status', 'pending'), '❓')
+                    
+                    priority_emoji = {
+                        'low': '🔵',
+                        'medium': '🟡', 
+                        'high': '🔴',
+                        'urgent': '🚨'
+                    }.get(request_details.get('priority', 'medium'), '🟡')
+                    
+                    request_text = f"""
+👀 **פרטי בקשה #{request_id}**
+
+📝 **כותרת:** {request_details.get('title', 'ללא כותרת')}
+{status_emoji} **סטטוס:** {request_details.get('status', 'לא ידוע')}
+{priority_emoji} **עדיפות:** {request_details.get('priority', 'בינונית')}
+📂 **קטגוריה:** {request_details.get('category', 'כללי')}
+👤 **מבקש:** {request_details.get('first_name', 'לא ידוע')}
+📅 **נוצרה:** {request_details.get('created_at', 'לא ידוע')}
+
+📄 **תיאור מלא:**
+{request_details.get('original_text', 'אין תיאור')[:500]}
+                    """
+                    
+                    if request_details.get('notes'):
+                        request_text += f"\n\n💬 **הערות:** {request_details['notes']}"
+                    
+                    # כפתורים נוספים
+                    from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+                    keyboard = InlineKeyboardMarkup([
+                        [InlineKeyboardButton("🔙 חזור", callback_data="dismiss")]
+                    ])
+                    
+                    await query.edit_message_text(
+                        request_text, 
+                        reply_markup=keyboard,
+                        parse_mode='Markdown'
+                    )
+                    
+                else:
+                    await query.edit_message_text(f"❌ בקשה #{request_id} לא נמצאה")
+                    
+            else:
+                await query.edit_message_text("❌ שירות הבקשות אינו זמין")
+                
+        except Exception as e:
+            logger.error(f"❌ Error viewing request: {e}")
+            await query.edit_message_text("❌ שגיאה בהצגת הבקשה")
     
     async def _handle_admin_action_button(self, query, data: str):
         """טיפול בכפתור פעולות מנהל"""
