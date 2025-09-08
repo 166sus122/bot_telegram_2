@@ -1,84 +1,84 @@
-# 🏴‍☠️ Pirate Content Bot
+# 🏴‍☠️ בוט תוכן הפיראטים
 
-Enhanced Telegram bot for content requests with advanced features.
+בוט טלגרם מתקדם לניהול בקשות תוכן עם יכולות מתקדמות.
 
-## 🚀 CI/CD Pipeline
+## 🚀 פייפליין CI/CD אוטומטי
 
-This project uses GitHub Actions for automated testing and deployment:
+הפרויקט משתמש ב-GitHub Actions לבדיקות ופריסה אוטומטיות:
 
-### Pipeline Steps:
-1. **Testing** - Runs comprehensive tests with MySQL and Redis
-2. **Building** - Builds Docker image if tests pass
-3. **Deployment** - Automatically deploys to production server
+### שלבי הפייפליין:
+1. **בדיקות** - מריץ בדיקות מקיפות עם MySQL ו-Redis
+2. **בנייה** - בונה Docker image אם הבדיקות עברו
+3. **פריסה** - מפרים אוטומטית לשרת הייצור
 
-### Required Secrets:
-Set these in your GitHub repository settings (`Settings > Secrets and variables > Actions`):
+### סודות נדרשים:
+הגדר את הסודות הבאים ב-GitHub repository שלך (`Settings > Secrets and variables > Actions`):
 
 ```
-DOCKER_USERNAME=your_docker_hub_username
-DOCKER_PASSWORD=your_docker_hub_password
-SERVER_HOST=your_server_ip
-SERVER_USER=your_server_username
-SERVER_SSH_KEY=your_private_ssh_key (recommended)
-SERVER_PASSWORD=your_server_password (alternative to SSH key)
+DOCKER_USERNAME=שם_המשתמש_שלך_ב_docker_hub
+DOCKER_PASSWORD=סיסמת_docker_hub_שלך
+SERVER_HOST=כתובת_IP_של_השרת
+SERVER_USER=שם_המשתמש_בשרת
+SERVER_SSH_KEY=מפתח_SSH_פרטי (מומלץ)
+SERVER_PASSWORD=סיסמת_השרת (חלופה למפתח SSH)
 ```
 
-### Deployment Process:
-1. Push to `master` branch
-2. GitHub Actions runs tests automatically
-3. If tests pass → Docker image is built and pushed
-4. Production server pulls new image and restarts services
+### תהליך הפריסה:
+1. Push לבראנץ' `master`
+2. GitHub Actions מריץ בדיקות אוטומטית
+3. אם הבדיקות עברו → בונה ומעלה Docker image
+4. השרת מוריד את הקונטיינר החדש ומפעיל אותו
 
-## 🧪 Testing Locally
+## 🧪 בדיקות מקומיות
 
 ```bash
-# Run specific tests
+# הרצת בדיקות ספציפיות
 cd pirate_content_bot
 DB_HOST=localhost PYTHONPATH=. python tests/test_specific_requests.py
 DB_HOST=localhost PYTHONPATH=. python test_commands.py
 DB_HOST=localhost PYTHONPATH=. python tests/test_admin_commands.py
 
-# Run all tests
+# הרצת כל הבדיקות
 pytest
 ```
 
-## 🐳 Docker Commands
+## 🐳 פקודות Docker
 
 ```bash
-# Build locally
+# בנייה מקומית
 docker-compose build --no-cache
 
-# Run locally
+# הרצה מקומית
 docker-compose up -d
 
-# Stop local containers (when production is running)
+# עצירת קונטיינרים מקומיים (כשהייצור רץ)
 docker-compose down
 
-# View logs
+# צפייה בלוגים
 docker-compose logs -f
 ```
 
-## 🔧 Environment Variables
+## 🔧 משתני סביבה
 
-Key environment variables needed:
+משתני הסביבה הנדרשים:
 
 ```env
-BOT_TOKEN=your_telegram_bot_token
-DB_HOST=database_host
-DB_USER=database_user  
-DB_PASSWORD=database_password
-ADMIN_IDS=comma_separated_admin_user_ids
+BOT_TOKEN=טוקן_הבוט_מטלגרם
+DB_HOST=כתובת_בסיס_הנתונים
+DB_USER=שם_משתמש_בסיס_נתונים
+DB_PASSWORD=סיסמת_בסיס_נתונים
+ADMIN_IDS=מזהי_מנהלים_מופרדים_בפסיק
 ```
 
-## 📊 Features
+## 📊 תכונות
 
-- Advanced request detection and analysis
-- Admin panel with analytics
-- Search functionality
-- Broadcast messaging
-- User management
-- Request fulfillment tracking
+- זיהוי וניתוח בקשות מתקדם
+- פאנל ניהול עם אנליטיקס
+- יכולות חיפוש מתקדמות
+- שידור הודעות
+- ניהול משתמשים
+- מעקב אחר מימוש בקשות
 
 ---
 
-🤖 *Automated CI/CD powered by GitHub Actions*
+🤖 *פייפליין CI/CD אוטומטי מופעל על ידי GitHub Actions*
