@@ -1,26 +1,24 @@
 #!/bin/bash
-# 🚀 סקריפט פריסה מלא – מעצור דוקר מקומי ופריסה לייצור
+# 🚀 סקריפט פריסה אוטומטי מלא – commit, push, build Docker, deploy לשרת
 # מותאם ל-GitHub repository: 166sus122/bot_telegram_2
-# ודוקר מקומי + deploy לשרת דרך SSH עם סיסמה רגילה
+# Docker Hub: dov121212
+# Server: testuser@173.249.34.10
 
-set -e  # עצור אם יש שגיאה
+set -e
 
 echo "=================================="
-echo "🚀 מתחיל תהליך פריסה לייצור..."
+echo "🚀 מתחיל תהליך פריסה אוטומטי..."
 echo "=================================="
 
-# 1️⃣ בדיקת מצב נוכחי
+# 1️⃣ בדיקת מצב קונטיינרים מקומיים
 echo "📊 מצב נוכחי של הקונטיינרים:"
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
-# 2️⃣ שמירת שינויים ב-git
+# 2️⃣ שמירת שינויים ב-git (commit אוטומטי)
 if [[ -n $(git status --porcelain) ]]; then
     echo "⚠️  יש שינויים לא שמורים. מוסיף commit אוטומטי..."
     git add .
-    read -p "הזן הודעת commit: " commit_message
-    if [[ -z "$commit_message" ]]; then
-        commit_message="עדכון אוטומטי לפני פריסה"
-    fi
+    commit_message="עדכון אוטומטי לפני פריסה"
     git commit -m "$commit_message"
 else
     echo "✅ כל השינויים שמורים ב-git"
@@ -40,18 +38,23 @@ if [[ -d "pirate_content_bot" ]]; then
     cd ..
 fi
 
-# 4️⃣ Push ל-GitHub
-echo "⬆️  מעלה את השינויים ל-GitHub..."
-git push -u origin master
+# 4️⃣ Push אוטומטי ל-GitHub דרך SSH
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "⬆️  מעלה את השינויים ל-GitHub ב-branch $CURRENT_BRANCH..."
+git push -u origin $CURRENT_BRANCH
 
-# 5️⃣ Docker build & push דרך GitHub Actions
 echo "🔄 GitHub Actions ירוץ אוטומטית עכשיו:"
 echo "https://github.com/166sus122/bot_telegram_2/actions"
 
-# 6️⃣ Deploy לשרת דרך SSH עם סיסמה רגילה
+# 5️⃣ Deploy לשרת דרך SSH (מפתח פרטי)
+# מניח שה-SSH key כבר קיים ומחובר לשרת
+SERVER_USER="testuser"
+SERVER_HOST="173.249.34.10"
+
 echo "🔐 מחבר לשרת ומריץ deploy..."
 ssh -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" << 'ENDSSH'
-echo "🐳 מושך Docker image חדש..."
+echo "🐳 מושך Docker image חדש מ-Docker Hub..."
+docker login -u dov121212 -p dckr_pat_IuxreLSty0V83becfCRXSMB2lbU
 docker pull dov121212/bot_telegram_2:latest || true
 echo "🛑 עוצר קונטיינר קיים אם קיים..."
 docker stop bot_telegram_2 || true
@@ -60,7 +63,5 @@ echo "🚀 מפעיל קונטיינר חדש..."
 docker run -d --name bot_telegram_2 dov121212/bot_telegram_2:latest
 ENDSSH
 
-echo "🎉 פריסה הסתיימה בהצלחה!"
-echo "=================================="
-echo "✅ כל השלבים הושלמו בהצלחה!"
+echo "🎉 פריסה אוטומטית הושלמה בהצלחה!"
 echo "=================================="
