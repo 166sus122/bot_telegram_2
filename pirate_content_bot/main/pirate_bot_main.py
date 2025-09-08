@@ -376,7 +376,11 @@ class EnhancedPirateBot:
     
     def _is_admin(self, user_id: int) -> bool:
         """בדיקה מתקדמת אם משתמש הוא מנהל"""
-        return user_id in ADMIN_IDS
+        try:
+            return user_id in ADMIN_IDS
+        except Exception as e:
+            self.logger.error(f"Error checking admin status for user {user_id}: {e}")
+            return False
     
     async def _is_rate_limited(self, user_id: int) -> Tuple[bool, Optional[str]]:
         """בדיקת הגבלות קצב מתקדמת"""
@@ -1242,10 +1246,14 @@ class EnhancedPirateBot:
             return
         
         try:
+            if not self.request_service:
+                await update.message.reply_text("❌ שירות הבקשות אינו זמין")
+                return
+                
             analytics_data = await self.request_service.get_request_analytics(period_days=7)
             
             if not analytics_data:
-                await update.message.reply_text("❌ שגיאה בטעינת נתוני אנליטיקס")
+                await update.message.reply_text("❌ שגיאה בטעינת נתוני אנליטיקס (או שאין חיבור ל-DB)")
                 return
             
             basic_stats = analytics_data.get('basic_stats', {})
@@ -2577,10 +2585,14 @@ class EnhancedPirateBot:
                 return
             
             # קבלת רשימת משתמשים פעילים
-            active_users = await self.user_service.get_active_users(days=30)
+            try:
+                active_users = await self.user_service.get_active_users(days=30) if self.user_service else []
+            except Exception as e:
+                self.logger.error(f"Error getting active users: {e}")
+                active_users = []
             
             if not active_users:
-                await update.message.reply_text("📢 לא נמצאו משתמשים פעילים לשידור")
+                await update.message.reply_text("📢 לא נמצאו משתמשים פעילים לשידור (או שאין חיבור ל-DB)")
                 return
             
             # שליחת ההודעה לכל המשתמשים הפעילים

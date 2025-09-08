@@ -107,10 +107,22 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
+        port: 22
+        timeout: 60s
         script: |
+          set -e
           echo "🚀 Starting deployment..."
-          docker pull ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }} || true
-          docker stop pirate_content_bot || true
-          docker rm pirate_content_bot || true
-          docker run -d --name pirate_content_bot ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
+          echo "Testing Docker connection..."
+          docker --version
+          echo "Pulling latest image..."
+          docker pull ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
+          echo "Stopping existing container..."
+          docker stop pirate_content_bot || echo "Container not running"
+          docker rm pirate_content_bot || echo "Container not found"
+          echo "Starting new container..."
+          docker run -d --name pirate_content_bot \
+            --restart unless-stopped \
+            ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
+          echo "Checking container status..."
+          docker ps | grep pirate_content_bot
           echo "✅ Deployment completed!"
