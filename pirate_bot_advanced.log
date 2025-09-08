@@ -1,0 +1,802 @@
+2025-09-05 18:42:17 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:42:17 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:42:17 | __main__             | ERROR    | _init_core_components | ❌ Failed to start enhanced bot: StorageManager.__init__() got an unexpected keyword argument 'db_pool'
+Traceback (most recent call last):
+  File "/home/dovber/pirate-content-bot/pirate_content_bot/main/pirate_bot_main.py", line 162, in _init_core_components
+    self.storage = StorageManager(db_pool=self.db_pool, cache_manager=self.cache_manager)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: StorageManager.__init__() got an unexpected keyword argument 'db_pool'
+2025-09-05 18:42:17 | __main__             | ERROR    | main                 | Failed to start enhanced bot: StorageManager.__init__() got an unexpected keyword argument 'db_pool'
+2025-09-05 18:42:35 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:42:35 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:42:35 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-05 18:42:35 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-05 18:42:35 | __main__             | ERROR    | _init_services       | ❌ Failed to initialize services: RequestService.__init__() got an unexpected keyword argument 'storage'
+2025-09-05 18:42:35 | __main__             | ERROR    | main                 | Failed to start enhanced bot: RequestService.__init__() got an unexpected keyword argument 'storage'
+2025-09-05 18:43:03 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:43:03 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:43:03 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-05 18:43:03 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-05 18:43:03 | __main__             | ERROR    | _init_services       | ❌ Failed to initialize services: 'EnhancedPirateBot' object has no attribute 'duplicate_detector'
+2025-09-05 18:43:03 | __main__             | ERROR    | main                 | Failed to start enhanced bot: 'EnhancedPirateBot' object has no attribute 'duplicate_detector'
+2025-09-05 18:43:15 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:43:15 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:43:15 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-05 18:43:15 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-05 18:43:15 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-05 18:43:15 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-05 18:43:15 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-05 18:43:15 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-05 18:43:15 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-05 18:43:15 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-05 18:43:15 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-05 18:43:15 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-05 18:43:15 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-05 18:43:15 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-05 18:43:15 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-05 18:43:15 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-05 18:43:15 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-05 18:43:15 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-05 18:43:16 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-05 18:43:16 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-05 18:43:16 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-05 18:44:16 | __main__             | ERROR    | _notification_check_task | ❌ Error in notification task: 'NoneType' object has no attribute 'process_pending_notifications'
+2025-09-05 18:46:00 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:46:00 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:46:00 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-05 18:46:00 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-05 18:46:00 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-05 18:46:00 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-05 18:46:00 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-05 18:46:00 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-05 18:46:00 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-05 18:46:00 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-05 18:46:00 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-05 18:46:00 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-05 18:46:00 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-05 18:46:00 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-05 18:46:00 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-05 18:46:00 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-05 18:46:00 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-05 18:46:00 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-05 18:46:00 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-05 18:46:00 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-05 18:46:00 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-05 18:46:10 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-05 18:46:10 | __main__             | ERROR    | shutdown             | ❌ Error during shutdown: 'CacheManager' object has no attribute 'save_state'
+2025-09-05 18:46:10 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-05 18:46:22 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-05 18:46:22 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-05 18:46:22 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-05 18:46:22 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-05 18:46:22 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-05 18:46:22 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-05 18:46:22 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-05 18:46:22 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-05 18:46:22 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-05 18:46:22 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-05 18:46:22 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-05 18:46:22 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-05 18:46:22 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-05 18:46:22 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-05 18:46:22 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-05 18:46:22 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-05 18:46:22 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-05 18:46:22 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-05 18:46:22 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-05 18:46:22 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-05 18:46:22 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-05 18:46:27 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-05 18:46:27 | __main__             | ERROR    | shutdown             | ❌ Error during shutdown: This Application is still running!
+2025-09-05 18:46:27 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 19:59:07 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 19:59:07 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 19:59:07 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 19:59:07 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 19:59:07 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 19:59:07 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 19:59:07 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 19:59:07 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 19:59:07 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 19:59:07 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 19:59:07 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 19:59:07 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 19:59:07 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 19:59:07 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 19:59:07 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 19:59:07 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 19:59:07 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 19:59:07 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 19:59:08 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 19:59:08 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 19:59:08 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:05:58 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:05:58 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:05:58 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:05:58 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:05:58 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:05:58 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:05:58 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:05:58 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:05:58 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:05:58 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:05:58 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:05:58 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:05:58 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:05:58 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:05:58 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:05:58 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:05:58 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:05:58 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:05:59 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:05:59 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:05:59 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:06:54 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'אני רוצה לבדוק את הבוט...'
+2025-09-06 20:06:54 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedAutoResponseManager' object has no attribute 'get_response'
+2025-09-06 20:07:10 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'מה נשמע?...'
+2025-09-06 20:07:10 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedAutoResponseManager' object has no attribute 'get_response'
+2025-09-06 20:07:30 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'למה הוא עונה לי על כל הודעה?...'
+2025-09-06 20:07:30 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedAutoResponseManager' object has no attribute 'get_response'
+2025-09-06 20:07:57 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'אפשר את הסדרה שובר שורות?...'
+2025-09-06 20:07:57 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedAutoResponseManager' object has no attribute 'get_response'
+2025-09-06 20:08:47 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 20:08:47 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 20:08:47 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 20:14:04 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:14:04 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:14:04 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:14:04 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:14:04 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:14:04 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:14:04 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:14:04 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:14:04 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:14:04 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:14:04 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:14:04 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:14:05 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:14:05 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:14:05 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:14:05 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:14:05 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:14:05 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:14:05 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:14:05 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:14:05 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:14:27 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'עצמי...'
+2025-09-06 20:14:27 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:14:33 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'שיט...'
+2025-09-06 20:14:33 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:14:46 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'לא עובד כמו שצריך......'
+2025-09-06 20:14:46 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:15:07 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'למה הוא עונה לי על כל הודעה?...'
+2025-09-06 20:15:07 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:15:29 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'קלאוד, אם אתה שומע, תעשה משהו בקשר לזה!...'
+2025-09-06 20:15:29 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:18:40 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:18:40 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:18:40 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:18:40 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:18:40 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:18:40 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:18:40 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:18:40 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:18:40 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:18:40 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:18:40 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:18:40 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:18:40 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:18:40 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:18:40 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:18:40 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:18:40 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:18:40 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:18:41 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:18:41 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:18:41 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:22:34 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:22:34 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:22:34 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:22:34 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:22:34 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:22:34 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:22:34 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:22:34 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:22:34 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:22:34 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:22:34 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:22:34 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:22:34 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:22:34 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:22:53 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'בדיקה...'
+2025-09-06 20:22:53 | __main__             | INFO     | enhanced_message_handler | 🧠 Advanced analysis: confidence=0%, category=general
+2025-09-06 20:22:53 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'UserService' object has no attribute 'update_interaction_stats'
+2025-09-06 20:23:11 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'אני רוצה את הסדרה אווטאר...'
+2025-09-06 20:23:11 | __main__             | INFO     | enhanced_message_handler | 🧠 Advanced analysis: confidence=50%, category=series
+2025-09-06 20:23:11 | __main__             | ERROR    | _handle_medium_confidence_request | ❌ Error handling medium confidence request: 'KeyboardBuilder' object has no attribute 'get_maybe_request_keyboard'
+2025-09-06 20:23:11 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'UserService' object has no attribute 'update_interaction_stats'
+2025-09-06 20:23:23 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'אפשר בבקשה את הסדרה אווטאר?...'
+2025-09-06 20:23:23 | __main__             | INFO     | enhanced_message_handler | 🧠 Advanced analysis: confidence=50%, category=series
+2025-09-06 20:23:23 | __main__             | ERROR    | _handle_medium_confidence_request | ❌ Error handling medium confidence request: 'KeyboardBuilder' object has no attribute 'get_maybe_request_keyboard'
+2025-09-06 20:23:23 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'UserService' object has no attribute 'update_interaction_stats'
+2025-09-06 20:23:48 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'קלאוד, תתקן את זה, זה לא נורמאלי שזה ככה!...'
+2025-09-06 20:23:48 | __main__             | INFO     | enhanced_message_handler | 🧠 Advanced analysis: confidence=25%, category=general
+2025-09-06 20:23:48 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'UserService' object has no attribute 'update_interaction_stats'
+2025-09-06 20:24:13 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 20:24:13 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 20:24:13 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 20:25:44 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:25:44 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:25:44 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:25:44 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:25:44 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:25:44 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:25:44 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:25:44 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:25:44 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:25:44 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:25:44 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:25:44 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:25:44 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:25:44 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:25:44 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:25:44 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:25:44 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:25:44 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:25:45 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:25:45 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:25:45 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:26:04 | __main__             | INFO     | enhanced_message_handler | 📨 Enhanced message from דובי (6562280181): 'בדיקה...'
+2025-09-06 20:26:04 | __main__             | INFO     | enhanced_message_handler | 🧠 Advanced analysis: confidence=0%, category=general
+2025-09-06 20:26:04 | services.user_service | ERROR    | _update_user_data    | Failed to update user data: 'NoneType' object has no attribute 'execute_query'
+2025-09-06 20:43:03 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:43:03 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:43:03 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:43:03 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:43:03 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:43:03 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:43:03 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:43:03 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:43:03 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:43:03 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:43:03 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:43:03 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:43:03 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:43:03 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:43:03 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:43:03 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:43:03 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:43:03 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:43:03 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:43:03 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:43:03 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:43:18 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בדיקה...'
+2025-09-06 20:43:46 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אוקיי, הוא לא אמור לענות לסתם הודעות עכשיו......'
+2025-09-06 20:44:05 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את שובר שורות?...'
+2025-09-06 20:44:10 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: 'UserService' object has no attribute 'check_rate_limit'
+2025-09-06 20:44:57 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט סופרמן איש הפלדה 2013?...'
+2025-09-06 20:44:57 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 20:44:57 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'AdvancedContentAnalyzer' object has no attribute 'analyze_advanced'
+2025-09-06 20:44:57 | services.user_service | ERROR    | _update_user_data    | Failed to update user data: 'NoneType' object has no attribute 'execute_query'
+2025-09-06 20:45:24 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 20:45:24 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 20:45:24 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 20:48:28 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:48:28 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:48:28 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:48:28 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:48:28 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:48:28 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:48:28 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:48:28 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:48:28 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:48:28 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:48:28 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:48:28 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:48:28 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:48:28 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:48:28 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:48:28 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:48:28 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:48:28 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:48:28 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:48:28 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:48:28 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:50:51 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:50:51 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:50:51 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:50:51 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:50:51 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:50:51 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:50:51 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:50:51 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:50:51 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:50:51 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:50:51 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:50:51 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:50:51 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:50:51 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:50:51 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:50:51 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:50:51 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:50:51 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:50:52 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:50:52 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:50:52 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:51:23 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:51:23 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:51:23 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:51:23 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:51:23 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:51:23 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:51:23 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:51:23 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:51:23 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:51:23 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:51:23 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:51:23 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:51:23 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:51:23 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:51:23 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:51:23 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:51:23 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:51:23 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:51:23 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:51:23 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:51:23 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:51:24 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:24 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:28 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:28 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:29 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:29 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:34 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:34 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:35 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:35 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:41 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:41 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:43 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:43 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:46 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:46 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:47 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את סופרמן איש הפלדה 2013?...'
+2025-09-06 20:51:47 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 20:51:47 | services.user_service | ERROR    | _update_user_data    | Database connection not available
+2025-09-06 20:51:50 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:50 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:54 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:54 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:59 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:51:59 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:04 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:04 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:12 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:12 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:16 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:16 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:28 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:28 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:32 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:32 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 20:52:35 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 20:52:35 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 20:52:35 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 20:53:09 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 20:53:09 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 20:53:09 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 20:53:15 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:53:15 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:53:15 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:53:15 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:53:15 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:53:15 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:53:15 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:53:15 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:53:15 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:53:15 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:53:15 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:53:15 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:53:16 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:53:16 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:53:16 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:53:16 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:53:16 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:53:16 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:53:16 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:53:16 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:53:16 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:58:49 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 20:58:49 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 20:58:49 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 20:58:49 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 20:58:49 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 20:58:49 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 20:58:49 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 20:58:49 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 20:58:49 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 20:58:49 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 20:58:49 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 20:58:49 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 20:58:49 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 20:58:49 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 20:58:49 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 20:58:49 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 20:58:49 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 20:58:49 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 20:58:50 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 20:58:50 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 20:58:50 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 20:59:11 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את סופרמן איש הפלדה 2013?...'
+2025-09-06 20:59:11 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 20:59:11 | services.user_service | ERROR    | _update_user_data    | Database connection not available
+2025-09-06 20:59:34 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את סופרמן איש הפלדה 2013?...'
+2025-09-06 20:59:34 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 20:59:34 | services.user_service | ERROR    | _update_user_data    | Database connection not available
+2025-09-06 21:00:10 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט לשחרר את שולי?...'
+2025-09-06 21:00:10 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 21:00:10 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'advanced_features'
+2025-09-06 21:00:10 | services.user_service | ERROR    | _update_user_data    | Database connection not available
+2025-09-06 21:03:50 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 21:08:50 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 21:10:40 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:10:40 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:10:40 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:10:40 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:10:40 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:10:40 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:10:40 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:10:40 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:10:40 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:10:40 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:10:40 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:10:40 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:10:40 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:10:40 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:10:40 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:10:40 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:10:40 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:10:40 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:10:41 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:10:41 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:10:41 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:15:41 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 21:20:41 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 21:24:00 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:24:00 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:24:00 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:24:00 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:24:00 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:24:00 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:24:00 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:24:00 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:24:00 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:24:00 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:24:00 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:24:00 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:24:00 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:24:00 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:24:00 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:24:00 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:24:00 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:24:00 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:24:01 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:24:01 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:24:01 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:24:01 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:01 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:05 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:05 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:06 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:06 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:11 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט לשחרר את שולי?...'
+2025-09-06 21:24:11 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 21:24:11 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'advanced_features'
+2025-09-06 21:24:11 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:11 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:13 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:13 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:17 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:17 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:19 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:19 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:21 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את סופרמן איש הפלדה 2013?...'
+2025-09-06 21:24:21 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 21:24:24 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:24 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:27 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:27 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:31 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:31 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:37 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:37 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:41 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר שהבוט יעבוד?...'
+2025-09-06 21:24:41 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 21:24:41 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:41 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:49 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:49 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:53 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:24:53 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-06 21:25:02 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 21:25:02 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 21:25:02 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 21:25:15 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 21:25:15 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 21:25:15 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 21:25:24 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:25:24 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:25:24 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:25:24 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:25:24 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:25:24 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:25:24 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:25:24 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:25:24 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:25:24 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:25:24 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:25:24 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:25:24 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:25:24 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:25:24 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:25:24 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:25:24 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:25:24 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:25:25 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:25:25 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:25:25 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:25:50 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בדיקה...'
+2025-09-06 21:25:59 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את סופרמן איש הפלדה 2013?...'
+2025-09-06 21:25:59 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 21:36:42 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:36:42 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:36:42 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:36:42 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:36:42 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:36:42 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:36:42 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:36:42 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:36:42 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:36:42 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:36:42 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:36:42 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:36:42 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:36:42 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:36:42 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:36:42 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:36:42 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:36:42 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:36:42 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:36:42 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:36:42 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:37:53 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:37:53 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:37:53 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:37:53 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:37:53 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:37:53 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:37:53 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:37:53 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:37:53 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:37:53 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:37:53 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:37:53 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:37:53 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:37:53 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:37:53 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:37:53 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:37:53 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:37:53 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:37:53 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:37:53 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:37:53 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:38:31 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'עוד בדיקות...'
+2025-09-06 21:38:50 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט לשחרר את שולי?...'
+2025-09-06 21:38:50 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 21:38:50 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'advanced_features'
+2025-09-06 21:39:24 | __main__             | ERROR    | run                  | ❌ Critical error: Timed out
+2025-09-06 21:39:24 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 21:39:24 | __main__             | ERROR    | shutdown             | ❌ Error during shutdown: This Application is still running!
+2025-09-06 21:39:24 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 21:39:24 | asyncio              | ERROR    | default_exception_handler | Task was destroyed but it is pending!
+task: <Task pending name='Application:8121822235:update_fetcher' coro=<Application._update_fetcher() running at /home/dovber/.local/lib/python3.12/site-packages/telegram/ext/_application.py:1110> wait_for=<Future cancelled>>
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:46:37 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:46:37 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:46:37 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:46:37 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:46:37 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:46:37 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:46:37 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:46:37 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:46:37 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:47:34 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:47:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:47:34 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:47:34 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:47:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:47:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:47:34 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:47:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:47:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:47:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:47:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:47:34 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:47:34 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:47:34 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:47:34 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:47:34 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:47:34 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:47:34 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:47:35 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:47:35 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:47:35 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:47:56 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בדיקות...'
+2025-09-06 21:48:06 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'עולם היורה 2025...'
+2025-09-06 21:48:18 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט עולם היורה 2025...'
+2025-09-06 21:48:18 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 21:48:18 | utils.duplicate_detector | ERROR    | find_duplicates      | Failed to find duplicates: 'int' object is not iterable
+2025-09-06 21:48:18 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: object list can't be used in 'await' expression
+2025-09-06 21:48:55 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הספר יומנה של אנה פרנק?...'
+2025-09-06 21:48:55 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-06 21:48:55 | utils.duplicate_detector | ERROR    | find_duplicates      | Failed to find duplicates: 'int' object is not iterable
+2025-09-06 21:48:55 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: object list can't be used in 'await' expression
+2025-09-06 21:49:13 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר בבקשה פוטושופ?...'
+2025-09-06 21:49:13 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 21:49:39 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 21:49:39 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 21:49:39 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 21:58:02 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 21:58:02 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 21:58:02 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 21:58:02 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 21:58:02 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 21:58:02 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 21:58:02 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 21:58:02 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 21:58:02 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 21:58:02 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 21:58:02 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 21:58:02 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 21:58:02 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 21:58:02 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 21:58:02 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 21:58:02 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 21:58:02 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 21:58:02 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 21:58:03 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 21:58:03 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 21:58:03 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 21:58:13 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'יש סדרה בשם "טופ גיר"?? ישנה קצת...'
+2025-09-06 21:58:13 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 25
+2025-09-06 21:58:13 | services.request_service | ERROR    | get_requests_with_filters | Failed to get filtered requests: 'NoneType' object has no attribute 'execute_query'
+2025-09-06 21:58:13 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: RequestService.create_request() got an unexpected keyword argument 'user'
+2025-09-06 21:58:41 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-06 21:58:41 | __main__             | INFO     | shutdown             | ✅ Graceful shutdown completed
+2025-09-06 21:58:41 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-06 22:33:54 | __main__             | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-06 22:33:54 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-06 22:33:54 | core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-06 22:33:54 | __main__             | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-06 22:33:54 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-06 22:33:54 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-06 22:33:54 | __main__             | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-06 22:33:54 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-06 22:33:54 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-06 22:33:54 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-06 22:33:54 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-06 22:33:54 | __main__             | INFO     | _init_services       | ✅ Services initialized
+2025-09-06 22:33:54 | __main__             | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-06 22:33:54 | __main__             | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-06 22:33:54 | __main__             | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-06 22:33:54 | __main__             | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-06 22:33:54 | __main__             | INFO     | run                  | 🚀 Starting Enhanced Pirate Content Bot
+2025-09-06 22:33:54 | __main__             | INFO     | health_check         | ✅ System health check passed
+2025-09-06 22:33:54 | __main__             | INFO     | setup_bot_commands   | ✅ Bot commands configured
+2025-09-06 22:33:54 | __main__             | INFO     | run                  | 🎬 Bot is now running!
+2025-09-06 22:33:54 | __main__             | INFO     | start_background_tasks | 🔄 Starting background tasks
+2025-09-06 22:34:12 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בדיקה...'
+2025-09-06 22:34:19 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'יש סדרה בשם "טופ גיר"?? ישנה קצת...'
+2025-09-06 22:34:19 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 25
+2025-09-06 22:34:19 | services.request_service | ERROR    | get_requests_with_filters | Failed to get filtered requests: 'NoneType' object has no attribute 'execute_query'
+2025-09-06 22:34:19 | services.request_service | ERROR    | create_request       | Failed to create request: 'User' object has no attribute 'get'
+2025-09-06 22:34:19 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'NoneType' object is not subscriptable
+2025-09-06 22:38:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 22:43:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 22:48:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 22:53:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 22:58:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:03:54 | __main__             | ERROR    | _duplicate_cleanup_task | ❌ Error in duplicate cleanup: 'DuplicateDetector' object has no attribute 'cleanup_cache'
+2025-09-06 23:03:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:08:45 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:08:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:10:47 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): '....'
+2025-09-06 23:11:10 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בבקשה, אפשר לבדוק אם יש לפני......'
+2025-09-06 23:11:10 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-06 23:13:48 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'מה?!...'
+2025-09-06 23:13:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:13:55 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'מוזר.....'
+2025-09-06 23:14:03 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'https://t.me/YaronTeam/2847...'
+2025-09-06 23:14:18 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'https://t.me/YaronTeam/2847...'
+2025-09-06 23:15:29 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'וואלה צודק......'
+2025-09-06 23:16:18 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:16:20 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:16:40 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'מה?...'
+2025-09-06 23:16:47 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'מצאת?...'
+2025-09-06 23:16:49 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:16:53 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:16:56 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:17:02 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:17:22 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'יברכוך מן השמיים...'
+2025-09-06 23:18:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:23:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:28:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:33:54 | __main__             | ERROR    | _cleanup_task        | ❌ Error in cleanup task: 'RequestService' object has no attribute 'cleanup_old_requests'
+2025-09-06 23:33:54 | __main__             | ERROR    | _duplicate_cleanup_task | ❌ Error in duplicate cleanup: 'DuplicateDetector' object has no attribute 'cleanup_cache'
+2025-09-06 23:33:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:38:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:43:54 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-06 23:53:43 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:43 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:44 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:44 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:45 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:45 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-09-06 23:53:48 | __main__             | ERROR    | enhanced_message_handler | ❌ Error in enhanced message handler: cannot unpack non-iterable coroutine object
+2025-09-06 23:55:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:00:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:05:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:10:14 | __main__             | ERROR    | _duplicate_cleanup_task | ❌ Error in duplicate cleanup: 'DuplicateDetector' object has no attribute 'cleanup_cache'
+2025-09-07 00:10:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:15:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:16:37 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'בדיקה...'
+2025-09-07 00:16:58 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרת מלך האריות?...'
+2025-09-07 00:16:58 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 35
+2025-09-07 00:17:16 | __main__             | INFO     | enhanced_message_handler | 📨 Message from דובי (6562280181): 'אפשר את הסרט מלך האריות?...'
+2025-09-07 00:17:16 | __main__             | INFO     | enhanced_message_handler | 🎯 Request score: 65
+2025-09-07 00:17:16 | services.request_service | ERROR    | get_requests_with_filters | Failed to get filtered requests: 'NoneType' object has no attribute 'execute_query'
+2025-09-07 00:17:16 | services.request_service | ERROR    | create_request       | Failed to create request: 'User' object has no attribute 'get'
+2025-09-07 00:17:16 | __main__             | ERROR    | _process_validated_request | ❌ Error processing validated request: 'NoneType' object is not subscriptable
+2025-09-07 00:20:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:25:03 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:03 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:08 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:08 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:14 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:14 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:14 | __main__             | ERROR    | _statistics_update_task | ❌ Error in statistics task: 'RequestService' object has no attribute 'update_statistics'
+2025-09-07 00:25:22 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:22 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:29 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:29 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:38 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:38 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:50 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:25:50 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:02 | __main__             | INFO     | enhanced_message_handler | 📨 Message from יוסי (6039349310): 'לכן ההודעה לא קיימת...'
+2025-09-07 00:26:03 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:03 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:07 | __main__             | INFO     | enhanced_message_handler | 📨 Message from יוסי (6039349310): 'אם בכל זאת לא מצאת:...'
+2025-09-07 00:26:08 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:08 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:13 | telegram.ext.Updater | ERROR    | _network_loop_retry  | Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:13 | __main__             | ERROR    | enhanced_error_handler | ❌ Enhanced error occurred: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-09-07 00:26:18 | __main__             | ERROR    | run                  | ❌ Critical error: Timed out
+2025-09-07 00:26:18 | __main__             | INFO     | shutdown             | 🛑 Initiating graceful shutdown
+2025-09-07 00:26:18 | __main__             | ERROR    | shutdown             | ❌ Error during shutdown: This Application is still running!
+2025-09-07 00:26:18 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
+2025-09-07 00:26:18 | asyncio              | ERROR    | default_exception_handler | Task was destroyed but it is pending!
+task: <Task pending name='Application:8121822235:update_fetcher' coro=<Application._update_fetcher() running at /home/dovber/.local/lib/python3.12/site-packages/telegram/ext/_application.py:1110> wait_for=<Future pending cb=[Task.task_wakeup()]>>

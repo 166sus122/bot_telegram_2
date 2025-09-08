@@ -1,0 +1,172 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: pirate-content-bot
+  labels:
+    app: postgres
+spec:
+  serviceName: postgres-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+        livenessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - $(POSTGRES_USER)
+            - -d
+            - $(POSTGRES_DB)
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - $(POSTGRES_USER)
+            - -d
+            - $(POSTGRES_DB)
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 5
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+      volumes:
+      - name: init-sql
+        configMap:
+          name: postgres-init-sql
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: pirate-content-bot
+  labels:
+    app: postgres
+spec:
+  selector:
+    app: postgres
+  ports:
+  - port: 5432
+    targetPort: 5432
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init-sql
+  namespace: pirate-content-bot
+data:
+  init.sql: |
+    -- יצירת טבלאות בסיסיות
+    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    
+    -- טבלת בקשות
+    CREATE TABLE IF NOT EXISTS requests (
+        id SERIAL PRIMARY KEY,
+        user_id BIGINT NOT NULL,
+        username VARCHAR(255),
+        first_name VARCHAR(255),
+        title TEXT NOT NULL,
+        original_text TEXT,
+        category VARCHAR(100) DEFAULT 'general',
+        priority VARCHAR(50) DEFAULT 'medium',
+        status VARCHAR(50) DEFAULT 'pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        fulfilled_at TIMESTAMP,
+        fulfilled_by BIGINT,
+        rejected_at TIMESTAMP,
+        rejected_by BIGINT,
+        rejection_reason TEXT,
+        notes TEXT,
+        confidence FLOAT DEFAULT 0,
+        metadata JSONB DEFAULT '{}'
+    );
+    
+    -- טבלת דירוגים
+    CREATE TABLE IF NOT EXISTS ratings (
+        id SERIAL PRIMARY KEY,
+        request_id INTEGER REFERENCES requests(id) ON DELETE CASCADE,
+        user_id BIGINT NOT NULL,
+        rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+        comment TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    
+    -- טבלת משתמשים
+    CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        telegram_id BIGINT UNIQUE NOT NULL,
+        username VARCHAR(255),
+        first_name VARCHAR(255),
+        last_name VARCHAR(255),
+        is_bot BOOLEAN DEFAULT FALSE,
+        is_banned BOOLEAN DEFAULT FALSE,
+        ban_reason TEXT,
+        warnings_count INTEGER DEFAULT 0,
+        total_requests INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        last_activity TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        settings JSONB DEFAULT '{}'
+    );
+    
+    -- אינדקסים לביצועים
+    CREATE INDEX IF NOT EXISTS idx_requests_user_id ON requests(user_id);
+    CREATE INDEX IF NOT EXISTS idx_requests_status ON requests(status);
+    CREATE INDEX IF NOT EXISTS idx_requests_category ON requests(category);
+    CREATE INDEX IF NOT EXISTS idx_requests_created_at ON requests(created_at);
+    CREATE INDEX IF NOT EXISTS idx_users_telegram_id ON users(telegram_id);
+    CREATE INDEX IF NOT EXISTS idx_ratings_request_id ON ratings(request_id);

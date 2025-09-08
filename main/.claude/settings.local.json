@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/dovber/pirate-content-bot/**)",
+      "Bash(python:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose down:*)",
+      "Bash(sudo systemctl stop:*)",
+      "Bash(docker-compose:*)",
+      "Bash(docker exec:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(tar:*)",
+      "Bash(chmod:*)",
+      "Bash(bash:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
