@@ -54,7 +54,6 @@ SERVER_HOST="173.249.34.10"
 echo "🔐 מחבר לשרת ומריץ deploy..."
 ssh -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" << 'ENDSSH'
 echo "🐳 מושך Docker image חדש מ-Docker Hub..."
-docker login -u dov121212 -p dckr_pat_IuxreLSty0V83becfCRXSMB2lbU
 docker pull dov121212/bot_telegram_2:latest || true
 echo "🛑 עוצר קונטיינר קיים אם קיים..."
 docker stop bot_telegram_2 || true
