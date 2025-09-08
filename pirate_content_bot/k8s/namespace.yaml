@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pirate-content-bot
+  labels:
+    name: pirate-content-bot
+    app: telegram-bot
+    environment: production

@@ -1,0 +1,209 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pirate-bot
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+spec:
+  replicas: 1  # Telegram bots should typically have only 1 replica
+  selector:
+    matchLabels:
+      app: pirate-content-bot
+  template:
+    metadata:
+      labels:
+        app: pirate-content-bot
+    spec:
+      containers:
+      - name: pirate-bot
+        image: pirate-content-bot:latest  # עדכן עם הכתובת שלך
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        # Secrets
+        - name: BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: BOT_TOKEN
+        - name: MAIN_GROUP_ID
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: MAIN_GROUP_ID
+        - name: LOG_CHANNEL_ID
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: LOG_CHANNEL_ID
+        - name: ADMIN_IDS
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: ADMIN_IDS
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: DB_PASSWORD
+        # ConfigMap values
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DEBUG
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: LOG_LEVEL
+        - name: USE_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: USE_DATABASE
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_HOST
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_USER
+        - name: CACHE_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: CACHE_TYPE
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: REDIS_PORT
+        volumeMounts:
+        - name: logs-volume
+          mountPath: /app/logs
+        - name: exports-volume
+          mountPath: /app/exports
+        - name: data-volume
+          mountPath: /app/data
+        livenessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 60
+          timeoutSeconds: 10
+          periodSeconds: 30
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          periodSeconds: 10
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: false
+      volumes:
+      - name: logs-volume
+        persistentVolumeClaim:
+          claimName: logs-pvc
+      - name: exports-volume
+        persistentVolumeClaim:
+          claimName: exports-pvc
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: data-pvc
+      restartPolicy: Always
+      serviceAccountName: pirate-bot-sa
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pirate-bot-service
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+spec:
+  selector:
+    app: pirate-content-bot
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: http
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: logs-pvc
+  namespace: pirate-content-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: exports-pvc
+  namespace: pirate-content-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-pvc
+  namespace: pirate-content-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pirate-bot-sa
+  namespace: pirate-content-bot

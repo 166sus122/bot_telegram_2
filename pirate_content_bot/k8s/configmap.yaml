@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pirate-bot-config
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+data:
+  # הגדרות כלליות
+  DEBUG: "false"
+  LOG_LEVEL: "INFO"
+  USE_DATABASE: "true"
+  
+  # הגדרות מסד נתונים
+  DB_HOST: "postgres-service"
+  DB_NAME: "pirate_content"
+  DB_USER: "pirate_user"
+  DB_PORT: "5432"
+  
+  # הגדרות Redis
+  CACHE_TYPE: "redis"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  REDIS_DB: "0"
+  
+  # הגדרות Cache
+  CACHE_ENABLED: "true"
+  CACHE_TTL_REQUESTS: "300"
+  CACHE_TTL_USERS: "600"
+  CACHE_TTL_STATS: "180"
+  
+  # הגדרות Background Tasks
+  BACKGROUND_TASKS_ENABLED: "true"
+  CLEANUP_INTERVAL: "3600"
+  STATS_UPDATE_INTERVAL: "300"
+  NOTIFICATION_CHECK_INTERVAL: "60"
+  
+  # הגדרות Rate Limiting
+  REQUESTS_PER_MINUTE: "10"
+  REQUESTS_PER_HOUR: "50"
+  REQUESTS_PER_DAY: "100"
+  REQUEST_COOLDOWN: "60"
+  
+  # הגדרות אבטחה
+  MAX_MESSAGE_LENGTH: "2000"
+  DUPLICATE_THRESHOLD: "0.85"
+  FUZZY_THRESHOLD: "0.8"
