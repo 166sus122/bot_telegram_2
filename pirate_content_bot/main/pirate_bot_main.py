@@ -2916,11 +2916,24 @@ class EnhancedPirateBot:
                 # שליחת הקובץ למנהל
                 if export_result.get('file_path') and os.path.exists(export_result['file_path']):
                     with open(export_result['file_path'], 'rb') as f:
+                        # שלח גם בתגובה וגם בהודעה פרטית למנהל
                         await update.message.reply_document(
                             document=f,
                             filename=export_result['filename'],
                             caption=f"📁 ייצוא נתונים: {export_result['records_count']} רשומות"
                         )
+                        
+                        # נסה לשלוח גם בפרטי למנהל
+                        try:
+                            f.seek(0)  # חזור לתחילת הקובץ
+                            await context.bot.send_document(
+                                chat_id=admin_user_id,
+                                document=f,
+                                filename=export_result['filename'],
+                                caption=f"📁 ייצוא נתונים פרטי: {export_result['records_count']} רשומות"
+                            )
+                        except Exception as dm_error:
+                            logger.warning(f"Could not send private export to admin: {dm_error}")
                     
                     # מחיקת הקובץ הזמני
                     try:

@@ -53,13 +53,29 @@ SERVER_HOST="173.249.34.10"
 
 echo "🔐 מחבר לשרת ומריץ deploy..."
 ssh -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" << 'ENDSSH'
-echo "🐳 מושך Docker image חדש מ-Docker Hub..."
+echo "📂 עובר לתיקיית הפרוייקט..."
+cd /opt/pirate-content-bot || mkdir -p /opt/pirate-content-bot && cd /opt/pirate-content-bot
+
+echo "📥 מוריד קבצי Docker Compose..."
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/docker-compose.yml -o docker-compose.yml
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/.env.example -o .env
+
+echo "🐳 מושך Docker images..."
 docker pull dov121212/bot_telegram_2:latest || true
-echo "🛑 עוצר קונטיינר קיים אם קיים..."
-docker stop bot_telegram_2 || true
-docker rm bot_telegram_2 || true
-echo "🚀 מפעיל קונטיינר חדש..."
-docker run -d --name bot_telegram_2 dov121212/bot_telegram_2:latest
+docker pull mysql:8.0 || true
+docker pull redis:7-alpine || true
+
+echo "🛑 עוצר קונטיינרים קיימים..."
+docker-compose down || true
+
+echo "🚀 מפעיל כל הקונטיינרים..."
+docker-compose up -d
+
+echo "⏳ ממתין להתחלה..."
+sleep 30
+
+echo "📊 סטטוס קונטיינרים:"
+docker-compose ps
 ENDSSH
 
 echo "🎉 פריסה אוטומטית הושלמה בהצלחה!"

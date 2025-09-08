@@ -921,7 +921,7 @@ class KeyboardBuilder:
     def get_admin_pending_keyboard(self) -> InlineKeyboardMarkup:
         """מקלדת בקשות ממתינות למנהלים"""
         buttons = [
-            [self._create_button("🔄 רענון", "admin:refresh_pending")],
+            [self._create_button("🔄 רענון", "admin:pending")],
             [self._create_button("👑 מנהלים", "action:admin_panel")]
         ]
         return InlineKeyboardMarkup(buttons)

@@ -890,10 +890,10 @@ class RequestService:
                 AVG(confidence) as avg_confidence,
                 COUNT(DISTINCT user_id) as unique_users
             FROM content_requests
-            WHERE created_at >= %s OR %s IS NULL OR %s IS NULL
+            WHERE created_at >= %s
             """
             
-            result = await self.storage.pool.execute_query(query, (start_date, None), fetch_one=True)
+            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
             
             if result:
                 # חישוב שיעורים
@@ -928,12 +928,12 @@ class RequestService:
                 COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
                 AVG(confidence) as avg_confidence
             FROM content_requests
-            WHERE created_at >= %s OR %s IS NULL OR %s IS NULL
+            WHERE created_at >= %s
             GROUP BY category
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -978,7 +978,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             # חישוב אחוזים
             total = sum(r['count'] for r in results)
@@ -1208,7 +1208,7 @@ class RequestService:
             ORDER BY date DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, None), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             # העשרת התוצאות
             enriched_results = []
@@ -1681,6 +1681,12 @@ class RequestService:
             if self.storage and hasattr(self.storage, 'cache'):
                 backup_data['cache_data'] = dict(self.storage.cache)
             
+            # תיקון datetime objects בנתונים
+            def json_serial(obj):
+                if isinstance(obj, datetime):
+                    return obj.strftime('%Y-%m-%d %H:%M:%S')
+                raise TypeError(f"Type {type(obj)} not serializable")
+
             # מידע מערכת
             backup_data['backup_info'] = {
                 'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -1688,12 +1694,6 @@ class RequestService:
                 'bot_name': 'Pirate Content Bot',
                 'total_records': total_requests
             }
-            
-            # תיקון datetime objects בנתונים
-            def json_serial(obj):
-                if isinstance(obj, datetime):
-                    return obj.strftime('%Y-%m-%d %H:%M:%S')
-                raise TypeError(f"Type {type(obj)} not serializable")
             
             # חישוב גודל
             import json
