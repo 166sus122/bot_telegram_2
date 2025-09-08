@@ -473,7 +473,7 @@ class RequestService:
             """
             
             query_params.extend([limit, offset])
-            results = self.storage.pool.execute_query(data_query, tuple(query_params), fetch_all=True)
+            results = await self.storage.pool.execute_query(data_query, tuple(query_params), fetch_all=True)
             
             # העשרת נתונים
             enriched_results = []
@@ -766,7 +766,7 @@ class RequestService:
             FROM content_requests
             """
             
-            result = self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
+            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
             
             if result:
                 # חישוב שיעורים
@@ -806,7 +806,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -851,7 +851,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             # חישוב אחוזים
             total = sum(r['count'] for r in results)
@@ -894,7 +894,7 @@ class RequestService:
             WHERE created_at >= %s AND status != 'pending'
             """
             
-            result = self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
+            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
             
             if result and any(result.values()):
                 return {
@@ -1026,7 +1026,7 @@ class RequestService:
             LIMIT %s
             """
             
-            results = self.storage.pool.execute_query(query, (start_date, limit), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, limit), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -1081,7 +1081,7 @@ class RequestService:
             ORDER BY date DESC
             """
             
-            results = self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
             
             # העשרת התוצאות
             enriched_results = []
@@ -1442,7 +1442,7 @@ class RequestService:
     
     # ========================= ייצוא וגיבוי =========================
     
-    async def export_data(self, format: str = 'json') -> Dict[str, Any]:
+    async def export_data(self, format: str = 'json', admin_user_id: int = None) -> Dict[str, Any]:
         """ייצוא נתוני בקשות"""
         try:
             # קבלת כל הבקשות (מ-DB או Cache)
@@ -1462,6 +1462,7 @@ class RequestService:
                     'title': request.get('title'),
                     'category': request.get('category'),
                     'status': request.get('status'),
+                    'user_name': request.get('first_name', 'לא ידוע'),
                     'created_at': str(request.get('created_at')),
                     'user_id': request.get('user_id'),
                     'username': request.get('username'),
@@ -1488,9 +1489,37 @@ class RequestService:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f"pirate_bot_export_{timestamp}.{format}"
             
-            # שמירת הקובץ (במקום זה נחזיר רק מידע)
+            # יצירת תוכן הקובץ
             import json
-            export_content = json.dumps(export_data, ensure_ascii=False, indent=2)
+            import os
+            import tempfile
+            
+            def json_serial(obj):
+                if isinstance(obj, datetime):
+                    return obj.strftime('%Y-%m-%d %H:%M:%S')
+                raise TypeError(f"Type {type(obj)} not serializable")
+            
+            if format.lower() == 'json':
+                export_content = json.dumps(export_data, ensure_ascii=False, indent=2, default=json_serial)
+            elif format.lower() == 'csv':
+                import csv
+                import io
+                output = io.StringIO()
+                if export_data:
+                    writer = csv.DictWriter(output, fieldnames=export_data[0].keys())
+                    writer.writeheader()
+                    writer.writerows(export_data)
+                export_content = output.getvalue()
+            else:
+                export_content = str(export_data)
+            
+            # יצירת קובץ זמני
+            temp_file = None
+            if admin_user_id and export_content:
+                temp_dir = tempfile.gettempdir()
+                temp_file = os.path.join(temp_dir, filename)
+                with open(temp_file, 'w', encoding='utf-8') as f:
+                    f.write(export_content)
             
             logger.info(f"Export completed: {len(export_data)} records")
             
@@ -1498,8 +1527,10 @@ class RequestService:
                 'success': True,
                 'records_count': len(export_data),
                 'filename': filename,
-                'data': export_data[:5],  # רק 5 רשומות ראשונות לתצוגה
-                'total_size': len(export_content)
+                'file_path': temp_file,
+                'data': export_data[:5] if export_data else [],  # רק 5 רשומות ראשונות לתצוגה
+                'total_size': len(export_content),
+                'admin_user_id': admin_user_id
             }
             
         except Exception as e:
@@ -1525,15 +1556,21 @@ class RequestService:
             
             # מידע מערכת
             backup_data['backup_info'] = {
-                'created_at': datetime.now().isoformat(),
+                'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 'version': '1.0',
                 'bot_name': 'Pirate Content Bot',
                 'total_records': total_requests
             }
             
+            # תיקון datetime objects בנתונים
+            def json_serial(obj):
+                if isinstance(obj, datetime):
+                    return obj.strftime('%Y-%m-%d %H:%M:%S')
+                raise TypeError(f"Type {type(obj)} not serializable")
+            
             # חישוב גודל
             import json
-            backup_json = json.dumps(backup_data, ensure_ascii=False, indent=2)
+            backup_json = json.dumps(backup_data, ensure_ascii=False, indent=2, default=json_serial)
             size_mb = len(backup_json.encode('utf-8')) / (1024 * 1024)
             
             # יצירת שם קובץ

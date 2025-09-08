@@ -2676,15 +2676,32 @@ class EnhancedPirateBot:
         )
         
         try:
-            # יצוא דרך admin export tools
-            export_result = await self.request_service.export_data()
+            import os
+            admin_user_id = update.effective_user.id
+            export_result = await self.request_service.export_data('json', admin_user_id)
             
             if export_result['success']:
-                await update.message.reply_text(
-                    f"✅ יצוא הושלם!\n"
-                    f"📁 {export_result['records_count']} רשומות\n"
-                    f"📄 קובץ: {export_result['filename']}"
-                )
+                # שליחת הקובץ למנהל
+                if export_result.get('file_path') and os.path.exists(export_result['file_path']):
+                    with open(export_result['file_path'], 'rb') as f:
+                        await update.message.reply_document(
+                            document=f,
+                            filename=export_result['filename'],
+                            caption=f"📁 ייצוא נתונים: {export_result['records_count']} רשומות"
+                        )
+                    
+                    # מחיקת הקובץ הזמני
+                    try:
+                        os.remove(export_result['file_path'])
+                    except:
+                        pass
+                else:
+                    await update.message.reply_text(
+                        f"✅ יצוא הושלם!\n"
+                        f"📁 {export_result['records_count']} רשומות\n"
+                        f"📄 קובץ: {export_result['filename']}\n"
+                        f"⚠️ לא ניתן היה ליצור קובץ זמני"
+                    )
             else:
                 await update.message.reply_text(f"❌ {export_result['error']}")
                 
