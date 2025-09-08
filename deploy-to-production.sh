@@ -42,7 +42,7 @@ fi
 
 # 4️⃣ Push ל-GitHub
 echo "⬆️  מעלה את השינויים ל-GitHub..."
-git push -u origin main
+git push -u origin master
 
 # 5️⃣ Docker build & push דרך GitHub Actions
 echo "🔄 GitHub Actions ירוץ אוטומטית עכשיו:"
