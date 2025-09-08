@@ -2,7 +2,7 @@ name: CI/CD Pipeline - Pirate Content Bot
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master" ]  # כל push ל-master יפעיל את ה-CI/CD
   pull_request:
     branches: [ "master" ]
 
@@ -36,8 +36,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -50,7 +48,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run database migrations
+    - name: Set environment variables
+      run: |
+        echo "BOT_TOKEN=test_token_for_ci" >> $GITHUB_ENV
+        echo "DB_HOST=127.0.0.1" >> $GITHUB_ENV
+        echo "DB_PORT=3306" >> $GITHUB_ENV
+        echo "DB_NAME=pirate_content" >> $GITHUB_ENV
+        echo "DB_USER=pirate_user" >> $GITHUB_ENV
+        echo "DB_PASSWORD=pirate_pass" >> $GITHUB_ENV
+        echo "REDIS_HOST=127.0.0.1" >> $GITHUB_ENV
+        echo "REDIS_PORT=6379" >> $GITHUB_ENV
+
+    - name: Run migrations
       run: |
         cd pirate_content_bot
         PYTHONPATH=. python run_migrations.py
@@ -58,19 +67,19 @@ jobs:
     - name: Run tests
       run: |
         cd pirate_content_bot
-        DB_HOST=127.0.0.1 PYTHONPATH=. python -m unittest discover -s tests
+        PYTHONPATH=. python -m unittest discover -s tests
+        python test_commands.py
+        python test_analysis_fix.py
 
   build-and-deploy:
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/master'
     name: Build Docker Image and Deploy
+    if: success()  # רק אם הטסטים עברו
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -92,30 +101,15 @@ jobs:
           ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
     - name: Deploy to server
-      uses: appleboy/ssh-action@v1
+      uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
           echo "🚀 Starting deployment..."
-          cd /home/dovber/pirate-content-bot/pirate_content_bot || exit 1
-          docker-compose down || true
-          docker pull ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
-          sed -i 's|image: .*pirate-bot.*|image: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}|g' docker-compose.yml || true
-          docker-compose up -d
-          sleep 10
-          docker-compose ps
-          docker image prune -f
-          echo "✅ Deployment completed successfully!"
-
-    - name: Notify deployment success
-      if: success()
-      run: |
-        echo "🎉 Deployment successful! Image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}"
-
-    - name: Notify deployment failure
-      if: failure()
-      run: |
-        echo "❌ Deployment failed!"
-        exit 1
+          docker pull ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }} || true
+          docker stop pirate_content_bot || true
+          docker rm pirate_content_bot || true
+          docker run -d --name pirate_content_bot ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
+          echo "✅ Deployment completed!"
