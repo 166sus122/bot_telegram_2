@@ -684,6 +684,85 @@ class EnhancedPirateBot:
             parse_mode='Markdown'
         )
 
+    def _extract_message_source_info(self, update: Update) -> Dict[str, Any]:
+        """חילוץ מידע על מקור ההודעה"""
+        try:
+            chat = update.effective_chat
+            message = update.message
+            
+            source_info = {
+                'message_id': message.message_id if message else 0,
+                'chat_title': chat.title if chat.title else '',
+                'source_location': str(chat.id),
+            }
+            
+            # זיהוי סוג המקור
+            if chat.type == 'private':
+                source_info.update({
+                    'source_type': 'private',
+                    'thread_category': 'private'
+                })
+            elif chat.type in ['group', 'supergroup']:
+                thread_id = getattr(message, 'message_thread_id', None)
+                
+                if thread_id:
+                    source_info.update({
+                        'source_type': 'thread',
+                        'source_location': f"{chat.id}:{thread_id}",
+                        'thread_id': thread_id
+                    })
+                else:
+                    source_info.update({
+                        'source_type': 'group',
+                        'thread_category': 'general'
+                    })
+            else:
+                source_info.update({
+                    'source_type': 'unknown'
+                })
+            
+            return source_info
+            
+        except Exception as e:
+            logger.error(f"Error extracting message source info: {e}")
+            return {
+                'source_type': 'unknown',
+                'source_location': '',
+                'thread_category': 'general',
+                'chat_title': '',
+                'message_id': 0
+            }
+
+    def _format_source_info(self, request_info: Dict) -> str:
+        """עיצוב מידע מקור ההודעה"""
+        try:
+            source_type = request_info.get('source_type', 'unknown')
+            chat_title = request_info.get('chat_title', '')
+            thread_category = request_info.get('thread_category', 'general')
+            
+            if source_type == 'private':
+                return "📱 **מקור:** הודעה פרטית"
+            elif source_type == 'thread':
+                thread_names = {
+                    'updates': 'עדכונים',
+                    'series': 'סדרות', 
+                    'movies': 'סרטים',
+                    'software': 'תוכנות',
+                    'books': 'ספרים',
+                    'games': 'משחקים',
+                    'apps': 'אפליקציות',
+                    'spotify': 'ספוטיפיי'
+                }
+                thread_name = thread_names.get(thread_category, thread_category)
+                return f"💬 **מקור:** נושא {thread_name}"
+            elif source_type == 'group':
+                return f"👥 **מקור:** צ'אט כללי"
+            else:
+                return "❓ **מקור:** לא ידוע"
+                
+        except Exception:
+            return "❓ **מקור:** לא ידוע"
+
     def _validate_thread_location(self, update: Update, text: str) -> Dict[str, Any]:
         """בדיקת מיקום הבקשה לפי Thread ID"""
         try:
@@ -2120,6 +2199,9 @@ class EnhancedPirateBot:
             if thread_validation['thread_category']:
                 detailed_analysis['category'] = thread_validation['thread_category']
             
+            # הוספת מידע מקור הודעה
+            detailed_analysis.update(self._extract_message_source_info(update))
+            
             # בדיקת כפילויות
             existing_requests = await self.request_service.get_pending_requests(
                 category=analysis['category'],
@@ -2589,8 +2671,26 @@ class EnhancedPirateBot:
 📝 **כותרת:** {request_info.get('title', 'ללא כותרת')}
 📂 **קטגוריה:** {request_info.get('category', 'כללי')}
 📅 **נוצרה:** {date_str}
-
-⏱️ **זמן ממוצע לטיפול:** 24-48 שעות
+            """
+            
+            # מידע נוסף
+            priority_emoji = {"low": "🔵", "medium": "🟡", "high": "🔴", "urgent": "🚨"}.get(request_info.get('priority'), "🟡")
+            
+            # מקור ההודעה
+            source_info = self._format_source_info(request_info)
+            
+            # זמן טיפול ממוצע אמיתי
+            avg_processing = request_info.get('avg_processing_time', {})
+            if avg_processing.get('sample_size', 0) > 0:
+                avg_time = avg_processing.get('overall_avg', 24.0)
+                processing_text = f"⏱️ **זמן טיפול ממוצע:** {avg_time:.1f} שעות (מבוסס על {avg_processing['sample_size']} בקשות)"
+            else:
+                processing_text = "⏱️ **זמן ממוצע לטיפול:** 24-48 שעות (הערכה)"
+            
+            status_text += f"""
+{priority_emoji} **עדיפות:** {request_info.get('priority', 'בינונית')}
+{source_info}
+{processing_text}
             """
             
             if request_info.get('notes'):

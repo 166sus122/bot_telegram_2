@@ -800,3 +800,195 @@ task: <Task pending name='Application:8121822235:update_fetcher' coro=<Applicati
 2025-09-07 00:26:18 | __main__             | INFO     | cleanup_resources    | 🧹 Resources cleaned up successfully
 2025-09-07 00:26:18 | asyncio              | ERROR    | default_exception_handler | Task was destroyed but it is pending!
 task: <Task pending name='Application:8121822235:update_fetcher' coro=<Application._update_fetcher() running at /home/dovber/.local/lib/python3.12/site-packages/telegram/ext/_application.py:1110> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Initializing bot for command testing...
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-08 16:18:32 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'redis', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'redis', 'port': 6379, 'db': 0, 'password': '', 'decode_responses': True}}s, Memory=100MB
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-08 16:18:32 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-08 16:18:32 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-08 16:18:32 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-08 16:18:32 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-08 16:18:32 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-08 16:18:32 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-08 16:18:32 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'redis', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'redis', 'port': 6379, 'db': 0, 'password': '', 'decode_responses': True}}s, Memory=100MB
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-08 16:18:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-08 16:18:32 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-08 16:18:32 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-08 16:18:32 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-08 16:18:32 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-08 16:18:32 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-08 16:18:32 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-08 16:18:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 🧪 Testing commands for issues...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 🔬 Testing ANALYTICS command...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Analytics command executed successfully
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command...
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as count 
+            FROM information_schema.statistics 
+            WHERE table_name = 'content_requests' 
+            AND index_type = 'FULLTEXT'
+            AND table_schema = DATABASE()
+            
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as count 
+            FROM information_schema.statistics 
+            WHERE table_name = 'content_requests' 
+            AND index_type = 'FULLTEXT'
+            AND table_schema = DATABASE()
+            
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        SELECT 
+            id, user_id, username, first_name, title, original_text, 
+            category, priority, status, confidence, created_at, updated_at,
+            fulfilled_at, fulfilled_by, notes
+        FROM content_requests 
+        WHERE (title LIKE %s OR original_text LIKE %s)
+        ORDER BY 
+            CASE 
+                WHEN status = 'pending' THEN 1
+                WHEN status = 'fulfilled' THEN 2 
+                ELSE 3 
+            END,
+            created_at DESC
+        LIMIT %s OFFSET %s
+        
+2025-09-08 16:18:32 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: ('%Breaking Bad%', '%Breaking Bad%', 10, 0)
+2025-09-08 16:18:32 | services.search_service | ERROR    | search_requests      | Search failed for query 'Breaking Bad': Failed to get connection from pool
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Search command executed successfully
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response preview: 🔍 לא נמצאו תוצאות עבור: **Breaking Bad**...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command with no arguments...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Search command (no args) executed successfully
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response preview: 🔍 **שימוש בחיפוש:**
+`/search <מונח חיפוש>`
+
+💡 דוגמאות:
+• `/search Breaking Bad`
+• `/search סדרות`
+• `/search 2022`...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Broadcast command executed successfully
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command with no arguments...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Broadcast command (no args) executed successfully
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | 🚫 Testing commands with NON-ADMIN user...
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Analytics command correctly rejected non-admin
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | Response: ❌ פקודה זמינה רק למנהלים
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 16:18:32 | __main__             | INFO     | test_commands        | ✅ Command testing completed!

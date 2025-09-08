@@ -137,7 +137,13 @@ class RequestService:
             'quality': analysis.get('quality'),
             'language_pref': analysis.get('language', 'hebrew'),
             'status': 'pending',
-            'created_at': datetime.now()
+            'created_at': datetime.now(),
+            # שדות מקור הודעה
+            'source_type': analysis.get('source_type', 'unknown'),  # 'group', 'private', 'thread'
+            'source_location': analysis.get('source_location', ''),  # thread_id או chat_id
+            'thread_category': analysis.get('thread_category', 'general'),
+            'chat_title': analysis.get('chat_title', ''),
+            'message_id': analysis.get('message_id', 0)
         }
     
     def _calculate_priority(self, analysis: Dict, user_data: Dict) -> str:
@@ -717,7 +723,8 @@ class RequestService:
             SELECT 
                 id, user_id, username, first_name, title, original_text, 
                 category, priority, status, confidence, created_at, updated_at,
-                fulfilled_at, fulfilled_by, notes
+                fulfilled_at, fulfilled_by, notes, source_type, source_location,
+                thread_category, chat_title, message_id
             FROM content_requests 
             WHERE id = %s
             """
@@ -733,6 +740,13 @@ class RequestService:
                     if request_data.get(date_field):
                         request_data[date_field] = str(request_data[date_field])
                 
+                # הוספת חישוב זמן טיפול ממוצע
+                avg_processing_time = await self._calculate_average_processing_time(
+                    request_data.get('category', 'general'),
+                    request_data.get('priority', 'medium')
+                )
+                request_data['avg_processing_time'] = avg_processing_time
+                
                 return request_data
             
             return {}
@@ -740,6 +754,87 @@ class RequestService:
         except Exception as e:
             logger.error(f"Failed to get request by ID {request_id}: {e}")
             return {}
+    
+    async def _calculate_average_processing_time(self, category: str = None, priority: str = None) -> Dict[str, float]:
+        """חישוב זמן טיפול ממוצע בשעות לפי קטגוריה ועדיפות"""
+        try:
+            # בניית שאילתה דינמית
+            where_conditions = ["status IN ('fulfilled', 'rejected')", "fulfilled_at IS NOT NULL"]
+            params = []
+            
+            if category and category != 'general':
+                where_conditions.append("category = %s")
+                params.append(category)
+            
+            if priority and priority != 'medium':
+                where_conditions.append("priority = %s") 
+                params.append(priority)
+            
+            query = f"""
+            SELECT 
+                status,
+                AVG(TIMESTAMPDIFF(HOUR, created_at, fulfilled_at)) as avg_hours,
+                COUNT(*) as count,
+                MIN(TIMESTAMPDIFF(HOUR, created_at, fulfilled_at)) as min_hours,
+                MAX(TIMESTAMPDIFF(HOUR, created_at, fulfilled_at)) as max_hours
+            FROM content_requests 
+            WHERE {' AND '.join(where_conditions)}
+            AND TIMESTAMPDIFF(HOUR, created_at, fulfilled_at) > 0
+            AND created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            GROUP BY status
+            """
+            
+            results = await self.storage.pool.execute_query(query, tuple(params), fetch_all=True)
+            
+            processing_times = {
+                'fulfilled_avg': 24.0,  # ברירת מחדל
+                'rejected_avg': 12.0,
+                'overall_avg': 18.0,
+                'min_time': 1.0,
+                'max_time': 72.0,
+                'sample_size': 0
+            }
+            
+            if results:
+                total_avg = 0
+                total_count = 0
+                
+                for result in results:
+                    status = result['status']
+                    avg_hours = float(result['avg_hours'] or 0)
+                    count = result['count'] or 0
+                    
+                    if status == 'fulfilled':
+                        processing_times['fulfilled_avg'] = round(avg_hours, 1)
+                    elif status == 'rejected':
+                        processing_times['rejected_avg'] = round(avg_hours, 1)
+                    
+                    total_avg += avg_hours * count
+                    total_count += count
+                    
+                    # עדכון מינימום ומקסימום
+                    if result['min_hours']:
+                        processing_times['min_time'] = min(processing_times['min_time'], float(result['min_hours']))
+                    if result['max_hours']:
+                        processing_times['max_time'] = max(processing_times['max_time'], float(result['max_hours']))
+                
+                if total_count > 0:
+                    processing_times['overall_avg'] = round(total_avg / total_count, 1)
+                    processing_times['sample_size'] = total_count
+            
+            return processing_times
+            
+        except Exception as e:
+            logger.error(f"Failed to calculate average processing time: {e}")
+            # ברירת מחדל במקרה של שגיאה
+            return {
+                'fulfilled_avg': 24.0,
+                'rejected_avg': 12.0, 
+                'overall_avg': 18.0,
+                'min_time': 1.0,
+                'max_time': 72.0,
+                'sample_size': 0
+            }
     
     # ========================= סטטיסטיקות ואנליטיקס =========================
     
