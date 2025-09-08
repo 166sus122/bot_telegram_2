@@ -1,0 +1,11 @@
+# 🏴‍☠️ בוט התמימים הפיראטים - Kubernetes Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pirate-content-bot
+  labels:
+    app.kubernetes.io/name: pirate-content-bot
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: namespace
+    app.kubernetes.io/part-of: pirate-bot-system
+    environment: production

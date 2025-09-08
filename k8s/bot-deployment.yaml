@@ -1,0 +1,364 @@
+# 🏴‍☠️ בוט התמימים הפיראטים - Main Bot Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pirate-bot
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+    app.kubernetes.io/name: pirate-content-bot
+    app.kubernetes.io/component: bot
+    version: "1.0.0"
+spec:
+  replicas: 1  # בוט טלגרם צריך להיות singleton
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: pirate-content-bot
+  template:
+    metadata:
+      labels:
+        app: pirate-content-bot
+        app.kubernetes.io/name: pirate-content-bot
+        app.kubernetes.io/component: bot
+        version: "1.0.0"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: pirate-bot-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - name: pirate-bot
+        image: your-registry.com/pirate-content-bot:latest  # החלף בimage שלך
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          name: http-metrics
+          protocol: TCP
+        env:
+        # Secrets
+        - name: BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: BOT_TOKEN
+        - name: ADMIN_IDS
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: ADMIN_IDS
+        - name: MAIN_GROUP_ID
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: MAIN_GROUP_ID
+        - name: LOG_CHANNEL_ID
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: LOG_CHANNEL_ID
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: DB_PASSWORD
+        - name: ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: ENCRYPTION_KEY
+        
+        # Config from ConfigMap
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: ENVIRONMENT
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DEBUG
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: LOG_LEVEL
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_PORT
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_USER
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: REDIS_PORT
+        - name: REDIS_DB
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: REDIS_DB
+        - name: MAX_WORKERS
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: MAX_WORKERS
+        - name: CACHE_TTL
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: CACHE_TTL
+        - name: TIMEZONE
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: TIMEZONE
+        
+        # Kubernetes specific
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: KUBERNETES_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: KUBERNETES_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+              
+        volumeMounts:
+        - name: logs
+          mountPath: /app/logs
+        - name: data
+          mountPath: /app/data
+        - name: tmp
+          mountPath: /tmp
+        
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+            
+        livenessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+          
+        readinessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop:
+            - ALL
+            
+      initContainers:
+      - name: db-migration
+        image: your-registry.com/pirate-content-bot:latest  # החלף בimage שלך
+        command: 
+        - python
+        - -c
+        - |
+          import sys
+          sys.path.append('/app')
+          try:
+              from pirate_content_bot.database.migrations import run_all_migrations
+              run_all_migrations()
+              print("Database migrations completed successfully")
+          except Exception as e:
+              print(f"Database migration failed: {e}")
+              sys.exit(1)
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: pirate-bot-config
+              key: DB_HOST
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pirate-bot-secrets
+              key: DB_PASSWORD
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+            
+      volumes:
+      - name: logs
+        persistentVolumeClaim:
+          claimName: pirate-bot-logs-pvc
+      - name: data
+        persistentVolumeClaim:
+          claimName: pirate-bot-data-pvc
+      - name: tmp
+        emptyDir:
+          sizeLimit: 1Gi
+          
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      
+      # Node Affinity (אופציונלי - להרצה על nodes מסוימים)
+      # affinity:
+      #   nodeAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #     - weight: 100
+      #       preference:
+      #         matchExpressions:
+      #         - key: node-type
+      #           operator: In
+      #           values: ["application"]
+
+---
+# Bot Service (לhealth checks ומטריקות)
+apiVersion: v1
+kind: Service
+metadata:
+  name: pirate-bot-service
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+    app.kubernetes.io/name: pirate-content-bot
+    app.kubernetes.io/component: service
+spec:
+  selector:
+    app: pirate-content-bot
+  ports:
+  - name: http-metrics
+    port: 8000
+    targetPort: 8000
+    protocol: TCP
+  type: ClusterIP
+
+---
+# PVC for logs
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pirate-bot-logs-pvc
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+    app.kubernetes.io/component: storage
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: "standard"
+
+---
+# PVC for data
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pirate-bot-data-pvc
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+    app.kubernetes.io/component: storage
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: "standard"
+
+---
+# ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pirate-bot-sa
+  namespace: pirate-content-bot
+  labels:
+    app: pirate-content-bot
+    app.kubernetes.io/component: serviceaccount
+
+---
+# Role (מינימלי לצרכי הבוט)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: pirate-content-bot
+  name: pirate-bot-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps"]
+  verbs: ["get", "list"]
+
+---
+# RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pirate-bot-rolebinding
+  namespace: pirate-content-bot
+subjects:
+- kind: ServiceAccount
+  name: pirate-bot-sa
+  namespace: pirate-content-bot
+roleRef:
+  kind: Role
+  name: pirate-bot-role
+  apiGroup: rbac.authorization.k8s.io
