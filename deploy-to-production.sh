@@ -53,29 +53,51 @@ SERVER_HOST="173.249.34.10"
 
 echo "🔐 מחבר לשרת ומריץ deploy..."
 ssh -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" << 'ENDSSH'
-echo "📂 עובר לתיקיית הפרוייקט..."
-cd /opt/pirate-content-bot || mkdir -p /opt/pirate-content-bot && cd /opt/pirate-content-bot
+echo "📂 יצירת תיקיית הפרוייקט..."
+mkdir -p /opt/pirate-content-bot
+cd /opt/pirate-content-bot
 
-echo "📥 מוריד קבצי Docker Compose..."
-curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/docker-compose.yml -o docker-compose.yml
-curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/.env.example -o .env
-
-echo "🐳 מושך Docker images..."
-docker pull dov121212/bot_telegram_2:latest || true
-docker pull mysql:8.0 || true
-docker pull redis:7-alpine || true
-
-echo "🛑 עוצר קונטיינרים קיימים..."
+echo "🧹 ניקוי קונטיינרים ישנים..."
 docker-compose down || true
+docker system prune -f || true
 
-echo "🚀 מפעיל כל הקונטיינרים..."
-docker-compose up -d
+echo "📥 מוריד קבצי הגדרה מ-GitHub..."
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/docker-compose.yml -o docker-compose.yml
+curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/.env.example -o .env.template
 
-echo "⏳ ממתין להתחלה..."
-sleep 30
+echo "⚙️ יוצר קובץ .env עם הגדרות בסיסיות..."
+cp .env.template .env
 
-echo "📊 סטטוס קונטיינרים:"
-docker-compose ps
+# הגדרת משתנים חיוניים (יש לעדכן בהתאם לסביבה)
+echo "DB_ROOT_PASSWORD=pirate_root_2024" >> .env
+echo "DB_PASSWORD=pirate_secure_2024" >> .env
+
+echo "🐳 מושך את כל ה-Docker images הנדרשים..."
+docker pull dov121212/bot_telegram_2:latest || echo "⚠️ Failed to pull bot image"
+docker pull mysql:8.0 || echo "⚠️ Failed to pull MySQL image"
+docker pull redis:7-alpine || echo "⚠️ Failed to pull Redis image"
+
+echo "📋 בודק תוכן docker-compose.yml..."
+ls -la docker-compose.yml
+head -10 docker-compose.yml
+
+echo "🚀 מפעיל את כל השירותים..."
+docker-compose up -d --remove-orphans
+
+echo "⏳ ממתין לאתחול השירותים (60 שניות)..."
+sleep 60
+
+echo "🔍 בדיקת סטטוס השירותים..."
+docker-compose ps -a
+
+echo "📊 בדיקת לוגים..."
+docker-compose logs --tail=10 mysql || echo "MySQL logs not available"
+docker-compose logs --tail=10 redis || echo "Redis logs not available"
+docker-compose logs --tail=10 pirate-bot || echo "Bot logs not available"
+
+echo "🌐 בדיקת פורטים פתוחים..."
+netstat -tlnp | grep -E ":(3306|6379|8080)" || echo "Ports check failed"
+
 ENDSSH
 
 echo "🎉 פריסה אוטומטית הושלמה בהצלחה!"

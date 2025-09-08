@@ -1,0 +1,157 @@
+version: '3.8'
+
+services:
+  # בוט התמימים הפיראטים
+  pirate-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pirate-content-bot
+    restart: unless-stopped
+    environment:
+      # הגדרות בוט - עדכן את הערכים האלה!
+      - BOT_TOKEN=${BOT_TOKEN}
+      - MAIN_GROUP_ID=${MAIN_GROUP_ID}
+      - LOG_CHANNEL_ID=${LOG_CHANNEL_ID}
+      - ADMIN_IDS=${ADMIN_IDS}
+      
+      # הגדרות מסד נתונים
+      - USE_DATABASE=true
+      - DB_HOST=mysql
+      - DB_NAME=pirate_content
+      - DB_USER=pirate_user
+      - DB_PASSWORD=${DB_PASSWORD}
+      
+      # הגדרות Redis Cache
+      - CACHE_TYPE=redis
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      
+      # הגדרות נוספות
+      - DEBUG=false
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./exports:/app/exports
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - pirate-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: pirate-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=pirate_content
+      - MYSQL_USER=pirate_user
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_CHARACTER_SET_SERVER=utf8mb4
+      - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+    networks:
+      - pirate-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "pirate_user", "-p${DB_PASSWORD}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: pirate-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - pirate-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Nginx Reverse Proxy (אופציונלי - לweb interface בעתיד)
+  nginx:
+    image: nginx:alpine
+    container_name: pirate-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - pirate-bot
+    networks:
+      - pirate-network
+    profiles:
+      - web  # הפעל רק עם --profile web
+
+  # Monitoring - Prometheus (אופציונלי)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: pirate-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - pirate-network
+    profiles:
+      - monitoring
+
+  # Monitoring - Grafana (אופציונלי)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: pirate-grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - pirate-network
+    profiles:
+      - monitoring
+
+networks:
+  pirate-network:
+    driver: bridge
+    name: pirate-content-network
+
+volumes:
+  mysql_data:
+    name: pirate-mysql-data
+  redis_data:
+    name: pirate-redis-data
+  prometheus_data:
+    name: pirate-prometheus-data
+  grafana_data:
+    name: pirate-grafana-data
