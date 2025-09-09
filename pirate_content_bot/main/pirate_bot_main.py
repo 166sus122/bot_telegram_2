@@ -1892,13 +1892,8 @@ class EnhancedPirateBot:
                 )
             
             elif action == "my_requests":
-                # הצגת בקשות המשתמש
-                keyboard = self.keyboard_builder.get_user_requests_keyboard()
-                await query.edit_message_text(
-                    "📋 **הבקשות שלי**\n\nכאן יוצגו הבקשות שלך",
-                    reply_markup=keyboard,
-                    parse_mode='Markdown'
-                )
+                # הצגת בקשות המשתמש - קריאה לפונקציה האמיתית
+                await self._handle_my_requests_button(query)
             
             elif action == "stats":
                 # הצגת סטטיסטיקות
@@ -2614,6 +2609,61 @@ class EnhancedPirateBot:
         except Exception as e:
             logger.error(f"❌ Error in my_requests command: {e}")
             await update.message.reply_text("❌ שגיאה בטעינת הבקשות שלך")
+    
+    async def _handle_my_requests_button(self, query):
+        """טיפול בכפתור הבקשות שלי"""
+        try:
+            user = query.from_user
+            
+            # השתמש ב-user_service לקבלת הבקשות
+            user_requests = await self.user_service.get_user_requests(user.id, limit=10) if self.user_service else []
+            
+            if not user_requests:
+                keyboard = InlineKeyboardMarkup([[
+                    InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
+                ]])
+                await query.edit_message_text(
+                    "📋 **הבקשות שלי**\n\n"
+                    "עדיין לא יש לך בקשות במערכת\n\n"
+                    "💡 כתוב מה אתה מחפש והבוט יטפל בשאר!",
+                    reply_markup=keyboard,
+                    parse_mode='Markdown'
+                )
+                return
+            
+            response = f"📋 **הבקשות שלך** ({len(user_requests)}):\n\n"
+            
+            for req in user_requests:
+                status_emoji = {"pending": "⏳", "fulfilled": "✅", "rejected": "❌"}.get(req.get('status'), "❓")
+                title = req.get('title', 'ללא כותרת')
+                title = title[:40] + ('...' if len(title) > 40 else '')
+                response += f"{status_emoji} **#{req.get('id')}** {title}\n"
+                
+                # עיבוד תאריך יצירה עם המרה לאזור הזמן הישראלי
+                date_str = self._convert_to_israel_time(req.get('created_at'), '%d/%m/%Y')
+                response += f"📅 {date_str} | 📂 {req.get('category', 'כללי')}\n\n"
+            
+            keyboard = InlineKeyboardMarkup([[
+                InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
+            ]])
+            
+            await query.edit_message_text(
+                response,
+                reply_markup=keyboard, 
+                parse_mode='Markdown'
+            )
+            
+        except Exception as e:
+            logger.error(f"❌ Error in _handle_my_requests_button: {e}")
+            keyboard = InlineKeyboardMarkup([[
+                InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
+            ]])
+            await query.edit_message_text(
+                "❌ **שגיאה בטעינת הבקשות שלך**\n\n"
+                "נסה שוב מאוחר יותר או צור קשר עם המנהלים",
+                reply_markup=keyboard,
+                parse_mode='Markdown'
+            )
     
     async def search_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """חיפוש בקשות - מנהלים בלבד"""
