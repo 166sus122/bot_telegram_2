@@ -12336,3 +12336,55 @@
 2025-09-09 09:42:09 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'הודעה ארוכה מאוד עם הרבה מילים שלא אמורות להפעיל את מנגנון זיהוי הבקשות...'
 2025-09-09 09:42:09 | asyncio              | WARNING  | _run_once            | Executing <Task finished name='Task-96' coro=<TestZeroResponseBug.test_unknown_user_message_handling() done, defined at /home/dovber/pirate-content-bot/pirate_content_bot/tests/test_zero_response_bug.py:46> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.480 seconds
 2025-09-09 09:42:09 | pirate_content_bot.main.pirate_bot_main | WARNING  | _convert_to_israel_time | Error converting time to Israel timezone: Invalid isoformat string: 'invalid-date-string'
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Error in admin button handler for action 'statistics': Database connection failed
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Full traceback: Traceback (most recent call last):
+  File "/home/dovber/pirate-content-bot/pirate_content_bot/main/pirate_bot_main.py", line 1739, in _handle_admin_button
+    stats = await self.request_service._get_basic_request_stats(start_date)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2262, in _execute_mock_call
+    raise effect
+Exception: Database connection failed
+
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:55:53 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: stats by TestAdmin (6039349310)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Error in admin button handler for action 'statistics': Database connection failed
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Full traceback: Traceback (most recent call last):
+  File "/home/dovber/pirate-content-bot/pirate_content_bot/main/pirate_bot_main.py", line 1739, in _handle_admin_button
+    stats = await self.request_service._get_basic_request_stats(start_date)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2262, in _execute_mock_call
+    raise effect
+Exception: Database connection failed
+
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: my_requests by TestAdmin (6039349310)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: stats by TestAdmin (999999999)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:56:54 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | broadcast_command    | 📢 Broadcast sent by TestAdmin: sent=1, failed=0
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_my_requests_button | ❌ Error in _handle_my_requests_button: DB Error
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: stats by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Error in admin button handler for action 'statistics': Database connection failed
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_admin_button | ❌ Full traceback: Traceback (most recent call last):
+  File "/home/dovber/pirate-content-bot/pirate_content_bot/main/pirate_bot_main.py", line 1739, in _handle_admin_button
+    stats = await self.request_service._get_basic_request_stats(start_date)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2262, in _execute_mock_call
+    raise effect
+Exception: Database connection failed
+
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: my_requests by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: stats by TestAdmin (999999999)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)

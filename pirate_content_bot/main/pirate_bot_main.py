@@ -1760,7 +1760,7 @@ class EnhancedPirateBot:
                     text = "❌ שירות הבקשות לא זמין"
                 
                 keyboard = InlineKeyboardMarkup([
-                    [InlineKeyboardButton("🔄 רענן", callback_data="admin:stats")],
+                    [InlineKeyboardButton("🔄 רענן", callback_data="admin:statistics")],
                     [InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")]
                 ])
                 
@@ -1772,9 +1772,11 @@ class EnhancedPirateBot:
                 await query.edit_message_text(f"❌ פעולת מנהל לא מוכרת: {admin_action}", reply_markup=keyboard)
                 
         except Exception as e:
-            logger.error(f"❌ Error in admin button handler: {e}")
+            logger.error(f"❌ Error in admin button handler for action '{admin_action}': {e}")
+            import traceback
+            logger.error(f"❌ Full traceback: {traceback.format_exc()}")
             keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")]])
-            await query.edit_message_text("❌ שגיאה בעיבוד פעולת המנהל", reply_markup=keyboard)
+            await query.edit_message_text(f"❌ שגיאה בעיבוד פעולת המנהל: {admin_action}\n\nשגיאה: {str(e)}", reply_markup=keyboard)
     
     async def _handle_settings_button(self, query, data: str):
         """טיפול בכפתור הגדרות"""
@@ -1896,13 +1898,16 @@ class EnhancedPirateBot:
                 await self._handle_my_requests_button(query)
             
             elif action == "stats":
-                # הצגת סטטיסטיקות
-                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")]])
-                await query.edit_message_text(
-                    "📊 **סטטיסטיקות**\n\nכאן יוצגו הסטטיסטיקות",
-                    reply_markup=keyboard,
-                    parse_mode='Markdown'
-                )
+                # הצגת סטטיסטיקות - ניתוב לפונקציית מנהל
+                if self._is_admin(query.from_user.id):
+                    await self._handle_admin_button(query, "admin:statistics")
+                else:
+                    keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")]])
+                    await query.edit_message_text(
+                        "❌ אין לך הרשאות לצפייה בסטטיסטיקות",
+                        reply_markup=keyboard,
+                        parse_mode='Markdown'
+                    )
             
             elif action == "new_request":
                 # תחילת בקשה חדשה
@@ -1917,7 +1922,7 @@ class EnhancedPirateBot:
                 # פאנל מנהלים
                 keyboard = InlineKeyboardMarkup([
                     [InlineKeyboardButton("⏳ בקשות ממתינות", callback_data="admin:pending")],
-                    [InlineKeyboardButton("📊 סטטיסטיקות", callback_data="admin:stats")],
+                    [InlineKeyboardButton("📊 סטטיסטיקות", callback_data="admin:statistics")],
                     [InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")]
                 ])
                 await query.edit_message_text(
