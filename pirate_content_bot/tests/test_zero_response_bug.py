@@ -73,14 +73,24 @@ class TestZeroResponseBug(unittest.IsolatedAsyncioTestCase):
                     call_args = self.mock_message.reply_text.call_args
                     if call_args and call_args[0]:
                         response_text = call_args[0][0]
+                        
+                        # Convert to string if it's an integer
+                        response_str = str(response_text)
+                        
                         self.assertNotEqual(response_text, "0", 
                                           f'Bot responded "0" to message: "{message}"')
-                        self.assertNotEqual(response_text.strip(), "0", 
-                                          f'Bot responded "0" (with whitespace) to message: "{message}"')
+                        self.assertNotEqual(response_text, 0, 
+                                          f'Bot responded 0 (integer) to message: "{message}"')
+                        self.assertNotEqual(response_str.strip(), "0", 
+                                          f'Bot responded "0" (string) to message: "{message}"')
                         
                         # בדיקה נוספת שהתגובה לא מכילה רק ספרות
-                        self.assertFalse(response_text.strip().isdigit() and response_text.strip() == "0",
-                                       f'Bot responded only digit "0" to message: "{message}"')
+                        if isinstance(response_text, str):
+                            self.assertFalse(response_text.strip().isdigit() and response_text.strip() == "0",
+                                           f'Bot responded only digit "0" to message: "{message}"')
+                        elif isinstance(response_text, int):
+                            self.assertNotEqual(response_text, 0,
+                                              f'Bot responded integer 0 to message: "{message}"')
     
     async def test_auto_response_configuration(self):
         """בדיקה שההגדרות של תגובה אוטומטית נכונות"""
@@ -141,7 +151,10 @@ class TestZeroResponseBug(unittest.IsolatedAsyncioTestCase):
             if self.mock_message.reply_text.called:
                 call_args = self.mock_message.reply_text.call_args[0][0]
                 self.assertNotEqual(call_args, "0")
-                self.assertIn("יותר מדי", call_args)  # צריכה להיות הודעת rate limit
+                self.assertNotEqual(call_args, 0)
+                call_args_str = str(call_args)
+                self.assertNotEqual(call_args_str.strip(), "0")
+                self.assertIn("יותר מדי", call_args_str)  # צריכה להיות הודעת rate limit
 
     def test_bot_never_returns_zero_string(self):
         """בדיקה שהבוט לא מחזיר את המחרוזת '0' כתגובה"""
