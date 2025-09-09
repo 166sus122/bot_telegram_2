@@ -4,7 +4,7 @@ services:
   # בוט התמימים הפיראטים
   pirate-bot:
     image: dov121212/bot_telegram_2:latest
-    container_name: pirate-content-bot
+    container_name: pirate-bot-main-2025
     restart: unless-stopped
     environment:
       # הגדרות בוט - עדכן את הערכים האלה!
@@ -15,14 +15,14 @@ services:
       
       # הגדרות מסד נתונים
       - USE_DATABASE=true
-      - DB_HOST=mysql
+      - DB_HOST=pirate-mysql-db
       - DB_NAME=pirate_content
       - DB_USER=pirate_user
       - DB_PASSWORD=${DB_PASSWORD}
       
       # הגדרות Redis Cache
       - CACHE_TYPE=redis
-      - REDIS_HOST=redis
+      - REDIS_HOST=pirate-redis-cache
       - REDIS_PORT=6379
       
       # הגדרות נוספות
@@ -33,8 +33,8 @@ services:
       - ./logs:/app/logs
       - ./exports:/app/exports
     depends_on:
-      - mysql
-      - redis
+      - pirate-mysql-db
+      - pirate-redis-cache
     networks:
       - pirate-network
     healthcheck:
@@ -45,9 +45,9 @@ services:
       start_period: 40s
 
   # MySQL Database
-  mysql:
+  pirate-mysql-db:
     image: mysql:8.0
-    container_name: pirate-mysql
+    container_name: pirate-mysql-db-2025
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=pirate_content
@@ -58,7 +58,6 @@ services:
       - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - "3306:3306"
     networks:
@@ -70,9 +69,9 @@ services:
       retries: 5
 
   # Redis Cache
-  redis:
+  pirate-redis-cache:
     image: redis:7-alpine
-    container_name: pirate-redis
+    container_name: pirate-redis-cache-2025
     restart: unless-stopped
     command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     volumes:
@@ -142,13 +141,13 @@ services:
 networks:
   pirate-network:
     driver: bridge
-    name: pirate-content-network
+    name: pirate-content-network-2025
 
 volumes:
   mysql_data:
-    name: pirate-mysql-data
+    name: pirate-mysql-data-2025
   redis_data:
-    name: pirate-redis-data
+    name: pirate-redis-data-2025
   prometheus_data:
     name: pirate-prometheus-data
   grafana_data:
