@@ -1314,7 +1314,7 @@ class EnhancedPirateBot:
 • זיהוי כפילויות: {'✅' if service_stats.get('has_duplicate_detector') else '❌'}
 
 🎯 **מנהלים:**
-• מספר מנהלים: {len(getattr(self, 'admin_ids', []))}
+• מספר מנהלים: {len(ADMIN_IDS)}
 • פעיל כרגע: ✅
             """
             
