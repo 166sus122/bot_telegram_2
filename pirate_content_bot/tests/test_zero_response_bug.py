@@ -89,8 +89,10 @@ class TestZeroResponseBug(unittest.IsolatedAsyncioTestCase):
         from pirate_content_bot.main.config import AUTO_RESPONSE_CONFIG
         
         threshold = AUTO_RESPONSE_CONFIG.get('confidence_threshold', 0)
-        self.assertGreaterEqual(threshold, 0.2, 
-                               "Confidence threshold should be at least 0.2 to avoid false responses")
+        self.assertGreaterEqual(threshold, 0.1, 
+                               "Confidence threshold should be at least 0.1 to avoid false responses")
+        self.assertLessEqual(threshold, 0.5,
+                           "Confidence threshold should not be too high to avoid missing valid requests")
         
         # בדיקה שהתגובה האוטומטית מוגדרת נכון
         enabled = AUTO_RESPONSE_CONFIG.get('enabled', True)

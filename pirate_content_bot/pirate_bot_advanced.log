@@ -1198,3 +1198,69 @@ task: <Task pending name='Application:8121822235:update_fetcher' coro=<Applicati
 2025-09-08 21:33:02 | __main__             | INFO     | test_commands        | Response: ❌ פקודה זמינה רק למנהלים
 2025-09-08 21:33:02 | __main__             | INFO     | test_commands        | ============================================================
 2025-09-08 21:33:02 | __main__             | INFO     | test_commands        | ✅ Command testing completed!
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Initializing bot for command testing...
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-08 21:45:52 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-08 21:45:52 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-08 21:45:52 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-08 21:45:52 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-08 21:45:52 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-08 21:45:52 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-08 21:45:52 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-08 21:45:52 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-08 21:45:52 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-08 21:45:52 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-08 21:45:52 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-08 21:45:52 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-08 21:45:52 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-08 21:45:52 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-08 21:45:52 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-08 21:45:52 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-08 21:45:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 🧪 Testing commands for issues...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 🔬 Testing ANALYTICS command...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Analytics command executed successfully
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command...
+2025-09-08 21:45:52 | services.search_service | ERROR    | search_requests      | Search failed for query 'Breaking Bad': 'NoneType' object has no attribute 'execute_query'
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Search command executed successfully
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response preview: 🔍 לא נמצאו תוצאות עבור: **Breaking Bad**...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command with no arguments...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Search command (no args) executed successfully
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response preview: 🔍 **שימוש בחיפוש:**
+`/search <מונח חיפוש>`
+
+💡 דוגמאות:
+• `/search Breaking Bad`
+• `/search סדרות`
+• `/search 2022`...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Broadcast command executed successfully
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command with no arguments...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Broadcast command (no args) executed successfully
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response preview: ❌ פקודה זמינה רק למנהלים...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | 🚫 Testing commands with NON-ADMIN user...
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Analytics command correctly rejected non-admin
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | Response: ❌ פקודה זמינה רק למנהלים
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-08 21:45:52 | __main__             | INFO     | test_commands        | ✅ Command testing completed!
+2025-09-08 21:58:35 | tests.test_db_connection | INFO     | <module>             | Successfully imported modules
+2025-09-08 21:58:35 | tests.test_db_connection | INFO     | <module>             | USE_DATABASE: False
+2025-09-08 21:58:35 | tests.test_db_connection | INFO     | <module>             | DB_CONFIG: {'host': 'localhost', 'database': 'pirate_content', 'user': 'pirate_user', 'password': '', 'charset': 'utf8mb4', 'collation': 'utf8mb4_unicode_ci', 'autocommit': True, 'pool_size': 10, 'pool_timeout': 30, 'pool_recycle': 3600}
+2025-09-08 21:58:35 | tests.test_db_connection | INFO     | <module>             | Database is disabled in configuration

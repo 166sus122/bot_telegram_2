@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # MySQL Database for Testing
+  mysql:
+    image: mysql:8.0
+    container_name: test-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=pirate_content
+      - MYSQL_USER=pirate_user
+      - MYSQL_PASSWORD=test_password_123
+      - MYSQL_ROOT_PASSWORD=root_password_123
+      - MYSQL_CHARACTER_SET_SERVER=utf8mb4
+      - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "pirate_user", "-ptest_password_123"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # Redis Cache for Testing
+  redis:
+    image: redis:7-alpine
+    container_name: test-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
