@@ -116,8 +116,9 @@ jobs:
           set -e
           echo "🚀 Starting deployment with docker-compose..."
           
-          # יצירת תיקיית הפרוייקט
-          mkdir -p /opt/pirate-content-bot
+          # יצירת תיקיית הפרוייקט עם sudo
+          sudo mkdir -p /opt/pirate-content-bot
+          sudo chown $USER:$USER /opt/pirate-content-bot
           cd /opt/pirate-content-bot
           
           # הורדת קבצי הגדרה
