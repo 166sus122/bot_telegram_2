@@ -11738,3 +11738,601 @@
 2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
 2025-09-09 09:23:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
 2025-09-09 09:23:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | INFO     | broadcast_command    | 📢 Broadcast sent by TestAdmin: sent=1, failed=0
+2025-09-09 09:36:19 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_my_requests_button | ❌ Error in _handle_my_requests_button: DB Error
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | INFO     | broadcast_command    | 📢 Broadcast sent by TestAdmin: sent=1, failed=0
+2025-09-09 09:36:30 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_my_requests_button | ❌ Error in _handle_my_requests_button: DB Error
+2025-09-09 09:38:33 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:38:33 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:38:53 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:38:53 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:39:33 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:39:33 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:39:33 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:39:33 | pirate_content_bot.services.request_service | WARNING  | _get_daily_trends    | Database connection not available, returning empty daily trends
+2025-09-09 09:39:33 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:39:33 | pirate_content_bot.services.request_service | WARNING  | _get_top_users       | Database connection not available, returning empty top users
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:40:06 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:40:06 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:40:06 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:40:06 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:40:06 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:40:06 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:40:06 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:40:06 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:40:06 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:40:06 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:40:06 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:40:06 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:40:06 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:40:06 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:40:06 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:40:06 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:40:06 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:40:06 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:40:06 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:40:06 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'שלום...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'איך המצב...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'תודה...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'בדיקה רנדומלית...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'אני רוצה עזרה...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 🎯 Request score: 0
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'what's up?...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): '123456...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): '!@#$%...'
+2025-09-09 09:40:06 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'הודעה ארוכה מאוד עם הרבה מילים שלא אמורות להפעיל את מנגנון זיהוי הבקשות...'
+2025-09-09 09:40:12 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:40:12 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:40:12 | pirate_content_bot.main.pirate_bot_main | WARNING  | _convert_to_israel_time | Error converting time to Israel timezone: Invalid isoformat string: 'invalid-date-string'
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | broadcast_command    | 📢 Broadcast sent by TestAdmin: sent=1, failed=0
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_my_requests_button | ❌ Error in _handle_my_requests_button: DB Error
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | WARNING  | _get_daily_trends    | Database connection not available, returning empty daily trends
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | WARNING  | _get_top_users       | Database connection not available, returning empty top users
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:42:08 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:42:08 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:42:08 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:42:08 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:42:08 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:42:08 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:42:08 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:42:08 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 09:42:08 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version VARCHAR(50) PRIMARY KEY,
+            description TEXT NOT NULL,
+            executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            execution_time_ms INT DEFAULT 0,
+            checksum VARCHAR(64) NULL,
+            
+            INDEX executed_idx (executed_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+        
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: None
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | _ensure_migration_table | Failed to create migration table: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.migrations | ERROR    | run_initial_setup    | Initial setup failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | WARNING  | _init_database_with_pool | Database setup had issues, but continuing
+2025-09-09 09:42:08 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 09:42:08 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 09:42:08 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 597219))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 622054))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'שלום...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 647716))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 672078))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'איך המצב...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 699029))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 728049))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'תודה...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 757458))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 784339))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'בדיקה רנדומלית...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 810737))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 839398))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'אני רוצה עזרה...'
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 🎯 Request score: 0
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 866722))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 891138))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'what's up?...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 916547))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 945915))
+2025-09-09 09:42:08 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): '123456...'
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 8, 973187))
+2025-09-09 09:42:08 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 8, 994800))
+2025-09-09 09:42:09 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): '!@#$%...'
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT COUNT(*) as action_count 
+            FROM user_activity_log 
+            WHERE user_id = %s AND action_type = %s AND created_at >= %s
+            
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 8, 42, 9, 23214))
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | create_pool          | Failed to create connection pool: 1045 (28000): Access denied for user 'pirate_user'@'172.19.0.1' (using password: YES)
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Failed to get connection from pool
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+                INSERT INTO user_activity_log (user_id, action_type, created_at)
+                VALUES (%s, %s, %s)
+                
+2025-09-09 09:42:09 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (99999999, 'message', datetime.datetime(2025, 9, 9, 9, 42, 9, 51537))
+2025-09-09 09:42:09 | pirate_content_bot.main.pirate_bot_main | INFO     | enhanced_message_handler | 📨 Message from Unknown User (99999999): 'הודעה ארוכה מאוד עם הרבה מילים שלא אמורות להפעיל את מנגנון זיהוי הבקשות...'
+2025-09-09 09:42:09 | asyncio              | WARNING  | _run_once            | Executing <Task finished name='Task-96' coro=<TestZeroResponseBug.test_unknown_user_message_handling() done, defined at /home/dovber/pirate-content-bot/pirate_content_bot/tests/test_zero_response_bug.py:46> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.480 seconds
+2025-09-09 09:42:09 | pirate_content_bot.main.pirate_bot_main | WARNING  | _convert_to_israel_time | Error converting time to Israel timezone: Invalid isoformat string: 'invalid-date-string'

@@ -1731,7 +1731,7 @@ class EnhancedPirateBot:
                 
                 await query.edit_message_text(text, reply_markup=keyboard, parse_mode='Markdown')
             
-            elif admin_action == "stats":
+            elif admin_action == "statistics" or admin_action == "stats":
                 # הצגת סטטיסטיקות
                 if self.request_service:
                     from datetime import datetime, timedelta
