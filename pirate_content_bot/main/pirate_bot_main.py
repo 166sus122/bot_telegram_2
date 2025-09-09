@@ -455,11 +455,13 @@ class EnhancedPirateBot:
         user = update.effective_user
         
         try:
-            # רישום המשתמש במערכת
-            await self.user_service.register_or_update_user(user)
-            
-            # הודעת ברוכים הבאים מותאמת
+            # בדיקה אם המשתמש חוזר לפני הרישום
             is_returning = await self.user_service.is_returning_user(user.id)
+            logger.info(f"User {user.id} is_returning: {is_returning}")
+            
+            # רישום המשתמש במערכת
+            result = await self.user_service.register_or_update_user(user)
+            logger.info(f"User register result: {result}")
             
             if is_returning:
                 # קבלת סטטיסטיקות עם טיפול בשגיאות

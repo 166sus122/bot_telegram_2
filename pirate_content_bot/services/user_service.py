@@ -75,9 +75,17 @@ class UserService:
         """בדיקה אם המשתמש חוזר"""
         try:
             user = await self.get_user(user_id)
-            return user is not None
+            is_returning = user is not None
+            logger.info(f"is_returning_user({user_id}): {is_returning}, user_data: {user is not None}")
+            return is_returning
         except Exception as e:
             logger.error(f"Failed to check if returning user {user_id}: {e}")
+            # במקרה של שגיאה, ננסה לבדוק במטמון
+            cache_key = f"user:{user_id}"
+            cached_user = self.storage.cache.get('users', {}).get(user_id)
+            if cached_user:
+                logger.info(f"Found user {user_id} in cache, treating as returning")
+                return True
             return False
     
     async def get_user_stats(self, user_id: int) -> str:
