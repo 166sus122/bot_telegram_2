@@ -2841,50 +2841,42 @@ class EnhancedPirateBot:
             await update.message.reply_text(
                 "📢 **שימוש בשידור:**\n"
                 "`/broadcast <הודעה לשידור>`\n\n"
-                "⚠️ **זהירות:** ההודעה תשלח לכל המשתמשים הפעילים"
+                "📍 **יעד השידור:** טופיק עדכונים בקבוצה הראשית (11432)\n"
+                "⚠️ **זהירות:** ההודעה תשלח לכל חברי הקבוצה"
             )
             return
         
         message = " ".join(context.args)
         
         try:
-            # בדיקה שהשירות זמין
-            if not self.notification_service:
-                await update.message.reply_text("❌ שירות השידורים אינו זמין כרגע")
-                return
+            # שולחים ישירות לטופיק העדכונים - לא צריך שירותים נוספים
             
-            # קבלת רשימת משתמשים פעילים
+            # שליחת ההודעה לטופיק העדכונים בקבוצה הראשית
             try:
-                active_users = await self.user_service.get_active_users(days=30) if self.user_service else []
+                # טופיק עדכונים - thread ID 11432
+                updates_thread_id = 11432
+                main_group_id = MAIN_GROUP_ID
+                
+                # שליחת ההודעה לטופיק העדכונים
+                broadcast_message = f"📢 **הודעת שידור**\n\n{message}\n\n_נשלח על ידי מנהל_"
+                
+                await context.bot.send_message(
+                    chat_id=main_group_id,
+                    text=broadcast_message,
+                    message_thread_id=updates_thread_id,
+                    parse_mode='Markdown'
+                )
+                
+                sent_count = 1
+                failed_count = 0
+                
             except Exception as e:
-                self.logger.error(f"Error getting active users: {e}")
-                active_users = []
-            
-            if not active_users:
-                await update.message.reply_text("📢 לא נמצאו משתמשים פעילים לשידור (או שאין חיבור ל-DB)")
-                return
-            
-            # שליחת ההודעה לכל המשתמשים הפעילים
-            sent_count = 0
-            failed_count = 0
-            
-            for user in active_users:
-                try:
-                    user_id = user.get('user_id') or user.get('id')
-                    if user_id and user_id != update.effective_user.id:  # לא לשלוח למשלח
-                        await self.notification_service.notify_user(
-                            user_id=user_id,
-                            title="📢 הודעת שידור",
-                            message=message,
-                            priority="medium"
-                        )
-                        sent_count += 1
-                except Exception as e:
-                    failed_count += 1
-                    logger.warning(f"Failed to send broadcast to user {user_id}: {e}")
+                self.logger.error(f"Failed to send broadcast to updates thread: {e}")
+                sent_count = 0
+                failed_count = 1
             
             result_text = f"📢 שידור הסתיים:\n"
-            result_text += f"• נשלח בהצלחה ל-{sent_count} משתמשים\n"
+            result_text += f"• נשלח בהצלחה לטופיק העדכונים: {'✅' if sent_count > 0 else '❌'}\n"
             if failed_count > 0:
                 result_text += f"• נכשל לשלוח ל-{failed_count} משתמשים"
             

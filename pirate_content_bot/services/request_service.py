@@ -1132,11 +1132,8 @@ class RequestService:
         try:
             # בדיקה שיש חיבור למסד נתונים
             if not self.storage or not hasattr(self.storage, 'pool') or not self.storage.pool:
-                logger.warning("Database connection not available, using mock top users")
-                return [
-                    {'user_id': 123456789, 'username': 'user1', 'first_name': 'משתמש דוגמה', 'request_count': 5},
-                    {'user_id': 987654321, 'username': 'user2', 'first_name': 'משתמש נוסף', 'request_count': 3}
-                ]
+                logger.warning("Database connection not available, returning empty top users")
+                return []
             
             query = """
             SELECT 
@@ -1181,19 +1178,8 @@ class RequestService:
         try:
             # בדיקה שיש חיבור למסד נתונים
             if not self.storage or not hasattr(self.storage, 'pool') or not self.storage.pool:
-                logger.warning("Database connection not available, using mock daily trends")
-                from datetime import timedelta
-                mock_trends = []
-                for i in range(7):  # 7 ימים אחרונים
-                    date = datetime.now() - timedelta(days=i)
-                    mock_trends.append({
-                        'date': date.strftime('%Y-%m-%d'),
-                        'total_requests': max(0, 10 - i * 2),
-                        'fulfilled': max(0, 6 - i),
-                        'rejected': max(0, 2 - (i // 2)),
-                        'pending': max(0, 2 - (i // 3))
-                    })
-                return mock_trends
+                logger.warning("Database connection not available, returning empty daily trends")
+                return []
             
             query = """
             SELECT 

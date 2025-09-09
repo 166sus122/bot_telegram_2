@@ -11736,3 +11736,5 @@
 2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
 2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
 2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 09:23:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 09:23:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
