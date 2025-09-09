@@ -1,39 +1,36 @@
 # 🏴‍☠️ הוראות הפעלה לשרת הראשי - בוט התמימים הפיראטים
 
-## 🚀 הפעלה מהירה
+## 🚀 הפעלה מהירה (30 שניות!)
 
-### שלב 1: הכנת משתני סביבה
-
-צור קובץ `.env` בתיקיית השורש עם המשתנים הבאים:
-
-```bash
-# הגדרות בוט
-BOT_TOKEN=YOUR_BOT_TOKEN_HERE
-MAIN_GROUP_ID=YOUR_GROUP_ID
-LOG_CHANNEL_ID=YOUR_LOG_CHANNEL_ID
-ADMIN_IDS=6562280181,OTHER_ADMIN_IDS
-
-# הגדרות מסד נתונים
-DB_PASSWORD=YOUR_SECURE_DB_PASSWORD
-DB_ROOT_PASSWORD=YOUR_SECURE_ROOT_PASSWORD
-
-# הגדרות אופציונליות
-GRAFANA_PASSWORD=admin
-```
-
-### שלב 2: הפעלת המערכת
+### 🎯 התקנה מהירה - אחת ולתמיד:
 
 ```bash
 # שכפול הפרויקט
-git clone https://github.com/YOUR_USERNAME/pirate-content-bot.git
-cd pirate-content-bot
+git clone https://github.com/166sus122/bot_telegram_2.git
+cd bot_telegram_2
 
-# הפעלת כל השירותים
-docker-compose up -d
+# הרצת סקריפט ההתקנה המהיר
+./quick-setup.sh
+```
 
-# בדיקת סטטוס
-docker-compose ps
-docker-compose logs pirate-bot
+**זהו! המערכת תעלה אוטומטית עם:**
+- ✅ מסד נתונים עם כל הטבלות
+- ✅ אתחול אוטומטי של הבוט
+- ✅ בדיקות שלמות המערכת
+
+### 📝 רק תעדכן את קובץ .env:
+
+```bash
+# עריכת הקובץ עם הערכים שלך
+nano .env
+
+# החלף:
+BOT_TOKEN=YOUR_BOT_TOKEN_HERE        # ← הטוקן שלך מ-BotFather
+MAIN_GROUP_ID=YOUR_GROUP_ID          # ← מזהה הקבוצה שלך  
+ADMIN_IDS=6562280181                 # ← המזהה שלך
+
+# הפעלה מחדש
+docker-compose restart pirate-bot
 ```
 
 ### שלב 3: אימות שהכל עובד
