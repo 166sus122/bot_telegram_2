@@ -392,7 +392,19 @@ class EnhancedPirateBot:
         
         # Implementation של rate limiting
         try:
-            return await self.user_service.check_rate_limit(user_id)
+            is_allowed, remaining_time = await self.user_service.check_rate_limit(user_id)
+            if is_allowed:
+                # Not rate limited - allow the request
+                return False, None
+            else:
+                # Rate limited - create proper message and block
+                minutes = int(remaining_time // 60)
+                seconds = int(remaining_time % 60)
+                if minutes > 0:
+                    message = f"⏳ יותר מדי בקשות. נסה שוב בעוד {minutes} דקות ו-{seconds} שניות"
+                else:
+                    message = f"⏳ יותר מדי בקשות. נסה שוב בעוד {seconds} שניות"
+                return True, message
         except Exception as e:
             logger.warning(f"Rate limit check failed: {e}")
             return False, None
@@ -2569,7 +2581,11 @@ class EnhancedPirateBot:
             await update.message.reply_text("❌ שגיאה בטעינת הבקשות שלך")
     
     async def search_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """חיפוש בקשות"""
+        """חיפוש בקשות - מנהלים בלבד"""
+        if not self._is_admin(update.effective_user.id):
+            await update.message.reply_text("❌ פקודה זמינה רק למנהלים")
+            return
+            
         if not context.args:
             await update.message.reply_text(
                 "🔍 **שימוש בחיפוש:**\n"
