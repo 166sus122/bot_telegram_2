@@ -116,10 +116,9 @@ jobs:
           set -e
           echo "🚀 Starting deployment with docker-compose..."
           
-          # יצירת תיקיית הפרוייקט עם sudo
-          sudo mkdir -p /opt/pirate-content-bot
-          sudo chown $USER:$USER /opt/pirate-content-bot
-          cd /opt/pirate-content-bot
+          # יצירת תיקיית הפרוייקט בתיקיית הבית
+          mkdir -p $HOME/pirate-content-bot
+          cd $HOME/pirate-content-bot
           
           # הורדת קבצי הגדרה
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/docker-compose.yml -o docker-compose.yml
