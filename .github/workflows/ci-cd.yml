@@ -72,7 +72,7 @@ try:
     config = {
         'host': os.getenv('DB_HOST', '127.0.0.1'),
         'port': int(os.getenv('DB_PORT', '3306')),
-        'user': os.getenv('DB_USER', 'pirate_user'),
+        'user': os.getenv('DB_USER', 'pirate_user'),  
         'password': os.getenv('DB_PASSWORD', 'pirate_pass'),
         'database': os.getenv('DB_NAME', 'pirate_content'),
         'connection_timeout': 10
@@ -86,7 +86,7 @@ try:
     conn.close()
     print('✅ MySQL: Connected and working')
 except ImportError:
-    print('⚠️ MySQL connector not available')
+    print('⚠️ MySQL connector not available')  
 except Exception as e:
     print(f'⚠️ MySQL: {e}')
 "
