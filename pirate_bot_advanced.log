@@ -10854,3 +10854,885 @@
 2025-09-09 05:16:57 | pirate_content_bot.services.request_service | ERROR    | create_request       | Failed to create request: '>=' not supported between instances of 'Mock' and 'int'
 2025-09-09 05:17:09 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
 2025-09-09 05:17:09 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:19 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:19 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:19 | pirate_content_bot.main.pirate_bot_main | WARNING  | _convert_to_israel_time | Error converting time to Israel timezone: Invalid isoformat string: 'invalid-date-string'
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Connection pool created successfully: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:32 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:32 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:32 | asyncio              | WARNING  | _run_once            | Executing <Task finished name='Task-1' coro=<TestZeroResponseBug.asyncSetUp() done, defined at /home/dovber/pirate-content-bot/pirate_content_bot/tests/test_zero_response_bug.py:15> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.289 seconds
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:32 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:32 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:32 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:32 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:32 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:32 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:32 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:32 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:32 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:32 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:32 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:32 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:32 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Connection pool created successfully: pirate_pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:33 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:33 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:33 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:33 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:33 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:33 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:33 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:33 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:33 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:33 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:33 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:34 | main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:34 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:34 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:34 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:34 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:34 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:34 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-09 05:22:35 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Connection pool created successfully: pirate_pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:35 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:35 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:35 | asyncio              | WARNING  | _run_once            | Executing <Task finished name='Task-1' coro=<TestRateLimiting.asyncSetUp() done, defined at /home/dovber/pirate-content-bot/pirate_content_bot/tests/test_user_responses.py:215> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.253 seconds
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:35 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:35 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:35 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:35 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:35 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:35 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:35 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:35 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:35 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:35 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:35 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:35 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:35 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-09 05:22:35 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-09 05:22:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-09 05:22:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:35 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:35 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:35 | pirate_content_bot.main.pirate_bot_main | WARNING  | _convert_to_israel_time | Error converting time to Israel timezone: Invalid isoformat string: 'invalid-date-string'
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-09 05:22:50 | pirate_content_bot.utils.cache_manager | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-09 05:22:50 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Cache mode enabled
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-09 05:22:50 | pirate_content_bot.utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-09 05:22:50 | pirate_content_bot.utils.keyboards | INFO     | __init__             | Keyboard Builder initialized
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-09 05:22:50 | pirate_content_bot.services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-09 05:22:50 | pirate_content_bot.services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-09 05:22:50 | pirate_content_bot.services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-09 05:22:50 | pirate_content_bot.services.user_service | INFO     | __init__             | User Service initialized
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-09 05:22:50 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully

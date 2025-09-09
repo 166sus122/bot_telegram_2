@@ -43,7 +43,8 @@ def main():
         'test_zero_response_bug',
         'test_all_buttons', 
         'test_admin_commands',
-        'test_user_responses'
+        'test_user_responses',
+        'test_timezone'
     ]
     
     results = {}

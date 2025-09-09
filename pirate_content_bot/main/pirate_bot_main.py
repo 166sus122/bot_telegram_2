@@ -382,6 +382,45 @@ class EnhancedPirateBot:
             self.logger.error(f"Error checking admin status for user {user_id}: {e}")
             return False
     
+    def _convert_to_israel_time(self, dt_obj, format_str='%d/%m/%Y %H:%M'):
+        """המרת זמן לאזור זמן ישראלי"""
+        try:
+            import pytz
+            from datetime import datetime
+            israel_tz = pytz.timezone('Asia/Jerusalem')
+            
+            if dt_obj is None:
+                return "לא ידוע"
+            
+            # אם זה מחרוזת
+            if isinstance(dt_obj, str):
+                utc_dt = datetime.fromisoformat(dt_obj.replace('Z', '+00:00'))
+                if utc_dt.tzinfo is None:
+                    utc_dt = pytz.utc.localize(utc_dt)
+                israel_dt = utc_dt.astimezone(israel_tz)
+                return israel_dt.strftime(format_str)
+            
+            # אם זה אובייקט datetime
+            elif hasattr(dt_obj, 'strftime'):
+                if dt_obj.tzinfo is None:
+                    utc_dt = pytz.utc.localize(dt_obj)
+                    israel_dt = utc_dt.astimezone(israel_tz)
+                else:
+                    israel_dt = dt_obj.astimezone(israel_tz)
+                return israel_dt.strftime(format_str)
+            
+            # fallback
+            else:
+                return str(dt_obj)[:10] if len(str(dt_obj)) > 10 else str(dt_obj)
+                
+        except Exception as e:
+            logger.warning(f"Error converting time to Israel timezone: {e}")
+            # fallback לפורמט המקורי
+            if hasattr(dt_obj, 'strftime'):
+                return dt_obj.strftime(format_str)
+            else:
+                return str(dt_obj)[:10] if isinstance(dt_obj, str) else str(dt_obj)
+    
     async def _is_rate_limited(self, user_id: int) -> Tuple[bool, Optional[str]]:
         """בדיקת הגבלות קצב מתקדמת"""
         if not RATE_LIMITING_CONFIG['enabled']:
@@ -2560,13 +2599,9 @@ class EnhancedPirateBot:
                 title = req['title'][:40] + ('...' if len(req['title']) > 40 else '')
                 response += f"{status_emoji} **#{req['id']}** {title}\n"
                 
-                # עיבוד תאריך יצירה
-                created_at = req['created_at']
-                if isinstance(created_at, str):
-                    from datetime import datetime
-                    created_at = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                
-                response += f"📅 {created_at.strftime('%d/%m/%Y')} | 📂 {req['category']}\n\n"
+                # עיבוד תאריך יצירה עם המרה לאזור הזמן הישראלי
+                date_str = self._convert_to_israel_time(req['created_at'], '%d/%m/%Y')
+                response += f"📅 {date_str} | 📂 {req['category']}\n\n"
             
             keyboard = self.keyboard_builder.get_user_requests_keyboard()
             
@@ -2629,10 +2664,7 @@ class EnhancedPirateBot:
                 response += f"{status_emoji} **#{result_id}** {title}\n"
                 
                 if created_at:
-                    if hasattr(created_at, 'strftime'):
-                        date_str = created_at.strftime('%d/%m/%Y')
-                    else:
-                        date_str = str(created_at)[:10]  # First 10 chars should be date
+                    date_str = self._convert_to_israel_time(created_at, '%d/%m/%Y')
                     response += f"📅 {date_str} | 📂 {category}\n\n"
                 else:
                     response += f"📂 {category}\n\n"
@@ -2666,19 +2698,8 @@ class EnhancedPirateBot:
             
             status_emoji = {"pending": "⏳", "fulfilled": "✅", "rejected": "❌"}.get(request_info.get('status'), "❓")
             
-            # המרת תאריך מ-string אם צריך
-            created_at = request_info.get('created_at')
-            if isinstance(created_at, str):
-                try:
-                    from datetime import datetime
-                    created_at = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                    date_str = created_at.strftime('%d/%m/%Y %H:%M')
-                except:
-                    date_str = str(created_at)
-            elif hasattr(created_at, 'strftime'):
-                date_str = created_at.strftime('%d/%m/%Y %H:%M')
-            else:
-                date_str = "לא ידוע"
+            # המרת תאריך לאזור הזמן הישראלי
+            date_str = self._convert_to_israel_time(request_info.get('created_at'), '%d/%m/%Y %H:%M')
             
             status_text = f"""
 📊 **סטטוס בקשה #{request_id}**
