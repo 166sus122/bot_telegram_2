@@ -66,11 +66,11 @@ jobs:
         
         # Test MySQL connection
         echo "Testing MySQL connection..."
-        python3 -c 'import os; import mysql.connector; conn = mysql.connector.connect(host=os.getenv("DB_HOST", "127.0.0.1"), port=int(os.getenv("DB_PORT", "3306")), user=os.getenv("DB_USER", "pirate_user"), password=os.getenv("DB_PASSWORD", "pirate_pass"), database=os.getenv("DB_NAME", "pirate_content")); cursor = conn.cursor(); cursor.execute("SELECT 1"); assert cursor.fetchone()[0] == 1; cursor.close(); conn.close(); print("✅ MySQL: Connected and working")' || echo "⚠️ MySQL connection failed"
+        python3 -c "import os; import mysql.connector; conn = mysql.connector.connect(host=os.getenv('DB_HOST', '127.0.0.1'), port=int(os.getenv('DB_PORT', '3306')), user=os.getenv('DB_USER', 'pirate_user'), password=os.getenv('DB_PASSWORD', 'pirate_pass'), database=os.getenv('DB_NAME', 'pirate_content')); cursor = conn.cursor(); cursor.execute('SELECT 1'); assert cursor.fetchone()[0] == 1; cursor.close(); conn.close(); print('✅ MySQL: Connected and working')" || echo "⚠️ MySQL connection failed"
         
         # Test Redis connection  
         echo "Testing Redis connection..."
-        python3 -c 'import os; import redis; r = redis.Redis(host=os.getenv("REDIS_HOST", "127.0.0.1"), port=int(os.getenv("REDIS_PORT", "6379")), decode_responses=True); r.ping(); r.set("ci_test_key", "working"); assert r.get("ci_test_key") == "working"; r.delete("ci_test_key"); print("✅ Redis: Connected and working")' || echo "⚠️ Redis connection failed"
+        python3 -c "import os; import redis; r = redis.Redis(host=os.getenv('REDIS_HOST', '127.0.0.1'), port=int(os.getenv('REDIS_PORT', '6379')), decode_responses=True); r.ping(); r.set('ci_test_key', 'working'); assert r.get('ci_test_key') == 'working'; r.delete('ci_test_key'); print('✅ Redis: Connected and working')" || echo "⚠️ Redis connection failed"
         
         echo "✅ Infrastructure tests completed successfully"
 
