@@ -462,11 +462,18 @@ class EnhancedPirateBot:
             is_returning = await self.user_service.is_returning_user(user.id)
             
             if is_returning:
+                # קבלת סטטיסטיקות עם טיפול בשגיאות
+                try:
+                    user_stats = await self.user_service.get_user_stats(user.id) if self.user_service else "0 בקשות"
+                except Exception as e:
+                    logger.error(f"Error getting user stats for {user.id}: {e}")
+                    user_stats = "סטטיסטיקות לא זמינות"
+                
                 welcome_text = f"""
 🏴‍☠️ ברוך השב, {user.first_name}! 
 
 🎉 שמח לראות אותך שוב בקהילת התמימים הפיראטים!
-📊 סטטיסטיקות שלך: {await self.user_service.get_user_stats(user.id)}
+📊 סטטיסטיקות שלך: {user_stats}
 
 🚀 מה חדש במערכת:
 • זיהוי חכם משופר עם AI
@@ -1677,7 +1684,15 @@ class EnhancedPirateBot:
                     )
                     
                 else:
-                    await query.edit_message_text(f"❌ בקשה #{request_id} לא נמצאה")
+                    # בדיקה אם זה בגלל אין חיבור למסד נתונים
+                    if not self.request_service.storage or not hasattr(self.request_service.storage, 'pool') or not self.request_service.storage.pool:
+                        await query.edit_message_text(
+                            f"⚠️ **מסד הנתונים אינו זמין כרגע**\n\n"
+                            f"🔧 לא ניתן לגשת לבקשה #{request_id}\n"
+                            f"אנא נסה שוב מאוחר יותר או צור קשר עם המנהלים"
+                        )
+                    else:
+                        await query.edit_message_text(f"❌ בקשה #{request_id} לא נמצאה")
                     
             else:
                 await query.edit_message_text("❌ שירות הבקשות אינו זמין")
@@ -2582,14 +2597,26 @@ class EnhancedPirateBot:
         user = update.effective_user
         
         try:
+            # בדיקה אם השירות זמין
+            if not self.user_service:
+                await update.message.reply_text("❌ שירות המשתמשים אינו זמין כרגע")
+                return
+            
             # השתמש ב-user_service לקבלת הבקשות
             user_requests = await self.user_service.get_user_requests(user.id, limit=10)
             
             if not user_requests:
-                await update.message.reply_text(
-                    "📋 עדיין לא יש לך בקשות במערכת\n\n"
-                    "💡 כתוב מה אתה מחפש והבוט יטפל בשאר!"
-                )
+                # בדיקה אם זה בגלל אין חיבור למסד נתונים
+                if not self.user_service.storage or not hasattr(self.user_service.storage, 'pool') or not self.user_service.storage.pool:
+                    await update.message.reply_text(
+                        "⚠️ **מסד הנתונים אינו זמין כרגע**\n\n"
+                        "🔧 אנא נסה שוב מאוחר יותר או צור קשר עם המנהלים"
+                    )
+                else:
+                    await update.message.reply_text(
+                        "📋 עדיין לא יש לך בקשות במערכת\n\n"
+                        "💡 כתוב מה אתה מחפש והבוט יטפל בשאר!"
+                    )
                 return
             
             response = f"📋 **הבקשות שלך** ({len(user_requests)}):\n\n"
@@ -2620,20 +2647,42 @@ class EnhancedPirateBot:
         try:
             user = query.from_user
             
+            # בדיקה אם השירות זמין
+            if not self.user_service:
+                keyboard = InlineKeyboardMarkup([[
+                    InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
+                ]])
+                await query.edit_message_text(
+                    "❌ **שירות המשתמשים אינו זמין כרגע**",
+                    reply_markup=keyboard,
+                    parse_mode='Markdown'
+                )
+                return
+            
             # השתמש ב-user_service לקבלת הבקשות
-            user_requests = await self.user_service.get_user_requests(user.id, limit=10) if self.user_service else []
+            user_requests = await self.user_service.get_user_requests(user.id, limit=10)
             
             if not user_requests:
                 keyboard = InlineKeyboardMarkup([[
                     InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
                 ]])
-                await query.edit_message_text(
-                    "📋 **הבקשות שלי**\n\n"
-                    "עדיין לא יש לך בקשות במערכת\n\n"
-                    "💡 כתוב מה אתה מחפש והבוט יטפל בשאר!",
-                    reply_markup=keyboard,
-                    parse_mode='Markdown'
-                )
+                
+                # בדיקה אם זה בגלל אין חיבור למסד נתונים
+                if not self.user_service.storage or not hasattr(self.user_service.storage, 'pool') or not self.user_service.storage.pool:
+                    await query.edit_message_text(
+                        "⚠️ **מסד הנתונים אינו זמין כרגע**\n\n"
+                        "🔧 אנא נסה שוב מאוחר יותר או צור קשר עם המנהלים",
+                        reply_markup=keyboard,
+                        parse_mode='Markdown'
+                    )
+                else:
+                    await query.edit_message_text(
+                        "📋 **הבקשות שלי**\n\n"
+                        "עדיין לא יש לך בקשות במערכת\n\n"
+                        "💡 כתוב מה אתה מחפש והבוט יטפל בשאר!",
+                        reply_markup=keyboard,
+                        parse_mode='Markdown'
+                    )
                 return
             
             response = f"📋 **הבקשות שלך** ({len(user_requests)}):\n\n"

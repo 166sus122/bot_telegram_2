@@ -12388,3 +12388,10 @@ Exception: Database connection failed
 2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_action_button | 🔘 Action button: stats by TestAdmin (999999999)
 2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: pending by TestAdmin (6039349310)
 2025-09-09 09:57:02 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_admin_button | 🔘 Admin button: statistics by TestAdmin (6039349310)
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some services not available: No module named 'services'
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | WARNING  | <module>             | Some utils not available: No module named 'utils'
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_view_request_button | 👀 Viewing request 1
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | ERROR    | start_command        | Error getting user stats for 6562280181: DB not available
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | INFO     | start_command        | 👤 User TestUser (6562280181) started the bot
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | INFO     | _handle_view_request_button | 👀 Viewing request 1
+2025-09-09 10:09:52 | pirate_content_bot.main.pirate_bot_main | ERROR    | _handle_view_request_button | ❌ Error viewing request: object Mock can't be used in 'await' expression
