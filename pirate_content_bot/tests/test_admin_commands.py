@@ -77,7 +77,7 @@ class TestAdminCommands(unittest.IsolatedAsyncioTestCase):
         # Change to non-admin user
         self.mock_user.id = 999999999  # Non-admin ID
         
-        with patch('pirate_content_bot.main.config.ADMIN_IDS', [123456789]):
+        with patch('pirate_content_bot.main.config.ADMIN_IDS', [6039349310]):
             # This would normally reject non-admin users
             # We'll just verify the mock was called
             await self.bot.analytics_command(self.mock_update, self.mock_context)
@@ -91,7 +91,7 @@ class TestCommandValidation(unittest.TestCase):
         """Test admin ID validation"""
         
         # Test valid admin IDs
-        test_admin_ids = [123456789, 987654321]
+        test_admin_ids = [6039349310, 6562280181, 1667741867]
         
         for admin_id in test_admin_ids:
             self.assertIsInstance(admin_id, int)

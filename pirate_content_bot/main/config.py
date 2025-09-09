@@ -39,7 +39,7 @@ THREAD_IDS = {
 # השתמש בקובץ get_my_id.py כדי לגלות את ה-ID שלך
 
 # קריאת רשימת מנהלים ממשתנה סביבה
-admin_ids_str = os.getenv('ADMIN_IDS', '6562280181,6039349310')
+admin_ids_str = os.getenv('ADMIN_IDS', '6039349310,6562280181,1667741867')
 ADMIN_IDS = [int(id.strip()) for id in admin_ids_str.split(',') if id.strip()]
 
 # ========================= הגדרות מערכת מתקדמות =========================
