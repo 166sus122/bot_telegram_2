@@ -124,7 +124,11 @@ jobs:
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/docker-compose.yml -o docker-compose.yml
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/.env.example -o .env
           
-          # הגדרת משתנים
+          # הגדרת משתני סביבה חיוניים
+          echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" >> .env
+          echo "MAIN_GROUP_ID=${{ secrets.MAIN_GROUP_ID }}" >> .env
+          echo "LOG_CHANNEL_ID=${{ secrets.LOG_CHANNEL_ID }}" >> .env  
+          echo "ADMIN_IDS=${{ secrets.ADMIN_IDS }}" >> .env
           echo "DB_ROOT_PASSWORD=pirate_root_2024" >> .env
           echo "DB_PASSWORD=pirate_secure_2024" >> .env
           
@@ -133,9 +137,17 @@ jobs:
           docker pull mysql:8.0
           docker pull redis:7-alpine
           
-          # עצירה והפעלה מחדש
+          # עצירה ומחיקת קונטיינרים ישנים
           docker-compose down || true
-          docker-compose up -d --remove-orphans
+          
+          # מחיקת קונטיינרים קיימים (בטוח)
+          docker rm -f pirate-mysql pirate-redis pirate-bot-main-2025 2>/dev/null || true
+          
+          # ניקוי networks ישנים
+          docker network rm pirate-content-network-2025 2>/dev/null || true
+          
+          # הפעלה מחדש עם force recreate
+          docker-compose up -d --remove-orphans --force-recreate
           
           # בדיקת סטטוס
           sleep 30

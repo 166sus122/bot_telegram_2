@@ -142,6 +142,33 @@ docker exec pirate-bot-main-2025 ping pirate-redis
 - [ ] הסטטיסטיקות מציגות נתונים נכונים
 - [ ] הגיבויים נוצרים ללא שגיאות JSON
 
+## 🚨 פתרון בעיית התנגשויות Docker (בעיה נפוצה)
+
+אם GitHub Actions נכשל עם שגיאת "container name already in use":
+
+### פתרון מהיר:
+```bash
+# בשרת:
+cd /path/to/pirate-content-bot
+./fix-docker-conflicts.sh
+```
+
+### פתרון ידני:
+```bash
+# 1. מחיקת קונטיינרים קיימים
+docker rm -f pirate-mysql pirate-redis pirate-bot-main-2025
+
+# 2. מחיקת networks
+docker network rm pirate-content-network-2025
+
+# 3. ניקוי כללי
+docker system prune -f
+
+# 4. פריסה מחדש
+cd $HOME/pirate-content-bot
+docker-compose up -d --force-recreate
+```
+
 ## 🆘 מצב חירום - חזרה לגירסה קודמת
 
 אם משהו לא עובד, החזר לגירסה הקודמת:
