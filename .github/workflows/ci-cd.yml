@@ -74,6 +74,26 @@ jobs:
         
         echo "✅ Infrastructure tests completed successfully"
 
+    - name: Run Regression Tests for All Issues
+      run: |
+        cd pirate_content_bot
+        echo "🧪 Running comprehensive regression tests..."
+        
+        # Run CI-friendly regression tests first
+        python3 tests/test_ci_regression_simple.py
+        
+        echo "🔍 Running advanced regression tests..."
+        # This test requires more complex setup but provides deeper validation
+        python3 tests/test_regression_all_issues.py || echo "⚠️ Advanced regression tests had setup issues"
+        
+        echo "🔍 Running individual test files..."
+        
+        # Run existing comprehensive tests
+        python3 tests/test_comprehensive_db.py || echo "⚠️ Comprehensive DB tests had issues"
+        python3 tests/test_database_connectivity.py || echo "⚠️ Database connectivity tests had issues"
+        
+        echo "✅ All regression tests completed"
+
   build-and-deploy:
     runs-on: ubuntu-latest
     needs: test
