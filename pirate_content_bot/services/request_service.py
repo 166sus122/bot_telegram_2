@@ -978,7 +978,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_all=True)
             
             # חישוב אחוזים
             total = sum(r['count'] for r in results)
@@ -1021,7 +1021,7 @@ class RequestService:
             WHERE created_at >= %s OR %s IS NULL AND status != 'pending'
             """
             
-            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
+            result = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_one=True)
             
             if result and any(result.values()):
                 return {
@@ -1150,7 +1150,7 @@ class RequestService:
             LIMIT %s
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, limit), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, start_date, limit), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -1194,7 +1194,7 @@ class RequestService:
             ORDER BY date DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_all=True)
             
             # העשרת התוצאות
             enriched_results = []

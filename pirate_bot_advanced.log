@@ -12524,3 +12524,405 @@ Exception: Database connection failed
 2025-09-09 14:39:40 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: ('test_user', 'TestUser', <Mock name='mock.effective_user.last_name' id='139462022859568'>, datetime.datetime(2025, 9, 9, 14, 39, 40, 114455), 123456789)
 2025-09-09 14:39:40 | pirate_content_bot.services.user_service | ERROR    | _update_user_data    | Failed to update user data: Python type Mock cannot be converted
 2025-09-09 14:39:40 | pirate_content_bot.main.pirate_bot_main | ERROR    | start_command        | ❌ Error in start command: object Mock can't be used in 'await' expression
+2025-09-10 15:15:34 | __main__             | INFO     | test_commands        | Initializing bot for command testing...
+2025-09-10 15:15:34 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-10 15:15:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:15:34 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-10 15:15:34 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:15:34 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-10 15:15:34 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Connection pool created successfully: pirate_pool
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:15:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:15:34 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:15:34 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:15:34 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:15:34 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-10 15:15:34 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-10 15:15:34 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-10 15:15:34 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-10 15:15:34 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-10 15:15:34 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-10 15:15:34 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-10 15:15:34 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-10 15:15:34 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:15:35 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:15:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:15:35 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:15:35 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:15:35 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-10 15:15:35 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-10 15:15:35 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-10 15:15:35 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-10 15:15:35 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-10 15:15:35 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-10 15:15:35 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 🧪 Testing commands for issues...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 🔬 Testing ANALYTICS command...
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_basic_request_stats | Failed to get basic stats: object dict can't be used in 'await' expression
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_category_distribution | Failed to get category distribution: object list can't be used in 'await' expression
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                priority,
+                COUNT(*) as count
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY priority
+            ORDER BY count DESC
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 44818),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_priority_distribution | Failed to get priority distribution: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                AVG(CASE WHEN status = 'fulfilled' 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as avg_fulfillment,
+                AVG(CASE WHEN status = 'rejected' 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as avg_rejection,
+                MIN(CASE WHEN status IN ('fulfilled', 'rejected') 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as fastest,
+                MAX(CASE WHEN status IN ('fulfilled', 'rejected') 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as slowest
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL AND status != 'pending'
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 44818),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_average_response_times | Failed to get response times from database: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | services.request_service | INFO     | _calculate_cache_response_times | Calculated response times from cache: fulfilled=0, rejected=0, total=0
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                user_id,
+                username,
+                first_name,
+                COUNT(*) as request_count,
+                COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled_count,
+                COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected_count
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY user_id, username, first_name
+            ORDER BY request_count DESC
+            LIMIT %s
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 44818), 10)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_top_users       | Failed to get top users: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                DATE(created_at) as date,
+                COUNT(*) as total_requests,
+                COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled,
+                COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+                COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY DATE(created_at)
+            ORDER BY date DESC
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 44818),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_daily_trends    | Failed to get daily trends: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Analytics command executed successfully
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response preview: 
+📈 **אנליטיקס מתקדם - שבוע אחרון**
+
+📊 **סטטיסטיקות כלליות:**
+• סה"כ בקשות: 0
+• בקשות ממתינות: 0
+• בקשות מולאו: 0
+• בקשות נדחו: 0
+
+🎯 **התפלגות קטגוריות:**
+            • אין נתונים זמינים
+
+
+⚡ **ביצועים:...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Search command executed successfully
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response preview: 🔍 לא נמצאו תוצאות עבור: **Breaking Bad**...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command with no arguments...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Search command (no args) executed successfully
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response preview: 🔍 **שימוש בחיפוש:**
+`/search <מונח חיפוש>`
+
+💡 דוגמאות:
+• `/search Breaking Bad`
+• `/search סדרות`
+• `/search 2022`...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command...
+2025-09-10 15:15:35 | pirate_content_bot.main.pirate_bot_main | ERROR    | broadcast_command    | ❌ Error in broadcast command: 'EnhancedPirateBot' object has no attribute 'logger'
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Broadcast command executed successfully
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response preview: ❌ שגיאה בשידור ההודעה...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command with no arguments...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Broadcast command (no args) executed successfully
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response preview: 📢 **שימוש בשידור:**
+`/broadcast <הודעה לשידור>`
+
+📍 **יעד השידור:** טופיק עדכונים בקבוצה הראשית (11432)
+⚠️ **זהירות:** ההודעה תשלח לכל חברי הקבוצה...
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | 🚫 Testing commands with NON-ADMIN user...
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_basic_request_stats | Failed to get basic stats: object dict can't be used in 'await' expression
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_category_distribution | Failed to get category distribution: object list can't be used in 'await' expression
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                priority,
+                COUNT(*) as count
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY priority
+            ORDER BY count DESC
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 114404),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_priority_distribution | Failed to get priority distribution: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                AVG(CASE WHEN status = 'fulfilled' 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as avg_fulfillment,
+                AVG(CASE WHEN status = 'rejected' 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as avg_rejection,
+                MIN(CASE WHEN status IN ('fulfilled', 'rejected') 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as fastest,
+                MAX(CASE WHEN status IN ('fulfilled', 'rejected') 
+                    THEN TIMESTAMPDIFF(HOUR, created_at, updated_at) END) as slowest
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL AND status != 'pending'
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 114404),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_average_response_times | Failed to get response times from database: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | services.request_service | INFO     | _calculate_cache_response_times | Calculated response times from cache: fulfilled=0, rejected=0, total=0
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                user_id,
+                username,
+                first_name,
+                COUNT(*) as request_count,
+                COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled_count,
+                COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected_count
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY user_id, username, first_name
+            ORDER BY request_count DESC
+            LIMIT %s
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 114404), 10)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_top_users       | Failed to get top users: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | get_connection       | Connection error: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query execution failed: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Query: 
+            SELECT 
+                DATE(created_at) as date,
+                COUNT(*) as total_requests,
+                COUNT(CASE WHEN status = 'fulfilled' THEN 1 END) as fulfilled,
+                COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+                COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending
+            FROM content_requests
+            WHERE created_at >= %s OR %s IS NULL
+            GROUP BY DATE(created_at)
+            ORDER BY date DESC
+            
+2025-09-10 15:15:35 | pirate_content_bot.database.connection_pool | ERROR    | execute_query        | Params: (datetime.datetime(2025, 9, 3, 15, 15, 35, 114404),)
+2025-09-10 15:15:35 | services.request_service | ERROR    | _get_daily_trends    | Failed to get daily trends: Not enough parameters for the SQL statement
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Analytics command correctly rejected non-admin
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | Response: 
+📈 **אנליטיקס מתקדם - שבוע אחרון**
+
+📊 **סטטיסטיקות כלליות:**
+• סה"כ בקשות: 0
+• בקשות ממתינות: 0
+• בקשות מולאו: 0
+• בקשות נדחו: 0
+
+🎯 **התפלגות קטגוריות:**
+            • אין נתונים זמינים
+
+
+⚡ **ביצועים:**
+• זמן תגובה ממוצע: 0.0h
+• רמת שירות: 0.0%
+
+👥 **משתמשים פעילים:**
+            • אין נתונים זמינים
+
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:15:35 | __main__             | INFO     | test_commands        | ✅ Command testing completed!
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Initializing bot for command testing...
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | 🚀 Initializing Enhanced Pirate Bot with Services Architecture
+2025-09-10 15:18:17 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:18:17 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-10 15:18:17 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:18:17 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Creating connection pool with config: {'pool_name': 'pirate_pool', 'pool_size': 10, 'pool_reset_session': True}
+2025-09-10 15:18:17 | pirate_content_bot.database.connection_pool | INFO     | create_pool          | Connection pool created successfully: pirate_pool
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-10 15:18:17 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-10 15:18:17 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-10 15:18:17 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-10 15:18:17 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-10 15:18:17 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-10 15:18:17 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _create_application  | ✅ Telegram Application created
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _setup_handlers      | ✅ Handlers configured
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_background_tasks | 🔄 Background tasks initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | __init__             | ✅ Enhanced Pirate Bot initialized successfully
+2025-09-10 15:18:17 | pirate_content_bot.database.connection_pool | INFO     | __init__             | Connection Pool initialized: pirate_pool
+2025-09-10 15:18:17 | utils.cache_manager  | INFO     | __init__             | Cache Manager initialized: TTL={'enabled': True, 'type': 'memory', 'ttl': {'requests': 300, 'users': 600, 'stats': 180, 'duplicates': 120}, 'max_size': 1000, 'cleanup_interval': 300, 'redis_config': {'host': 'localhost', 'port': 6379, 'db': 0, 'password': None, 'decode_responses': True}}s, Memory=100MB
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | __init__             | Advanced Database mode enabled with Connection Pool
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | _ensure_migration_table | Migration table ensured
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_migrations       | No pending migrations
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Initial database setup completed successfully
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Database version: 011_add_episode_column
+2025-09-10 15:18:17 | pirate_content_bot.database.migrations | INFO     | run_initial_setup    | Executed migrations: 11/11
+2025-09-10 15:18:17 | pirate_content_bot.core.storage_manager | INFO     | _init_database_with_pool | Database initialized with Connection Pool successfully
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_core_components | ✅ Core components initialized
+2025-09-10 15:18:17 | utils.duplicate_detector | INFO     | __init__             | Duplicate Detector initialized with threshold: 0.8
+2025-09-10 15:18:17 | utils.keyboards      | INFO     | __init__             | Keyboard Builder initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_utils          | ✅ Utils initialized
+2025-09-10 15:18:17 | services.request_service | INFO     | __init__             | Request Service initialized
+2025-09-10 15:18:17 | services.rating_service | INFO     | __init__             | Rating Service initialized
+2025-09-10 15:18:17 | services.search_service | INFO     | __init__             | Search Service initialized
+2025-09-10 15:18:17 | services.user_service | INFO     | __init__             | User Service initialized
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | INFO     | _init_services       | ✅ Services initialized
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 🧪 Testing commands for issues...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 🔬 Testing ANALYTICS command...
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_basic_request_stats | Failed to get basic stats: object dict can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_category_distribution | Failed to get category distribution: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_priority_distribution | Failed to get priority distribution: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_average_response_times | Failed to get response times from database: object dict can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | INFO     | _calculate_cache_response_times | Calculated response times from cache: fulfilled=0, rejected=0, total=0
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_top_users       | Failed to get top users: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_daily_trends    | Failed to get daily trends: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Analytics command executed successfully
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response preview: 
+📈 **אנליטיקס מתקדם - שבוע אחרון**
+
+📊 **סטטיסטיקות כלליות:**
+• סה"כ בקשות: 0
+• בקשות ממתינות: 0
+• בקשות מולאו: 0
+• בקשות נדחו: 0
+
+🎯 **התפלגות קטגוריות:**
+            • אין נתונים זמינים
+
+
+⚡ **ביצועים:...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Search command executed successfully
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response preview: 🔍 לא נמצאו תוצאות עבור: **Breaking Bad**...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 🔍 Testing SEARCH command with no arguments...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Search command (no args) executed successfully
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response preview: 🔍 **שימוש בחיפוש:**
+`/search <מונח חיפוש>`
+
+💡 דוגמאות:
+• `/search Breaking Bad`
+• `/search סדרות`
+• `/search 2022`...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command...
+2025-09-10 15:18:17 | pirate_content_bot.main.pirate_bot_main | ERROR    | broadcast_command    | ❌ Error in broadcast command: 'EnhancedPirateBot' object has no attribute 'logger'
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Broadcast command executed successfully
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response preview: ❌ שגיאה בשידור ההודעה...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ----------------------------------------
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 📢 Testing BROADCAST command with no arguments...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Broadcast command (no args) executed successfully
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response preview: 📢 **שימוש בשידור:**
+`/broadcast <הודעה לשידור>`
+
+📍 **יעד השידור:** טופיק עדכונים בקבוצה הראשית (11432)
+⚠️ **זהירות:** ההודעה תשלח לכל חברי הקבוצה...
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | 🚫 Testing commands with NON-ADMIN user...
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_basic_request_stats | Failed to get basic stats: object dict can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_category_distribution | Failed to get category distribution: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_priority_distribution | Failed to get priority distribution: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_average_response_times | Failed to get response times from database: object dict can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | INFO     | _calculate_cache_response_times | Calculated response times from cache: fulfilled=0, rejected=0, total=0
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_top_users       | Failed to get top users: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | services.request_service | ERROR    | _get_daily_trends    | Failed to get daily trends: object list can't be used in 'await' expression
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Analytics command correctly rejected non-admin
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | Response: 
+📈 **אנליטיקס מתקדם - שבוע אחרון**
+
+📊 **סטטיסטיקות כלליות:**
+• סה"כ בקשות: 0
+• בקשות ממתינות: 0
+• בקשות מולאו: 0
+• בקשות נדחו: 0
+
+🎯 **התפלגות קטגוריות:**
+            • אין נתונים זמינים
+
+
+⚡ **ביצועים:**
+• זמן תגובה ממוצע: 0.0h
+• רמת שירות: 0.0%
+
+👥 **משתמשים פעילים:**
+            • אין נתונים זמינים
+
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ============================================================
+2025-09-10 15:18:17 | __main__             | INFO     | test_commands        | ✅ Command testing completed!
