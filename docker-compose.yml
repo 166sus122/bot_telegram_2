@@ -15,14 +15,14 @@ services:
       
       # הגדרות מסד נתונים
       - USE_DATABASE=true
-      - DB_HOST=pirate-mysql-db
+      - DB_HOST=pirate-mysql
       - DB_NAME=pirate_content
       - DB_USER=pirate_user
       - DB_PASSWORD=${DB_PASSWORD}
       
       # הגדרות Redis Cache
       - CACHE_TYPE=redis
-      - REDIS_HOST=pirate-redis-cache
+      - REDIS_HOST=pirate-redis
       - REDIS_PORT=6379
       
       # הגדרות נוספות
@@ -47,7 +47,7 @@ services:
   # MySQL Database
   pirate-mysql-db:
     image: mysql:8.0
-    container_name: pirate-mysql-db-2025
+    container_name: pirate-mysql
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=pirate_content
@@ -72,7 +72,7 @@ services:
   # Redis Cache
   pirate-redis-cache:
     image: redis:7-alpine
-    container_name: pirate-redis-cache-2025
+    container_name: pirate-redis
     restart: unless-stopped
     command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     volumes:

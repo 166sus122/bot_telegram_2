@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Any, Tuple, Set
 import re
 from collections import defaultdict, Counter
 import json
+from pirate_content_bot.utils.json_helpers import safe_json_dumps
 
 logger = logging.getLogger(__name__)
 
@@ -670,7 +671,7 @@ class SearchService:
     def _generate_search_cache_key(self, query: str, filters: Optional[Dict], 
                                  limit: int, offset: int) -> str:
         """יצירת מפתח מטמון לחיפוש"""
-        filters_str = json.dumps(filters, sort_keys=True) if filters else ""
+        filters_str = safe_json_dumps(filters, sort_keys=True, indent=None) if filters else ""
         return f"search:{query}:{filters_str}:{limit}:{offset}"
     
     async def _enrich_search_result(self, result: Dict, query: str) -> Dict:

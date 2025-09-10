@@ -1603,17 +1603,12 @@ class RequestService:
             filename = f"pirate_bot_export_{timestamp}.{format}"
             
             # יצירת תוכן הקובץ
-            import json
             import os
             import tempfile
-            
-            def json_serial(obj):
-                if isinstance(obj, datetime):
-                    return obj.strftime('%Y-%m-%d %H:%M:%S')
-                raise TypeError(f"Type {type(obj)} not serializable")
+            from pirate_content_bot.utils.json_helpers import safe_json_dumps
             
             if format.lower() == 'json':
-                export_content = json.dumps(export_data, ensure_ascii=False, indent=2, default=json_serial)
+                export_content = safe_json_dumps(export_data)
             elif format.lower() == 'csv':
                 import csv
                 import io
@@ -1667,12 +1662,6 @@ class RequestService:
             if self.storage and hasattr(self.storage, 'cache'):
                 backup_data['cache_data'] = dict(self.storage.cache)
             
-            # תיקון datetime objects בנתונים
-            def json_serial(obj):
-                if isinstance(obj, datetime):
-                    return obj.strftime('%Y-%m-%d %H:%M:%S')
-                raise TypeError(f"Type {type(obj)} not serializable")
-
             # מידע מערכת
             backup_data['backup_info'] = {
                 'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -1682,8 +1671,7 @@ class RequestService:
             }
             
             # חישוב גודל
-            import json
-            backup_json = json.dumps(backup_data, ensure_ascii=False, indent=2, default=json_serial)
+            backup_json = safe_json_dumps(backup_data)
             size_mb = len(backup_json.encode('utf-8')) / (1024 * 1024)
             
             # יצירת שם קובץ

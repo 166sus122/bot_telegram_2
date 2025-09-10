@@ -81,12 +81,24 @@ class UserService:
         except Exception as e:
             logger.error(f"Failed to check if returning user {user_id}: {e}")
             # במקרה של שגיאה, ננסה לבדוק במטמון
-            cache_key = f"user:{user_id}"
-            cached_user = self.storage.cache.get('users', {}).get(user_id)
-            if cached_user:
-                logger.info(f"Found user {user_id} in cache, treating as returning")
-                return True
-            return False
+            if self.storage:
+                # בדיקה במטמון הפנימי של הservice
+                if user_id in self._user_cache:
+                    cached_data, timestamp = self._user_cache[user_id]
+                    if datetime.now() - timestamp < timedelta(hours=24):  # valid cache
+                        logger.info(f"Found user {user_id} in service cache, treating as returning")
+                        return True
+                
+                # בדיקה במטמון הכללי
+                cached_user = self.storage.cache.get('users', {}).get(user_id)
+                if cached_user:
+                    logger.info(f"Found user {user_id} in storage cache, treating as returning")
+                    return True
+            
+            # כברירת מחדל במקרה של שגיאה, נחשוב שהמשתמש חוזר
+            # כדי לא להתייחס אליו כמשתמש חדש בטעות
+            logger.warning(f"Cannot determine if user {user_id} is returning, assuming returning to be safe")
+            return True
     
     async def get_user_stats(self, user_id: int) -> str:
         """קבלת סטטיסטיקות משתמש כטקסט"""
@@ -236,6 +248,7 @@ class UserService:
             
             # בדיקה אם משתמש כבר קיים
             existing_user = await self.get_user(user_id)
+            logger.info(f"register_user({user_id}): existing_user found: {existing_user is not None}")
             
             user_data = {
                 'user_id': user_id,
@@ -321,6 +334,12 @@ class UserService:
             
         except Exception as e:
             logger.error(f"Failed to get user {user_id}: {e}")
+            # במקרה של שגיאה, ננסה לקבל מהמטמון
+            if self.storage:
+                cached_user = self.storage.cache.get('users', {}).get(user_id)
+                if cached_user:
+                    logger.info(f"Found user {user_id} in cache after DB failure")
+                    return cached_user
             return None
     
     async def update_user(self, user_id: int, updates: Dict) -> bool:
