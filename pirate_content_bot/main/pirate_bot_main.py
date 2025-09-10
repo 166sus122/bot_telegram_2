@@ -3073,8 +3073,8 @@ class EnhancedPirateBot:
                     # מחיקת הקובץ הזמני
                     try:
                         os.remove(export_result['file_path'])
-                    except:
-                        pass
+                    except (OSError, FileNotFoundError) as e:
+                        logger.warning(f"Could not remove temporary export file: {e}")
                 else:
                     await update.message.reply_text(
                         f"✅ יצוא הושלם!\n"

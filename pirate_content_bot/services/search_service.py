@@ -306,7 +306,8 @@ class SearchService:
             if isinstance(created_at, str):
                 try:
                     created_at = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                except:
+                except (ValueError, TypeError) as e:
+                    logger.debug(f"Invalid datetime format, using current time: {e}")
                     created_at = datetime.now()
             
             age_days = (datetime.now() - created_at).days
@@ -686,7 +687,8 @@ class SearchService:
                 if isinstance(created_at, str):
                     try:
                         created_at = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                    except:
+                    except Exception as e:
+                        logger.debug(f"Invalid datetime format: {e}")
                         created_at = datetime.now()
                 
                 age_hours = (datetime.now() - created_at).total_seconds() / 3600
@@ -766,7 +768,8 @@ class SearchService:
         try:
             from main.config import CONTENT_CATEGORIES
             return CONTENT_CATEGORIES.get(category, {}).get('name', category.title())
-        except:
+        except Exception as e:
+            logger.debug(f"Could not load content categories: {e}")
             return category.title()
     
     def clear_search_cache(self):

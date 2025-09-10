@@ -653,7 +653,8 @@ class ModelManager:
                 count_query = f"SELECT COUNT(*) as count FROM {table_name}"
                 result = self.pool.execute_query(count_query, fetch_one=True)
                 stats[table_name] = result['count'] if result else 0
-            except:
+            except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
                 stats[table_name] = 0
         
         return stats

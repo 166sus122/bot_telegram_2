@@ -41,10 +41,12 @@ class CacheEntry:
         """חישוב גודל הערך בבתים"""
         try:
             return len(pickle.dumps(value))
-        except:
+        except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
             try:
                 return len(str(value).encode('utf-8'))
-            except:
+            except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
                 return 1024  # הערכה גסה
     
     def is_expired(self) -> bool:
@@ -575,7 +577,8 @@ class CacheManager:
         """ספירת רשומות שפגו"""
         try:
             return len([1 for entry in self._cache.values() if entry.is_expired()])
-        except:
+        except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
             return 0
     
     def _calculate_average_entry_size(self) -> float:
@@ -585,7 +588,8 @@ class CacheManager:
                 return 0.0
             total_size = sum(entry.size for entry in self._cache.values())
             return total_size / len(self._cache)
-        except:
+        except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
             return 0.0
     
     def _get_oldest_entry_age(self) -> float:
@@ -595,7 +599,8 @@ class CacheManager:
                 return 0.0
             oldest_entry = min(self._cache.values(), key=lambda e: e.created_at)
             return oldest_entry.get_age_seconds() / 60
-        except:
+        except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
             return 0.0
     
     def _get_most_accessed_key(self) -> Optional[str]:
@@ -605,7 +610,8 @@ class CacheManager:
                 return None
             most_accessed = max(self._cache.values(), key=lambda e: e.access_count)
             return most_accessed.key
-        except:
+        except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
             return None
 
 

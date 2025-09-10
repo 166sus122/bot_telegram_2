@@ -22,7 +22,8 @@ LOG_CHANNEL_ID = int(os.getenv('LOG_CHANNEL_ID', '-1003008192507'))
 # ========================= Thread IDs לקטגוריות =========================
 # Thread IDs לקטגוריות שונות בקבוצה הראשית
 
-THREAD_IDS = {
+# הגדרת Thread IDs - ניתן להגדרה באמצעות משתני סביבה
+DEFAULT_THREAD_IDS = {
     'updates': 11432,      # עדכונים
     'series': 11418,       # סדרות
     'software': 11415,     # תוכנות
@@ -34,13 +35,28 @@ THREAD_IDS = {
     'general': None        # צ'אט כללי (ללא thread)
 }
 
+# קריאה ממשתני סביבה עם fallback לברירת המחדל
+THREAD_IDS = {}
+for category, default_id in DEFAULT_THREAD_IDS.items():
+    env_key = f'THREAD_ID_{category.upper()}'
+    env_value = os.getenv(env_key)
+    if env_value:
+        THREAD_IDS[category] = int(env_value) if env_value.isdigit() else None
+    else:
+        THREAD_IDS[category] = default_id
+
 # ========================= רשימת מנהלים =========================
 # 🔥 חשוב: עדכן את הרשימה עם ה-User ID שלך!
 # השתמש בקובץ get_my_id.py כדי לגלות את ה-ID שלך
 
-# קריאת רשימת מנהלים ממשתנה סביבה
-admin_ids_str = os.getenv('ADMIN_IDS', '6039349310,6562280181,1667741867')
-ADMIN_IDS = [int(id.strip()) for id in admin_ids_str.split(',') if id.strip()]
+# קריאת רשימת מנהלים ממשתנה סביבה (ללא hardcoded fallback)
+admin_ids_str = os.getenv('ADMIN_IDS')
+if admin_ids_str:
+    ADMIN_IDS = [int(id.strip()) for id in admin_ids_str.split(',') if id.strip()]
+else:
+    # אין מנהלים מוגדרים - רק בהגדרת משתנה סביבה
+    ADMIN_IDS = []
+    logger.warning("⚠️ No admin IDs configured! Set ADMIN_IDS environment variable.")
 
 # ========================= הגדרות מערכת מתקדמות =========================
 
@@ -52,7 +68,7 @@ DB_CONFIG = {
     'host': os.getenv('DB_HOST', 'localhost'),
     'database': os.getenv('DB_NAME', 'pirate_content'),
     'user': os.getenv('DB_USER', 'pirate_user'),
-    'password': os.getenv('DB_PASSWORD', ''),
+    'password': os.getenv('DB_PASSWORD', 'test_password_123'),  # Better default for development
     'charset': 'utf8mb4',
     'collation': 'utf8mb4_unicode_ci',
     'autocommit': True,
@@ -64,11 +80,13 @@ DB_CONFIG = {
 # ========================= הגדרות Connection Pool =========================
 
 CONNECTION_POOL_CONFIG = {
+    # MySQL Connector Pool parameters
+    'pool_name': 'pirate_pool',
+    'pool_size': int(os.getenv('POOL_SIZE', '10')),
+    'pool_reset_session': True,
+    
+    # Legacy parameters (kept for compatibility)
     'enabled': USE_DATABASE,
-    'min_connections': int(os.getenv('POOL_MIN_CONNECTIONS', '2')),
-    'max_connections': int(os.getenv('POOL_MAX_CONNECTIONS', '20')),
-    'idle_timeout': int(os.getenv('POOL_IDLE_TIMEOUT', '300')),  # 5 minutes
-    'connection_timeout': int(os.getenv('POOL_CONNECTION_TIMEOUT', '10')),
     'retry_attempts': int(os.getenv('POOL_RETRY_ATTEMPTS', '3')),
     'health_check_interval': int(os.getenv('POOL_HEALTH_CHECK', '60'))  # seconds
 }

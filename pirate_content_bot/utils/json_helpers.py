@@ -128,7 +128,8 @@ def clean_for_json(obj: Any) -> Any:
         # ניסיון להמיר לstring
         try:
             return str(obj)
-        except:
+        except Exception as e:
+            logger.debug(f"Could not serialize object to string: {e}")
             return f"<{type(obj).__name__} object>"
 
 

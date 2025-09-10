@@ -402,8 +402,8 @@ class AddPerformanceIndexes(Migration):
             for drop_sql in indexes_to_drop:
                 try:
                     pool.execute_query(drop_sql)
-                except:
-                    pass  # אינדקס לא קיים - זה בסדר
+                except Exception as e:
+                    logger.debug(f"Error in {os.path.basename(file_path)}: {e}")  # אינדקס לא קיים - זה בסדר
             
             return True
         except Exception as e:
@@ -595,7 +595,8 @@ class FixExistingSchema(Migration):
             """
             result = pool.execute_query(check_query, (table_name, column_name), fetch_one=True)
             return result and result['count'] > 0
-        except:
+        except Exception as e:
+            logger.debug(f"Error occurred: {e}")
             return False
     
     def up(self, pool) -> bool:
@@ -661,8 +662,8 @@ class FixExistingSchema(Migration):
             for drop_sql in drop_columns:
                 try:
                     pool.execute_query(drop_sql)
-                except:
-                    pass  # עמודה לא קיימת
+                except Exception as e:
+                    logger.debug(f"Error in {os.path.basename(file_path)}: {e}")  # עמודה לא קיימת
             
             return True
         except Exception as e:
@@ -685,7 +686,8 @@ class FixSchemaColumnsV2(Migration):
             """
             result = pool.execute_query(check_query, (table_name, column_name), fetch_one=True)
             return result and result['count'] > 0
-        except:
+        except Exception as e:
+            logger.debug(f"Error occurred: {e}")
             return False
     
     def up(self, pool) -> bool:

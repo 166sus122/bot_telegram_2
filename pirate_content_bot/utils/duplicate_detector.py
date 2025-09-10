@@ -350,15 +350,16 @@ class DuplicateDetector:
                         # המרה למספר
                         try:
                             metadata[info_type] = int(matches[0])
-                        except:
+                        except (ValueError, TypeError) as e:
+                            logger.debug(f"Could not convert {matches[0]} to int: {e}")
                             metadata[info_type] = matches[0]
                     elif info_type == 'year':
                         try:
                             year = int(matches[0])
                             if 1900 <= year <= 2030:  # שנים הגיוניות
                                 metadata[info_type] = year
-                        except:
-                            pass
+                        except (ValueError, TypeError) as e:
+                            logger.debug(f"Invalid year format: {matches[0]} - {e}")
                     else:
                         metadata[info_type] = matches[0].upper()
             

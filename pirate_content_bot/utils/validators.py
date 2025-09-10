@@ -753,7 +753,8 @@ class InputValidator:
             
             return min(score, 1.0)
             
-        except:
+        except Exception as e:
+            logger.debug(f"Confidence calculation failed: {e}")
             return 0.5
     
     @staticmethod
@@ -867,7 +868,8 @@ def clean_html_tags(text: str) -> str:
     """הסרת תגי HTML"""
     try:
         return re.sub(r'<[^>]+>', '', text)
-    except:
+    except Exception as e:
+        logger.debug(f"HTML tag removal failed: {e}")
         return text
 
 def normalize_unicode(text: str) -> str:
@@ -875,7 +877,7 @@ def normalize_unicode(text: str) -> str:
     try:
         import unicodedata
         return unicodedata.normalize('NFKD', text)
-    except:
+    except Exception:
         return text
 
 def check_language(text: str) -> str:

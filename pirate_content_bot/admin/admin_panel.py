@@ -524,7 +524,7 @@ class AdminPanel:
                     return stats.__dict__
                 return stats
             return {}
-        except:
+        except Exception:
             return {}
     
     async def _get_urgent_requests(self) -> List[Dict[str, Any]]:
@@ -534,7 +534,7 @@ class AdminPanel:
                 pending = await self.request_service.get_pending_requests(limit=10, sort_by='priority')
                 return pending.get('requests', [])[:5]  # Top 5 urgent
             return []
-        except:
+        except Exception:
             return []
     
     async def _get_admin_activity_summary(self) -> Dict[str, Any]:
@@ -566,7 +566,7 @@ class AdminPanel:
                         'message': f'{old_requests} בקשות ישנות ללא טיפול',
                         'action': 'review_old_requests'
                     })
-        except:
+        except Exception:
             pass
         
         return alerts
@@ -669,7 +669,7 @@ class AdminPanel:
                         old_count += 1
                 return old_count
             return 0
-        except:
+        except Exception:
             return 0
     
     # שאר הפונקציות יתמלאו בעתיד...

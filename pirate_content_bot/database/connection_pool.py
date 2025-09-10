@@ -120,14 +120,14 @@ class DatabaseConnectionPool:
             if connection:
                 try:
                     connection.rollback()
-                except:
+                except Exception:
                     pass
             raise
         finally:
             if connection:
                 try:
                     connection.close()  # מחזיר לpool
-                except:
+                except Exception:
                     pass
     
     def _get_connection_from_pool(self):
@@ -148,7 +148,7 @@ class DatabaseConnectionPool:
             if self.create_pool():
                 try:
                     return self.pool.get_connection()
-                except:
+                except Exception:
                     pass
             return None
     

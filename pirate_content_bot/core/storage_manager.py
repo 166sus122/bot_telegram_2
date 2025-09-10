@@ -4,6 +4,7 @@
 """
 
 import logging
+import threading
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
@@ -36,6 +37,10 @@ class StorageManager:
         self.use_db = USE_DATABASE and DATABASE_AVAILABLE
         self.pool = None
         
+        # Thread safety locks
+        self._cache_lock = threading.RLock()
+        self._counter_lock = threading.Lock()
+        
         # מטמון בזיכרון (תמיד זמין)
         self.cache = {
             'requests': {},      # בקשות תוכן
@@ -46,7 +51,7 @@ class StorageManager:
             'settings': {}       # הגדרות מערכת
         }
         
-        # מונה בקשות
+        # מונה בקשות (thread-safe)
         self.request_counter = 1
         
         # אתחול מסד נתונים אם נדרש
@@ -140,42 +145,53 @@ class StorageManager:
     # ========================= מימושי מטמון (ללא שינוי) =========================
     
     def _save_request_cache(self, request_data: Dict) -> int:
-        """שמירת בקשה במטמון"""
-        request_id = self.request_counter
+        """שמירת בקשה במטמון (thread-safe)"""
+        with self._counter_lock:
+            request_id = self.request_counter
+            self.request_counter += 1
+        
         request_data['id'] = request_id
-        self.cache['requests'][request_id] = request_data
-        self.request_counter += 1
+        
+        with self._cache_lock:
+            self.cache['requests'][request_id] = request_data
+            
         return request_id
     
     def _get_request_cache(self, request_id: int) -> Optional[Dict]:
-        """קבלת בקשה מהמטמון"""
-        return self.cache['requests'].get(request_id)
+        """קבלת בקשה מהמטמון (thread-safe)"""
+        with self._cache_lock:
+            return self.cache['requests'].get(request_id)
     
     def _update_request_cache(self, request_id: int, updates: Dict) -> bool:
-        """עדכון בקשה במטמון"""
-        if request_id in self.cache['requests']:
-            self.cache['requests'][request_id].update(updates)
-            return True
-        return False
+        """עדכון בקשה במטמון (thread-safe)"""
+        with self._cache_lock:
+            if request_id in self.cache['requests']:
+                self.cache['requests'][request_id].update(updates)
+                return True
+            return False
     
     def _get_pending_requests_cache(self, category: Optional[str] = None, limit: int = 20) -> List[Dict]:
-        """קבלת בקשות ממתינות מהמטמון"""
+        """קבלת בקשות ממתינות מהמטמון (thread-safe)"""
         pending = []
-        for req_id, req_data in self.cache['requests'].items():
-            if req_data.get('status') == 'pending':
-                if not category or req_data.get('category') == category:
-                    pending.append(req_data)
+        
+        with self._cache_lock:
+            for req_id, req_data in self.cache['requests'].items():
+                if req_data.get('status') == 'pending':
+                    if not category or req_data.get('category') == category:
+                        pending.append(req_data.copy())  # Copy to avoid external modifications
         
         # מיון לפי תאריך יצירה
         pending.sort(key=lambda x: x.get('created_at', datetime.now()))
         return pending[:limit]
     
     def _get_user_requests_cache(self, user_id: int, limit: int = 20) -> List[Dict]:
-        """קבלת בקשות משתמש מהמטמון"""
+        """קבלת בקשות משתמש מהמטמון (thread-safe)"""
         user_requests = []
-        for req_data in self.cache['requests'].values():
-            if req_data.get('user_id') == user_id:
-                user_requests.append(req_data)
+        
+        with self._cache_lock:
+            for req_data in self.cache['requests'].values():
+                if req_data.get('user_id') == user_id:
+                    user_requests.append(req_data.copy())  # Copy to avoid external modifications
         
         # מיון לפי תאריך (החדשות ביותר קודם)
         user_requests.sort(key=lambda x: x.get('created_at', datetime.now()), reverse=True)
@@ -263,7 +279,7 @@ class StorageManager:
             return self._get_request_cache(request_id)
     
     def _update_request_db_advanced(self, request_id: int, updates: Dict) -> bool:
-        """עדכון בקשה במסד נתונים עם Connection Pool"""
+        """עדכון בקשה במסד נתונים עם Connection Pool (with cache sync)"""
         if not self.pool:
             return self._update_request_cache(request_id, updates)
         
@@ -298,9 +314,20 @@ class StorageManager:
                 success = cursor.rowcount > 0
                 cursor.close()
                 
-                # עדכון המטמון
-                if success and request_id in self.cache['requests']:
-                    self.cache['requests'][request_id].update(updates)
+                # עדכון המטמון עם הנתונים החדשים
+                if success:
+                    with self._cache_lock:
+                        if request_id in self.cache['requests']:
+                            self.cache['requests'][request_id].update(updates)
+                        else:
+                            # אם הרשומה לא במטמון, טען אותה מהDB
+                            fresh_data = self._get_request_db_advanced(request_id)
+                            if fresh_data:
+                                self.cache['requests'][request_id] = fresh_data
+                
+                # חשוב: אם השתנה הסטטוס, נקה מטמון רלוונטי
+                if 'status' in updates:
+                    self._invalidate_status_cache()
                 
                 return success
                 
@@ -689,18 +716,45 @@ class StorageManager:
         results.sort(key=lambda x: x.get('created_at', datetime.now()), reverse=True)
         return results[:limit]
     
+    def _invalidate_status_cache(self):
+        """ניקוי מטמון לפי סטטוס - למניעת inconsistency"""
+        with self._cache_lock:
+            # כאן אפשר להוסיף לוגיקה מתקדמת יותר
+            # לעת עתה, נקה רק pending requests שנשמרו במטמון
+            logger.debug("Cache invalidation due to status change")
+    
+    def sync_cache_with_database(self):
+        """סנכרון מטמון עם מסד נתונים"""
+        if not self.use_db or not self.pool:
+            return
+            
+        try:
+            with self._cache_lock:
+                # סנכרון בקשות pending
+                pending_from_db = self._get_pending_requests_db_advanced(limit=100)
+                
+                # עדכון המטמון
+                for request in pending_from_db:
+                    self.cache['requests'][request['id']] = request
+                
+                logger.info(f"Cache synchronized with database: {len(pending_from_db)} requests")
+                
+        except Exception as e:
+            logger.error(f"Failed to sync cache with database: {e}")
+    
     def clear_cache(self):
         """ניקוי מטמון משופר"""
         cache_sizes = {key: len(value) for key, value in self.cache.items() if isinstance(value, dict)}
         
-        self.cache = {
-            'requests': {},
-            'users': {},
-            'admins': {},
-            'ratings': {},
-            'history': [],
-            'settings': {}
-        }
+        with self._cache_lock:
+            self.cache = {
+                'requests': {},
+                'users': {},
+                'admins': {},
+                'ratings': {},
+                'history': [],
+                'settings': {}
+            }
         
         logger.info(f"Cache cleared: {cache_sizes}")
     

@@ -576,7 +576,8 @@ def calculate_next_run(cron_expression: str) -> Optional[datetime]:
     scheduler = TaskScheduler()
     try:
         return scheduler._calculate_next_cron_run(cron_expression)
-    except:
+    except Exception as e:
+                logger.debug(f"Unexpected error: {e}")
         return None
 
 def validate_task_function(func: Callable) -> bool:
