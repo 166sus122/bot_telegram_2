@@ -150,7 +150,12 @@ class TestRegressionAllIssues(unittest.TestCase):
                 
                 for prefix, handler in handlers.items():
                     if callback_data.startswith(prefix):
-                        self.bot.__dict__[handler.__name__] = AsyncMock()
+                        # וידוא שהמטפל קיים
+                        if hasattr(self.bot, handler.__name__):
+                            setattr(self.bot, handler.__name__, AsyncMock())
+                        else:
+                            # יצירת המטפל אם הוא לא קיים
+                            setattr(self.bot, handler.__name__, AsyncMock())
                         break
                 
                 # בדיקת שהcallback מזוהה ולא נופל ל-generic
@@ -177,8 +182,16 @@ class TestRegressionAllIssues(unittest.TestCase):
         """
         print("🧪 Testing CRUD operations...")
         
-        # Mock request service methods
-        request_service = RequestService()
+        # Mock request service with required arguments
+        mock_storage_manager = Mock()
+        mock_cache_manager = Mock()
+        mock_duplicate_detector = Mock()
+        
+        request_service = RequestService(
+            storage_manager=mock_storage_manager,
+            cache_manager=mock_cache_manager,
+            duplicate_detector=mock_duplicate_detector
+        )
         request_service._update_request_status = AsyncMock()
         
         # טסט 1: fulfill_request
@@ -266,8 +279,11 @@ class TestRegressionAllIssues(unittest.TestCase):
         await self.bot.analytics_command(self.mock_update, self.mock_context)
         
         # בדיקת שהמסר מכיל "אין נתונים זמינים"
-        call_args = self.mock_update.message.reply_text.call_args[0][0]
-        self.assertIn("אין נתונים זמינים", call_args)
+        if self.mock_update.message.reply_text.call_args:
+            call_args = self.mock_update.message.reply_text.call_args[0][0]
+            self.assertIn("אין נתונים זמינים", call_args)
+        else:
+            self.fail("No message was sent")
         
         # טסט 2: נתונים תקינים
         self.bot.analytics_service.get_analytics.return_value = {
@@ -302,7 +318,14 @@ class TestRegressionAllIssues(unittest.TestCase):
         """
         print("🧪 Testing user duplication...")
         
-        user_service = UserService()
+        # Mock user service with required arguments
+        mock_storage_manager = Mock()
+        mock_cache_manager = Mock()
+        
+        user_service = UserService(
+            storage_manager=mock_storage_manager,
+            cache_manager=mock_cache_manager
+        )
         user_service.db_manager = Mock()
         user_service.cache_manager = Mock()
         

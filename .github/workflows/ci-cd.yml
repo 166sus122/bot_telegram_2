@@ -144,7 +144,9 @@ jobs:
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/docker-compose.yml -o docker-compose.yml
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/.env.example -o .env
           
-          # הורדת קבצי הגדרה נוספים שנוספו בתיקונים
+          # הורדת קבצי הגדרה נוספים שנוספו בתיקונים  
+          rm -f mysql-config.cnf 2>/dev/null || true
+          rm -rf mysql-config.cnf 2>/dev/null || true
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/mysql-config.cnf -o mysql-config.cnf
           
           # יצירת תיקיית database והורדת קבצי SQL
