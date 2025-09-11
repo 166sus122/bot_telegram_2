@@ -1748,7 +1748,7 @@ class EnhancedPirateBot:
                 
                 await query.edit_message_text(text, reply_markup=keyboard, parse_mode='Markdown')
             
-            elif admin_action == "statistics" or admin_action == "stats":
+            elif admin_action in ["statistics", "stats"]:
                 # הצגת סטטיסטיקות
                 if self.request_service:
                     from datetime import datetime, timedelta
@@ -1800,18 +1800,117 @@ class EnhancedPirateBot:
         await query.edit_message_text("🚧 הגדרות בפיתוח")
     
     async def _handle_generic_button(self, query, data: str):
-        """טיפול בכפתור כללי"""
+        """טיפול בכפתור כללי עם תמיכה בcallbacks נוספים"""
         user = query.from_user
         
-        if data.startswith("confirm_request:"):
-            parts = data.split(":")
-            if len(parts) >= 3:
-                request_id = parts[1]
-                category = parts[2] if len(parts) > 2 else "general"
+        try:
+            if data.startswith("confirm_request:"):
+                parts = data.split(":")
+                if len(parts) >= 3:
+                    request_id = parts[1]
+                    category = parts[2] if len(parts) > 2 else "general"
+                    
+                    await self._handle_confirm_request(query, user, request_id, category)
+                else:
+                    await query.edit_message_text("❌ פרמטרים חסרים בבקשת האישור")
+            
+            elif data.startswith("menu:"):
+                # טיפול בכפתורי תפריט
+                menu_action = data.split(":", 1)[1] if ":" in data else ""
+                await self._handle_menu_button(query, menu_action)
+            
+            elif data.startswith("page:"):
+                # טיפול בעמודים
+                page_data = data.split(":", 1)[1] if ":" in data else ""
+                await self._handle_page_button(query, page_data)
+            
+            elif data.startswith("refresh:"):
+                # טיפול ברענון נתונים
+                refresh_target = data.split(":", 1)[1] if ":" in data else ""
+                await self._handle_refresh_button(query, refresh_target)
+            
+            elif data == "back" or data == "cancel":
+                # כפתורי ביטול וחזרה
+                await query.edit_message_text("🔙 ביטלת את הפעולה")
+            
+            elif data == "help":
+                # כפתור עזרה
+                await self._show_help_menu(query)
+            
+            elif data in ["close", "done", "ok"]:
+                # כפתורי סגירה
+                await query.edit_message_text("✅ בוצע!")
+            
+            else:
+                # פעולה לא מוכרת - לוגים מפורטים לצורך איתור בעיות
+                logger.warning(f"🔴 Unrecognized callback data: '{data}' from user {user.id} ({user.first_name})")
                 
-                await self._handle_confirm_request(query, user, request_id, category)
+                # בדיקה אם זה callback שאמור להיות נתמך
+                known_prefixes = ["create_request:", "view_request:", "edit_request:", 
+                                "admin:", "settings:", "action:", "rate_request:", 
+                                "duplicate_action:", "admin_action:"]
+                
+                is_known_pattern = any(data.startswith(prefix) for prefix in known_prefixes)
+                
+                if is_known_pattern:
+                    await query.edit_message_text(f"❌ שגיאה: הפעולה '{data}' לא מוכרת או לא מומשה כרגע.")
+                else:
+                    await query.edit_message_text(f"❌ פעולה לא מזוהה: {data}\\n\\nנא פנה למנהל המערכת.")
+                    
+        except Exception as e:
+            logger.error(f"Error in generic button handler for data '{data}': {e}", exc_info=True)
+            await query.edit_message_text("❌ שגיאה בעיבוד הכפתור. נסה שוב או פנה למנהל.")
+
+    async def _handle_menu_button(self, query, menu_action: str):
+        """טיפול בכפתורי תפריט"""
+        if menu_action == "main":
+            await self._show_main_menu(query)
+        elif menu_action == "help":
+            await self._show_help_menu(query)
         else:
-            await query.edit_message_text(f"לא מזוהה: {data}")
+            await query.edit_message_text(f"❌ תפריט לא מוכר: {menu_action}")
+    
+    async def _handle_page_button(self, query, page_data: str):
+        """טיפול בכפתורי עמודים"""
+        try:
+            page_num = int(page_data) if page_data.isdigit() else 1
+            await query.edit_message_text(f"📄 עמוד {page_num} - בפיתוח")
+        except Exception as e:
+            logger.error(f"Page button error: {e}")
+            await query.edit_message_text("❌ שגיאה בעמוד")
+    
+    async def _handle_refresh_button(self, query, refresh_target: str):
+        """טיפול בכפתורי רענון"""
+        if refresh_target == "stats":
+            await self._handle_admin_button(query, "admin:statistics")
+        elif refresh_target == "pending":
+            await self._handle_admin_button(query, "admin:pending")
+        else:
+            await query.edit_message_text("🔄 רועון...")
+    
+    async def _show_help_menu(self, query):
+        """הצגת תפריט עזרה"""
+        help_text = """
+🆘 **מרכז עזרה**
+
+• /start - התחל מחדש
+• /help - עזרה
+• שלח הודעה לחיפוש תוכן
+• השתמש בכפתורים לניווט
+
+💬 ליצירת קשר עם מנהל: @admin
+        """
+        keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("🏠 ראשי", callback_data="action:main_menu")
+        ]])
+        
+        await query.edit_message_text(help_text, reply_markup=keyboard, parse_mode='Markdown')
+    
+    async def _show_main_menu(self, query):
+        """הצגת תפריט ראשי"""
+        main_text = "🏠 **תפריט ראשי**\n\nשלח לי הודעה עם מה שאתה מחפש!"
+        
+        await query.edit_message_text(main_text, parse_mode='Markdown')
 
     async def _handle_confirm_request(self, query, user, request_id: str, category: str):
         """אישור בקשה"""
@@ -2432,71 +2531,119 @@ class EnhancedPirateBot:
         self.background_tasks = [asyncio.create_task(task) for task in tasks]
     
     async def _cleanup_task(self):
-        """משימת ניקוי תקופתית"""
-        while True:
-            try:
-                await asyncio.sleep(BACKGROUND_TASKS_CONFIG['cleanup_interval'])
-                
-                # ניקוי בקשות ישנות
-                cleaned = await self.request_service.cleanup_old_requests(
-                    days=BACKGROUND_TASKS_CONFIG['old_requests_cleanup_days']
-                )
-                
-                # ניקוי Cache
-                self.cache_manager.cleanup()
-                
-                logger.info(f"🧹 Cleanup completed: {cleaned} items removed")
-                
-            except Exception as e:
-                logger.error(f"❌ Error in cleanup task: {e}")
+        """משימת ניקוי תקופתית עם טיפול בcanellation"""
+        try:
+            while True:
+                try:
+                    await asyncio.sleep(BACKGROUND_TASKS_CONFIG['cleanup_interval'])
+                    
+                    # ניקוי בקשות ישנות
+                    cleaned = await self.request_service.cleanup_old_requests(
+                        days=BACKGROUND_TASKS_CONFIG['old_requests_cleanup_days']
+                    )
+                    
+                    # ניקוי Cache עם מגבלות
+                    if hasattr(self.cache_manager, 'optimize_memory'):
+                        self.cache_manager.optimize_memory()
+                    else:
+                        self.cache_manager.cleanup()
+                    
+                    logger.info(f"🧹 Cleanup completed: {cleaned} items removed")
+                    
+                except asyncio.CancelledError:
+                    logger.info("🛑 Cleanup task cancelled")
+                    break
+                except Exception as e:
+                    logger.error(f"❌ Error in cleanup task: {e}")
+                    await asyncio.sleep(30)  # נמנע מלולאות שגיאה מהירות
+                    
+        except asyncio.CancelledError:
+            logger.info("🛑 Cleanup task shutdown")
+        finally:
+            logger.info("🧹 Cleanup task terminated")
     
     async def _statistics_update_task(self):
-        """משימת עדכון סטטיסטיקות"""
-        while True:
-            try:
-                await asyncio.sleep(BACKGROUND_TASKS_CONFIG['statistics_update_interval'])
-                
-                # עדכון סטטיסטיקות
-                await self.request_service.update_statistics()
-                # עדכון analytics רק אם יש נתונים פעילים
+        """משימת עדכון סטטיסטיקות עם טיפול בcancellation"""
+        try:
+            while True:
                 try:
-                    # יכול להיות שנקרא update_user_analytics עם פרמטרים ספציפיים
-                    # אבל כרגע זה לא נדרש במשימה רק פתית
-                    pass  
+                    await asyncio.sleep(BACKGROUND_TASKS_CONFIG['statistics_update_interval'])
+                    
+                    # עדכון סטטיסטיקות
+                    await self.request_service.update_statistics()
+                    
+                    # עדכון analytics רק אם יש נתונים פעילים
+                    try:
+                        # ניקוי סטטיסטיקות ישנות למניעת זליגת זיכרון
+                        if hasattr(self.request_service, 'cleanup_old_statistics'):
+                            await self.request_service.cleanup_old_statistics(days=30)
+                    except Exception as e:
+                        logger.warning(f"Statistics cleanup skipped: {e}")
+                    
+                    logger.debug("📊 Statistics updated")
+                    
+                except asyncio.CancelledError:
+                    logger.info("🛑 Statistics task cancelled")
+                    break
                 except Exception as e:
-                    logger.warning(f"User analytics update skipped: {e}")
-                
-                logger.debug("📊 Statistics updated")
-                
-            except Exception as e:
-                logger.error(f"❌ Error in statistics task: {e}")
+                    logger.error(f"❌ Error in statistics task: {e}")
+                    await asyncio.sleep(60)  # נמנע מלולאות שגיאה מהירות
+                    
+        except asyncio.CancelledError:
+            logger.info("🛑 Statistics task shutdown")
+        finally:
+            logger.info("📊 Statistics task terminated")
     
     async def _notification_check_task(self):
-        """משימת בדיקת התראות"""
-        while True:
-            try:
-                await asyncio.sleep(BACKGROUND_TASKS_CONFIG['notification_check_interval'])
-                
-                # בדיקת התראות ממתינות רק אם השירות זמין
-                if self.notification_service:
-                    await self.notification_service.process_pending_notifications()
-                
-            except Exception as e:
-                logger.error(f"❌ Error in notification task: {e}")
+        """משימת בדיקת התראות עם טיפול בcancellation"""
+        try:
+            while True:
+                try:
+                    await asyncio.sleep(BACKGROUND_TASKS_CONFIG['notification_check_interval'])
+                    
+                    # בדיקת התראות ממתינות רק אם השירות זמין
+                    if self.notification_service:
+                        await self.notification_service.process_pending_notifications()
+                        
+                        # ניקוי התראות ישנות למניעת זליגת זיכרון
+                        if hasattr(self.notification_service, 'cleanup_old_notifications'):
+                            await self.notification_service.cleanup_old_notifications(days=7)
+                    
+                except asyncio.CancelledError:
+                    logger.info("🛑 Notification task cancelled")
+                    break
+                except Exception as e:
+                    logger.error(f"❌ Error in notification task: {e}")
+                    await asyncio.sleep(30)  # נמנע מלולאות שגיאה מהירות
+                    
+        except asyncio.CancelledError:
+            logger.info("🛑 Notification task shutdown")
+        finally:
+            logger.info("🔔 Notification task terminated")
     
     async def _duplicate_cleanup_task(self):
-        """משימת ניקוי כפילויות"""
-        while True:
-            try:
-                await asyncio.sleep(BACKGROUND_TASKS_CONFIG['duplicate_cleanup_interval'])
-                
-                # ניקוי זיכרון הכפילויות
-                await self.duplicate_detector.cleanup_cache()
-                
-                logger.debug("🔄 Duplicate cache cleaned")
-                
-            except Exception as e:
-                logger.error(f"❌ Error in duplicate cleanup: {e}")
+        """משימת ניקוי כפילויות עם טיפול בcancellation"""
+        try:
+            while True:
+                try:
+                    await asyncio.sleep(BACKGROUND_TASKS_CONFIG['duplicate_cleanup_interval'])
+                    
+                    # ניקוי זיכרון הכפילויות
+                    if self.duplicate_detector:
+                        cleaned = await self.duplicate_detector.cleanup_cache()
+                        logger.debug(f"🔄 Duplicate cache cleaned: {cleaned} items")
+                    
+                except asyncio.CancelledError:
+                    logger.info("🛑 Duplicate cleanup task cancelled")
+                    break
+                except Exception as e:
+                    logger.error(f"❌ Error in duplicate cleanup: {e}")
+                    await asyncio.sleep(60)  # נמנע מלולאות שגיאה מהירות
+                    
+        except asyncio.CancelledError:
+            logger.info("🛑 Duplicate cleanup task shutdown")
+        finally:
+            logger.info("🔄 Duplicate cleanup task terminated")
     
     # ========================= Graceful Shutdown =========================
     

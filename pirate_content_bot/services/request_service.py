@@ -6,6 +6,7 @@ Request Service לבוט התמימים הפיראטים
 """
 
 import logging
+import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 import re
@@ -22,10 +23,12 @@ class RequestService:
         self.duplicate_detector = duplicate_detector
         self.notification_callback = notification_callback
         
-        # מטמונים זמניים לביצועים
+        # מטמונים זמניים לביצועים עם מגבלות
         self._request_cache = {}
         self._user_stats_cache = {}
         self._cache_timeout = 300  # 5 דקות
+        self._max_cache_size = 1000  # מקסימום רשומות במטמון
+        self._last_cache_cleanup = time.time()
         
         # הגדרות validation
         self.min_title_length = 2
@@ -230,7 +233,13 @@ class RequestService:
             return success
             
         except Exception as e:
-            logger.error(f"Failed to update request {request_id}: {e}")
+            logger.error(f"Failed to update request {request_id}: {e}", exc_info=True)
+            # נסיון rollback אם יש transaction פעיל
+            try:
+                if hasattr(self.storage, 'rollback_transaction'):
+                    await self.storage.rollback_transaction()
+            except Exception as rollback_error:
+                logger.error(f"Rollback failed: {rollback_error}")
             return False
     
     async def _handle_status_change(self, request_id: int, old_status: str, 
@@ -324,7 +333,8 @@ class RequestService:
             )
             
             if not success:
-                return {'success': False, 'error': 'שגיאה בעדכון מסד הנתונים'}
+                logger.error(f"Database update failed for request {request_id} - fulfill operation")
+                return {'success': False, 'error': 'Database update failed - please try again later'}
             
             # עדכון סטטיסטיקות מנהל
             admin_stats = await self._get_admin_today_stats(admin_user.id)
@@ -367,7 +377,8 @@ class RequestService:
             )
             
             if not success:
-                return {'success': False, 'error': 'שגיאה בעדכון מסד הנתונים'}
+                logger.error(f"Database update failed for request {request_id} - fulfill operation")
+                return {'success': False, 'error': 'Database update failed - please try again later'}
             
             # עדכון סטטיסטיקות מנהל
             admin_stats = await self._get_admin_today_stats(admin_user.id)
@@ -1694,3 +1705,83 @@ class RequestService:
                 'success': False,
                 'error': f'שגיאה ביצירת גיבוי: {str(e)}'
             }
+    
+    # ========================= ניהול זיכרון =========================
+    
+    def _cleanup_cache(self) -> Dict[str, int]:
+        """ניקוי מטמונים לשמירת זיכרון"""
+        try:
+            current_time = time.time()
+            cleanup_stats = {'request_cache': 0, 'stats_cache': 0}
+            
+            # בדיקה אם צריך לנקות לפי זמן או גודל
+            time_since_cleanup = current_time - self._last_cache_cleanup
+            needs_cleanup = (
+                time_since_cleanup > self._cache_timeout or 
+                len(self._request_cache) > self._max_cache_size or 
+                len(self._user_stats_cache) > self._max_cache_size
+            )
+            
+            if needs_cleanup:
+                # ניקוי request cache
+                old_size = len(self._request_cache)
+                expired_keys = []
+                for key, (data, timestamp) in self._request_cache.items():
+                    if current_time - timestamp > self._cache_timeout:
+                        expired_keys.append(key)
+                
+                for key in expired_keys:
+                    del self._request_cache[key]
+                
+                cleanup_stats['request_cache'] = old_size - len(self._request_cache)
+                
+                # ניקוי stats cache
+                old_size = len(self._user_stats_cache)
+                expired_keys = []
+                for key, (data, timestamp) in self._user_stats_cache.items():
+                    if current_time - timestamp > self._cache_timeout:
+                        expired_keys.append(key)
+                
+                for key in expired_keys:
+                    del self._user_stats_cache[key]
+                
+                cleanup_stats['stats_cache'] = old_size - len(self._user_stats_cache)
+                
+                # אם עדיין יותר מדי גדול - תקצץ לגודל מקסימלי
+                if len(self._request_cache) > self._max_cache_size:
+                    # הסר רשומות ישנות
+                    items = [(k, v) for k, v in self._request_cache.items()]
+                    items.sort(key=lambda x: x[1][1])  # מיון לפי timestamp
+                    keep_count = int(self._max_cache_size * 0.8)  # השאר 80%
+                    self._request_cache = dict(items[-keep_count:])
+                
+                if len(self._user_stats_cache) > self._max_cache_size:
+                    items = [(k, v) for k, v in self._user_stats_cache.items()]
+                    items.sort(key=lambda x: x[1][1])
+                    keep_count = int(self._max_cache_size * 0.8)
+                    self._user_stats_cache = dict(items[-keep_count:])
+                
+                self._last_cache_cleanup = current_time
+                
+                if cleanup_stats['request_cache'] > 0 or cleanup_stats['stats_cache'] > 0:
+                    logger.debug(f"Cache cleanup: removed {cleanup_stats['request_cache']} requests, "
+                               f"{cleanup_stats['stats_cache']} stats")
+            
+            return cleanup_stats
+            
+        except Exception as e:
+            logger.error(f"Cache cleanup failed: {e}")
+            return {'request_cache': 0, 'stats_cache': 0}
+    
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """קבלת סטטיסטיקות מטמון"""
+        try:
+            return {
+                'request_cache_size': len(self._request_cache),
+                'stats_cache_size': len(self._user_stats_cache),
+                'max_cache_size': self._max_cache_size,
+                'cache_timeout': self._cache_timeout,
+                'last_cleanup': datetime.fromtimestamp(self._last_cache_cleanup).isoformat()
+            }
+        except Exception:
+            return {}

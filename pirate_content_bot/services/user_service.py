@@ -6,6 +6,7 @@ User Service לבוט התמימים הפיראטים
 """
 
 import logging
+import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
@@ -46,11 +47,13 @@ class UserService:
         self.storage = storage_manager
         self.notification_service = notification_service
         
-        # מטמון משתמשים לביצועים
+        # מטמון משתמשים לביצועים עם מגבלות
         self._user_cache = {}
         self._user_stats_cache = {}
         self._ban_cache = {}
         self._cache_timeout = 600  # 10 דקות
+        self._max_cache_size = 500  # מקסימום משתמשים במטמון
+        self._last_cache_cleanup = time.time()
         
         # הגדרות מערכת משתמשים
         self.max_warnings_before_ban = 3

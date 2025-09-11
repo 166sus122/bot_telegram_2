@@ -336,3 +336,74 @@ class ExportManager:
                     else:
                         clean_row[key] = value
                 writer.writerow(clean_row)
+        
+        return filepath
+    
+    async def to_json(self, data: List[Dict], filename: str) -> Path:
+        """המרה ל-JSON עם טיפול בdatetime objects"""
+        from pirate_content_bot.utils.json_helpers import safe_json_dumps
+        
+        filepath = self.export_path / filename
+        
+        if not data:
+            raise ValueError("No data to export")
+        
+        # יצירת JSON עם datetime support
+        try:
+            json_output = {
+                'metadata': {
+                    'export_timestamp': datetime.now(),
+                    'record_count': len(data),
+                    'export_type': 'data_export',
+                    'version': '2.0'
+                },
+                'data': data
+            }
+            
+            # שימוש בfafe_json_dumps שמטפל בdatetime
+            json_content = safe_json_dumps(json_output, indent=2)
+            
+            # כתיבה לקובץ
+            with open(filepath, 'w', encoding='utf-8') as jsonfile:
+                jsonfile.write(json_content)
+            
+            return filepath
+            
+        except Exception as e:
+            logger.error(f"Error creating JSON export: {e}")
+            raise
+    
+    async def to_excel(self, data: List[Dict], filename: str) -> Path:
+        """המרה ל-Excel (placeholder)"""
+        # לעת עתה נשמור כ-JSON
+        json_filename = filename.replace('.xlsx', '.json')
+        return await self.to_json(data, json_filename)
+    
+    def _record_export(self, export_type: str, format: str, filepath: Path, record_count: int):
+        """רישום ייצוא בהיסטוריה"""
+        export_record = {
+            'timestamp': datetime.now(),
+            'export_type': export_type,
+            'format': format,
+            'filepath': str(filepath),
+            'record_count': record_count,
+            'file_size': filepath.stat().st_size if filepath.exists() else 0
+        }
+        self.export_history.append(export_record)
+    
+    # ========================= פונקציות עזר נוספות =========================
+    
+    async def _get_requests_data(self, filters: Dict = None) -> List[Dict]:
+        """קבלת נתוני בקשות מהמערכת"""
+        # placeholder - יחזיר נתונים מהstorage
+        return []
+    
+    async def _get_users_data(self, filters: Dict = None) -> List[Dict]:
+        """קבלת נתוני משתמשים מהמערכת"""
+        # placeholder
+        return []
+    
+    async def _get_ratings_data(self, filters: Dict = None) -> List[Dict]:
+        """קבלת נתוני דירוגים מהמערכת"""
+        # placeholder
+        return []

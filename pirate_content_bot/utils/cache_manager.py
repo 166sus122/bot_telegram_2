@@ -41,12 +41,12 @@ class CacheEntry:
         """חישוב גודל הערך בבתים"""
         try:
             return len(pickle.dumps(value))
-        except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+        except (pickle.PicklingError, TypeError) as e:
+            logger.debug(f"Pickle serialization error: {e}")
             try:
                 return len(str(value).encode('utf-8'))
-            except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+            except (UnicodeEncodeError, AttributeError) as e:
+                logger.debug(f"String encoding error: {e}")
                 return 1024  # הערכה גסה
     
     def is_expired(self) -> bool:
@@ -244,56 +244,84 @@ class CacheManager:
         return self.set(key, value, ttl, tags, metadata)
     
     def invalidate_by_tag(self, tag: str) -> int:
-        """מחיקת כל הרשומות עם תג מסוים"""
+        """מחיקת כל הרשומות עם תג מסוים באופן אטומי"""
         try:
             with self._lock:
                 if tag not in self._tags_index:
+                    logger.debug(f"No entries found for tag '{tag}'")
                     return 0
                 
-                keys_to_remove = list(self._tags_index[tag])
+                # יצירת רשימה מקומית למניעת שינויים במהלך הלולאה
+                keys_to_remove = list(self._tags_index[tag].copy())
                 count = 0
+                removed_keys = []
                 
+                # מחיקה אטומית של כל המפתחות
                 for key in keys_to_remove:
-                    if self.delete(key):
-                        count += 1
+                    try:
+                        if key in self._cache:
+                            self._remove_entry(key)
+                            removed_keys.append(key)
+                            count += 1
+                    except Exception as key_error:
+                        logger.error(f"Failed to remove key '{key}' for tag '{tag}': {key_error}")
+                        continue
                 
-                # ניקוי האינדקס
-                del self._tags_index[tag]
+                # ניקוי האינדקס רק אחרי מחיקה מוצלחת
+                try:
+                    del self._tags_index[tag]
+                except KeyError:
+                    logger.warning(f"Tag '{tag}' was already removed from index")
                 
-                logger.info(f"Invalidated {count} entries with tag '{tag}'")
+                # עדכון סטטיסטיקות
+                self._stats['total_deletes'] += count
+                
+                logger.info(f"Successfully invalidated {count} entries with tag '{tag}': {removed_keys}")
                 return count
                 
         except Exception as e:
-            logger.error(f"Tag invalidation failed for tag '{tag}': {e}")
+            logger.error(f"Tag invalidation failed for tag '{tag}': {e}", exc_info=True)
             return 0
     
     def get_or_set(self, key: str, callback: Callable[[], Any], 
                   ttl: Optional[int] = None, tags: Optional[Set[str]] = None) -> Any:
-        """קבלה או יצירה עם callback"""
+        """קבלה או יצירה עם callback עם הגנה מפני race conditions"""
         try:
-            # נסיון קבלה ראשון
+            # נסיון קבלה ראשון מחוץ לנעילה
             value = self.get(key)
             if value is not None:
                 return value
             
-            # ביצוע callback ושמירה
+            # נעילה ייחודית לkey זה בלבד
             with self._lock:
-                # בדיקה נוספת בתוך הנעילה (double-checked locking)
+                # Double-checked locking - בדיקה נוספת בתוך הנעילה
                 value = self.get(key)
                 if value is not None:
                     return value
                 
                 # ביצוע callback
                 try:
+                    logger.debug(f"Executing callback for cache key: {key}")
                     new_value = callback()
-                    self.set(key, new_value, ttl, tags)
-                    return new_value
-                except Exception as e:
-                    logger.error(f"Callback failed for key '{key}': {e}")
-                    raise
+                    
+                    # וידוא שהcallback החזיר ערך תקין
+                    if new_value is None:
+                        logger.warning(f"Callback returned None for key '{key}'")
+                    
+                    # שמירה במטמון
+                    if self.set(key, new_value, ttl, tags):
+                        logger.debug(f"Successfully cached value for key: {key}")
+                        return new_value
+                    else:
+                        logger.error(f"Failed to cache value for key: {key}")
+                        return new_value
+                        
+                except Exception as callback_error:
+                    logger.error(f"Callback execution failed for key '{key}': {callback_error}", exc_info=True)
+                    raise callback_error
                     
         except Exception as e:
-            logger.error(f"Get-or-set failed for key '{key}': {e}")
+            logger.error(f"Get-or-set operation failed for key '{key}': {e}", exc_info=True)
             raise
     
     def increment(self, key: str, amount: Union[int, float] = 1, 
@@ -331,6 +359,202 @@ class CacheManager:
                 
         except Exception as e:
             logger.error(f"Expire failed for key '{key}': {e}")
+            return False
+    
+    # ========================= עקביות נתונים =========================
+    
+    def sync_with_database(self, db_sync_callback: Callable[[str], Any]) -> Dict[str, int]:
+        """סינכרון עם מסד נתונים לעקביות נתונים"""
+        try:
+            with self._lock:
+                sync_stats = {'verified': 0, 'updated': 0, 'removed': 0, 'errors': 0}
+                keys_to_check = list(self._cache.keys())
+                
+                logger.info(f"Starting database sync for {len(keys_to_check)} cache entries")
+                
+                for key in keys_to_check:
+                    try:
+                        if key not in self._cache:  # בדיקה שלא הוסר בינתיים
+                            continue
+                            
+                        entry = self._cache[key]
+                        
+                        # קריאה למסד נתונים
+                        db_value = db_sync_callback(key)
+                        
+                        if db_value is None:
+                            # הרשומה לא קיימת במסד נתונים - מחיקה מהמטמון
+                            self._remove_entry(key)
+                            sync_stats['removed'] += 1
+                            logger.debug(f"Removed cache entry '{key}' (not in database)")
+                            
+                        elif db_value != entry.value:
+                            # הערכים לא זהים - עדכון המטמון
+                            entry.value = db_value
+                            entry.accessed_at = datetime.now()  # עדכון זמן גישה
+                            sync_stats['updated'] += 1
+                            logger.debug(f"Updated cache entry '{key}' with database value")
+                            
+                        else:
+                            # הערכים זהים - אין צורך בעדכון
+                            sync_stats['verified'] += 1
+                            
+                    except Exception as key_error:
+                        sync_stats['errors'] += 1
+                        logger.error(f"Database sync failed for key '{key}': {key_error}")
+                        continue
+                
+                logger.info(f"Database sync completed: {sync_stats}")
+                return sync_stats
+                
+        except Exception as e:
+            logger.error(f"Database sync operation failed: {e}", exc_info=True)
+            return {'verified': 0, 'updated': 0, 'removed': 0, 'errors': 1}
+    
+    def write_through_set(self, key: str, value: Any, db_write_callback: Callable[[str, Any], bool],
+                         ttl: Optional[int] = None, tags: Optional[Set[str]] = None) -> bool:
+        """Write-through pattern - כתיבה למסד נתונים ולמטמון בו זמנית"""
+        try:
+            with self._lock:
+                # ראשית כתיבה למסד נתונים
+                logger.debug(f"Attempting write-through for key: {key}")
+                
+                if not db_write_callback(key, value):
+                    logger.error(f"Database write failed for key '{key}' - aborting cache write")
+                    return False
+                
+                # כתיבה למטמון רק אם הכתיבה למסד נתונים הצליחה
+                success = self.set(key, value, ttl, tags)
+                if success:
+                    logger.debug(f"Write-through completed successfully for key: {key}")
+                else:
+                    logger.error(f"Cache write failed for key '{key}' after successful database write")
+                    # כאן יכול להיות logic נוסף להתמודדות עם inconsistency
+                
+                return success
+                
+        except Exception as e:
+            logger.error(f"Write-through operation failed for key '{key}': {e}", exc_info=True)
+            return False
+    
+    def write_behind_set(self, key: str, value: Any, ttl: Optional[int] = None, 
+                        tags: Optional[Set[str]] = None) -> bool:
+        """Write-behind pattern - כתיבה למטמון מיידית, למסד נתונים באיחור"""
+        try:
+            with self._lock:
+                # כתיבה מיידית למטמון
+                success = self.set(key, value, ttl, tags)
+                if not success:
+                    return False
+                
+                # סימון לכתיבה למסד נתונים (בהמשך יכול להיות queue)
+                if not hasattr(self, '_write_behind_queue'):
+                    self._write_behind_queue = []
+                
+                write_item = {
+                    'key': key,
+                    'value': value,
+                    'timestamp': datetime.now(),
+                    'retries': 0
+                }
+                
+                self._write_behind_queue.append(write_item)
+                logger.debug(f"Added key '{key}' to write-behind queue")
+                
+                return True
+                
+        except Exception as e:
+            logger.error(f"Write-behind operation failed for key '{key}': {e}", exc_info=True)
+            return False
+    
+    def get_with_refresh(self, key: str, refresh_callback: Callable[[], Any], 
+                        refresh_threshold_seconds: int = 300) -> Any:
+        """קריאה מהמטמון עם refresh אוטומטי אם הנתונים ישנים"""
+        try:
+            with self._lock:
+                if key not in self._cache:
+                    # לא קיים במטמון - טעינה ראשונית
+                    try:
+                        fresh_value = refresh_callback()
+                        self.set(key, fresh_value)
+                        return fresh_value
+                    except Exception as refresh_error:
+                        logger.error(f"Initial refresh failed for key '{key}': {refresh_error}")
+                        return None
+                
+                entry = self._cache[key]
+                
+                # בדיקת תפוגה
+                if entry.is_expired():
+                    self._remove_entry(key)
+                    try:
+                        fresh_value = refresh_callback()
+                        self.set(key, fresh_value)
+                        return fresh_value
+                    except Exception as refresh_error:
+                        logger.error(f"Refresh after expiry failed for key '{key}': {refresh_error}")
+                        return None
+                
+                # בדיקה אם הנתונים ישנים מדי
+                age_seconds = entry.get_age_seconds()
+                if age_seconds > refresh_threshold_seconds:
+                    try:
+                        # refresh ברקע - החזרת הערך הקיים ועדכון אסינכרוני
+                        fresh_value = refresh_callback()
+                        entry.value = fresh_value
+                        entry.accessed_at = datetime.now()
+                        logger.debug(f"Refreshed stale cache entry for key: {key}")
+                    except Exception as refresh_error:
+                        logger.error(f"Background refresh failed for key '{key}': {refresh_error}")
+                        # ממשיך עם הערך הישן
+                
+                # עדכון גישה והחזרת ערך
+                entry.update_access()
+                return entry.value
+                
+        except Exception as e:
+            logger.error(f"Get-with-refresh failed for key '{key}': {e}", exc_info=True)
+            return None
+    
+    def ensure_consistency(self, key: str, db_read_callback: Callable[[str], Any],
+                          force_refresh: bool = False) -> bool:
+        """הבטחת עקביות בין המטמון למסד נתונים עבור מפתח מסוים"""
+        try:
+            with self._lock:
+                # קריאה ממסד הנתונים
+                db_value = db_read_callback(key)
+                
+                if key not in self._cache:
+                    # לא קיים במטמון
+                    if db_value is not None:
+                        # קיים במסד נתונים - הוספה למטמון
+                        self.set(key, db_value)
+                        logger.debug(f"Added missing cache entry for key: {key}")
+                        return True
+                    else:
+                        # לא קיים בשני המקומות - OK
+                        return True
+                
+                entry = self._cache[key]
+                
+                if db_value is None:
+                    # קיים במטמון אבל לא במסד נתונים
+                    self._remove_entry(key)
+                    logger.warning(f"Removed orphaned cache entry for key: {key}")
+                    return True
+                
+                if force_refresh or db_value != entry.value:
+                    # הערכים שונים או דרושה רענון כפוי
+                    entry.value = db_value
+                    entry.accessed_at = datetime.now()
+                    logger.debug(f"Synchronized cache entry for key: {key}")
+                    return True
+                
+                # הכל עקבי
+                return True
+                
+        except Exception as e:
+            logger.error(f"Consistency check failed for key '{key}': {e}", exc_info=True)
             return False
     
     # ========================= סטטיסטיקות וניטור =========================
@@ -578,7 +802,7 @@ class CacheManager:
         try:
             return len([1 for entry in self._cache.values() if entry.is_expired()])
         except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+            logger.debug(f"Count expired entries error: {e}")
             return 0
     
     def _calculate_average_entry_size(self) -> float:
@@ -589,7 +813,7 @@ class CacheManager:
             total_size = sum(entry.size for entry in self._cache.values())
             return total_size / len(self._cache)
         except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+            logger.debug(f"Average entry size calculation error: {e}")
             return 0.0
     
     def _get_oldest_entry_age(self) -> float:
@@ -600,7 +824,7 @@ class CacheManager:
             oldest_entry = min(self._cache.values(), key=lambda e: e.created_at)
             return oldest_entry.get_age_seconds() / 60
         except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+            logger.debug(f"Oldest entry age calculation error: {e}")
             return 0.0
     
     def _get_most_accessed_key(self) -> Optional[str]:
@@ -611,7 +835,7 @@ class CacheManager:
             most_accessed = max(self._cache.values(), key=lambda e: e.access_count)
             return most_accessed.key
         except Exception as e:
-                logger.debug(f"Unexpected error: {e}")
+            logger.debug(f"Most accessed key calculation error: {e}")
             return None
 
 

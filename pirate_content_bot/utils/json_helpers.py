@@ -5,9 +5,33 @@
 """
 
 import json
+import logging
 from datetime import datetime, date, time
 from decimal import Decimal
 from typing import Any
+
+logger = logging.getLogger(__name__)
+
+
+class DateTimeEncoder(json.JSONEncoder):
+    """JSON Encoder מותאם אישית שמטפל בdatetime objects"""
+    
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
+        elif isinstance(obj, date):
+            return obj.strftime('%Y-%m-%d')
+        elif isinstance(obj, time):
+            return obj.strftime('%H:%M:%S')
+        elif isinstance(obj, Decimal):
+            return float(obj)
+        elif hasattr(obj, 'isoformat'):
+            return obj.isoformat()
+        elif hasattr(obj, '__dict__'):
+            return obj.__dict__
+        
+        # קריאה לsuper().default() לטיפול בטיפוסים רגילים
+        return super().default(obj)
 
 
 def json_serial(obj: Any) -> Any:

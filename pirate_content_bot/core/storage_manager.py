@@ -281,16 +281,22 @@ class StorageManager:
     def _update_request_db_advanced(self, request_id: int, updates: Dict) -> bool:
         """עדכון בקשה במסד נתונים עם Connection Pool (with cache sync)"""
         if not self.pool:
+            logger.warning("Database pool not available, falling back to cache")
             return self._update_request_cache(request_id, updates)
         
         try:
+            # בדיקת תקינות נתונים
+            if not updates or not isinstance(request_id, int) or request_id <= 0:
+                logger.error(f"Invalid update data: request_id={request_id}, updates={updates}")
+                return False
+            
             with self.pool.get_connection() as connection:
                 cursor = connection.cursor()
                 
                 # הוספת updated_at אוטומטית
                 updates['updated_at'] = datetime.now()
                 
-                # בניית query דינמי
+                # בניית query דינמי עם validation
                 set_clauses = []
                 values = []
                 
@@ -331,8 +337,18 @@ class StorageManager:
                 
                 return success
                 
+        except mysql.connector.Error as db_error:
+            logger.error(f"Database error updating request {request_id}: {db_error}", exc_info=True)
+            # נסיון rollback
+            try:
+                if connection:
+                    connection.rollback()
+            except Exception:
+                pass
+            # Fallback למטמון
+            return self._update_request_cache(request_id, updates)
         except Exception as e:
-            logger.error(f"Error updating request in DB: {e}")
+            logger.error(f"Unexpected error updating request {request_id}: {e}", exc_info=True)
             return self._update_request_cache(request_id, updates)
     
     def _get_pending_requests_db_advanced(self, category: Optional[str] = None, limit: int = 20) -> List[Dict]:

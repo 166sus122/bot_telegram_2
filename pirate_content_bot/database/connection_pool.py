@@ -55,7 +55,8 @@ class DatabaseConnectionPool:
         # פרמטרים תקינים עבור mysql.connector
         valid_mysql_params = {
             'host', 'port', 'user', 'password', 'database', 'charset', 'collation',
-            'autocommit', 'raise_on_warnings', 'use_unicode', 'buffered'
+            'autocommit', 'raise_on_warnings', 'use_unicode', 'buffered',
+            'connection_timeout', 'sql_mode'
         }
         
         # הסרת הגדרות pool ופרמטרים לא תקינים מהגדרות החיבור
@@ -78,7 +79,10 @@ class DatabaseConnectionPool:
                 # מיזוג הגדרות
                 pool_config = {**self.db_config, **self.pool_config}
                 
-                logger.info(f"Creating connection pool with config: {self.pool_config}")
+                # לוג pool config בלי מידע רגיש 
+                safe_pool_config = {k: ("***" if k in ["password", "passwd", "token", "secret", "key"] else v) 
+                                   for k, v in self.pool_config.items()}
+                logger.info(f"Creating connection pool with config: {safe_pool_config}")
                 self.pool = mysql.connector.pooling.MySQLConnectionPool(**pool_config)
                 
                 # בדיקת חיבור ראשוני
@@ -131,23 +135,44 @@ class DatabaseConnectionPool:
                     pass
     
     def _get_connection_from_pool(self):
-        """קבלת חיבור מה-pool עם error handling"""
+        """קבלת חיבור מה-pool עם error handling ו-timeout"""
         if self.pool is None:
             if not self.create_pool():
                 return None
         
         try:
+            # קבלת חיבור
             connection = self.pool.get_connection()
-            self._validate_connection(connection)
+            
+            # validation של החיבור
+            if not self._validate_connection(connection):
+                logger.warning("Connection validation failed, attempting to reconnect")
+                try:
+                    connection.reconnect(attempts=2, delay=1)
+                    if not self._validate_connection(connection):
+                        connection.close()
+                        return None
+                except Exception as reconnect_error:
+                    logger.error(f"Reconnection failed: {reconnect_error}")
+                    try:
+                        connection.close()
+                    except:
+                        pass
+                    return None
+            
             return connection
             
+        except mysql.connector.errors.PoolError as pool_error:
+            logger.error(f"Pool error getting connection: {pool_error}")
+            self._pool_stats['pool_misses'] += 1
+            return None
         except Exception as e:
             logger.error(f"Error getting connection from pool: {e}")
             # נסיון ליצור pool חדש
             self.pool = None
             if self.create_pool():
                 try:
-                    return self.pool.get_connection()
+                    return self.pool.get_connection(timeout=self.pool_config.get('pool_timeout', 5))
                 except Exception:
                     pass
             return None

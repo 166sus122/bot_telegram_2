@@ -25,7 +25,11 @@ try:
     
     logger.info("Successfully imported modules")
     logger.info(f"USE_DATABASE: {USE_DATABASE}")
-    logger.info(f"DB_CONFIG: {DB_CONFIG}")
+    
+    # לוג DB config בלי מידע רגיש
+    safe_config = {k: ("***" if k in ["password", "passwd", "token", "secret", "key"] else v) 
+                   for k, v in (DB_CONFIG or {}).items()}
+    logger.info(f"DB_CONFIG (safe): {safe_config}")
     
     if USE_DATABASE:
         logger.info("Testing database connection...")
