@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # בוט התמימים הפיראטים
   pirate-bot:
@@ -59,7 +57,9 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql-config.cnf:/etc/mysql/conf.d/mysql-config.cnf:ro
-    command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf", "--host-cache-size=0", "--skip-ssl"]
+      - ./pirate_content_bot/database/setup-user-permissions.sql:/docker-entrypoint-initdb.d/setup-user-permissions.sql:ro
+      - ./pirate_content_bot/database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf"]
     ports:
       - "3301:3306"
     networks:

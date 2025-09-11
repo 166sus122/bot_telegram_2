@@ -144,6 +144,14 @@ jobs:
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/docker-compose.yml -o docker-compose.yml
           curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/.env.example -o .env
           
+          # הורדת קבצי הגדרה נוספים שנוספו בתיקונים
+          curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/mysql-config.cnf -o mysql-config.cnf
+          
+          # יצירת תיקיית database והורדת קבצי SQL
+          mkdir -p pirate_content_bot/database
+          curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/database/setup-user-permissions.sql -o pirate_content_bot/database/setup-user-permissions.sql
+          curl -L https://raw.githubusercontent.com/166sus122/bot_telegram_2/master/pirate_content_bot/database/init.sql -o pirate_content_bot/database/init.sql
+          
           # הגדרת משתני סביבה חיוניים
           echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" >> .env
           echo "MAIN_GROUP_ID=${{ secrets.MAIN_GROUP_ID }}" >> .env
