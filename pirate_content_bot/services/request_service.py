@@ -256,7 +256,7 @@ class RequestService:
             return success
             
         except Exception as e:
-            logger.error(f"Failed to update request {request_id}: {e}", exc_info=True)
+            logger.error(f"שגיאה בעדכון מסד הנתונים: Failed to update request {request_id}: {e}", exc_info=True)
             # נסיון rollback אם יש transaction פעיל
             try:
                 if hasattr(self.storage, 'rollback_transaction'):

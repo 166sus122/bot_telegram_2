@@ -33,8 +33,8 @@ services:
       - ./logs:/app/logs
       - ./exports:/app/exports
     depends_on:
-      - pirate-mysql-db
-      - pirate-redis-cache
+      - mysql
+      - redis
     networks:
       - pirate-network
     healthcheck:
@@ -45,8 +45,8 @@ services:
       start_period: 40s
 
   # MySQL Database
-  pirate-mysql-db:
-    image: mysql:8.0
+  mysql:
+    image: mysql:8.0.43
     container_name: pirate-mysql
     restart: unless-stopped
     environment:
@@ -58,9 +58,10 @@ services:
       - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+      - ./mysql-config.cnf:/etc/mysql/conf.d/mysql-config.cnf:ro
+    command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf", "--host-cache-size=0", "--skip-ssl"]
     ports:
-      - "3306:3306"
+      - "3301:3306"
     networks:
       - pirate-network
     healthcheck:
@@ -70,7 +71,7 @@ services:
       retries: 5
 
   # Redis Cache
-  pirate-redis-cache:
+  redis:
     image: redis:7-alpine
     container_name: pirate-redis
     restart: unless-stopped

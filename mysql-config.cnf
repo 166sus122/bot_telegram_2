@@ -1,0 +1,37 @@
+[mysqld]
+# Performance and Cache settings - Modern MySQL 8.0 approach
+host_cache_size = 0
+innodb_buffer_pool_size = 256M
+
+# Security settings (MySQL 8.0+ modern syntax)
+skip_ssl = ON
+skip_name_resolve = 1
+
+# Character set settings
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+# Connection settings
+max_connections = 200
+
+# Logging
+general_log = 0
+slow_query_log = 0
+
+# Disable binary logging for better performance
+skip_log_bin = 1
+
+# Additional security
+skip_show_database = 1
+
+# Timezone
+default_time_zone = '+00:00'
+
+# Remove PID file warnings by using tmp location
+pid_file = /tmp/mysqld.pid
+
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4

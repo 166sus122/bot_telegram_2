@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: pirate-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=pirate_content
+      - MYSQL_USER=pirate_user
+      - MYSQL_PASSWORD=${DB_PASSWORD:-test_password_123}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root_password_123}
+      - MYSQL_CHARACTER_SET_SERVER=utf8mb4
+      - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-config.cnf:/etc/mysql/conf.d/mysql-config.cnf:ro
+    command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf"]
+    ports:
+      - "3301:3306"
+    networks:
+      - pirate-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "pirate_user", "-ptest_password_123"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: pirate-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - pirate-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  pirate-network:
+    driver: bridge
+    name: pirate-content-network
+
+volumes:
+  mysql_data:
+    name: pirate-mysql-data
+  redis_data:
+    name: pirate-redis-data
