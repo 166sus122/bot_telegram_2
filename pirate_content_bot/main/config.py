@@ -6,7 +6,11 @@
 """
 
 import os
+import logging
 from typing import Dict, List, Any
+
+# הגדרת logger בסיסי
+logger = logging.getLogger(__name__)
 
 # ========================= הגדרות בוט =========================
 

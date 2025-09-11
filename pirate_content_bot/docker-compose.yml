@@ -46,9 +46,9 @@ services:
       retries: 3
       start_period: 40s
 
-  # MySQL Database
+  # MySQL Database  
   mysql:
-    image: mysql:8.0
+    image: pirate-mysql:8.0-custom
     container_name: pirate-mysql
     restart: unless-stopped
     environment:
@@ -58,11 +58,18 @@ services:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_CHARACTER_SET_SERVER=utf8mb4
       - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+    command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf"]
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./database/00-setup-permissions.sql:/docker-entrypoint-initdb.d/00-setup-permissions.sql:ro
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./database/01-setup-security.sql:/docker-entrypoint-initdb.d/02-setup-security.sql:ro
+      - ./database/init-timezone.sql:/docker-entrypoint-initdb.d/99-timezone.sql:ro
+      - ./database/mysql-config.cnf:/etc/mysql/conf.d/mysql-config.cnf:ro
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
     ports:
-      - "3306:3306"
+      - "3301:3306"
     networks:
       - pirate-network
     healthcheck:

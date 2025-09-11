@@ -3,7 +3,7 @@
 host_cache_size = 0
 innodb_buffer_pool_size = 256M
 
-# Security settings (MySQL 8.0+ modern syntax)
+# Security settings - Complete SSL disable
 skip_ssl = ON
 skip_name_resolve = 1
 
@@ -14,9 +14,10 @@ collation-server = utf8mb4_unicode_ci
 # Connection settings
 max_connections = 200
 
-# Logging
+# Logging - Disable all logging for clean startup
 general_log = 0
 slow_query_log = 0
+log_error_verbosity = 1
 
 # Disable binary logging for better performance
 skip_log_bin = 1
@@ -27,8 +28,11 @@ skip_show_database = 1
 # Timezone
 default_time_zone = '+00:00'
 
-# Remove PID file warnings by using tmp location
-pid_file = /tmp/mysqld.pid
+# Secure PID file location within MySQL dir
+pid_file = /var/lib/mysql/mysqld.pid
+
+# Disable X Plugin to reduce SSL warnings
+mysqlx = OFF
 
 [client]
 default-character-set = utf8mb4

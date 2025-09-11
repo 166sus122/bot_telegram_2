@@ -16,6 +16,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql-config.cnf:/etc/mysql/conf.d/mysql-config.cnf:ro
+      - ./pirate_content_bot/database/setup-user-permissions.sql:/docker-entrypoint-initdb.d/setup-user-permissions.sql:ro
     command: ["mysqld", "--defaults-extra-file=/etc/mysql/conf.d/mysql-config.cnf"]
     ports:
       - "3301:3306"
