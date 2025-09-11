@@ -35,8 +35,8 @@ class TestFixedCommands(unittest.TestCase):
         self.bot = EnhancedPirateBot()
         
         # Mock objects
-        self.mock_user = User(id=123456789, first_name="Test", is_bot=False)
-        self.mock_admin_user = User(id=6562280181, first_name="Admin", is_bot=False)  # ID מנהל מהקובץ
+        self.mock_user = User(id=123456789, first_name="Test", is_bot=False)  # משתמש רגיל
+        self.mock_admin_user = User(id=6562280181, first_name="Admin", is_bot=False)  # מנהל אמיתי
         self.mock_chat = Chat(id=-1001234567890, type="supergroup")
         self.mock_message = Mock(spec=Message)
         self.mock_message.reply_text = AsyncMock()
@@ -50,17 +50,20 @@ class TestFixedCommands(unittest.TestCase):
         
     def test_is_admin_function_safety(self):
         """בדיקה שפונקצית _is_admin לא קורסת"""
-        # משתמש רגיל
+        # משתמש רגיל (לא מנהל)
         self.assertFalse(self.bot._is_admin(123456789))
         
-        # מנהל
+        # מנהל אמיתי
         self.assertTrue(self.bot._is_admin(6562280181))
         
         # בדיקה עם None
         self.assertFalse(self.bot._is_admin(None))
         
     async def test_search_command_no_args(self):
-        """בדיקה שפקודת חיפוש בלי ארגומנטים מחזירה הוראות"""
+        """בדיקה שפקודת חיפוש בלי ארגומנטים מחזירה הוראות (מנהל)"""
+        # הגדרת משתמש מנהל
+        self.mock_update.effective_user = self.mock_admin_user
+        
         await self.bot.search_command(self.mock_update, self.mock_context)
         
         # בדיקה שנשלחה הודעה
@@ -69,7 +72,9 @@ class TestFixedCommands(unittest.TestCase):
         self.assertIn("שימוש בחיפוש", call_args)
         
     async def test_search_command_with_args(self):
-        """בדיקה שפקודת חיפוש עם ארגומנטים עובדת"""
+        """בדיקה שפקודת חיפוש עם ארגומנטים עובדת (מנהל)"""
+        # הגדרת משתמש מנהל
+        self.mock_update.effective_user = self.mock_admin_user
         self.mock_context.args = ["Breaking", "Bad"]
         
         await self.bot.search_command(self.mock_update, self.mock_context)
@@ -79,6 +84,11 @@ class TestFixedCommands(unittest.TestCase):
         
     async def test_analytics_command_non_admin(self):
         """בדיקה שפקודת אנליטיקס דוחה משתמש רגיל"""
+        # יצירת משתמש שלא מנהל
+        from telegram import User
+        non_admin_user = User(id=999999999, first_name="NonAdmin", is_bot=False)
+        self.mock_update.effective_user = non_admin_user
+        
         await self.bot.analytics_command(self.mock_update, self.mock_context)
         
         self.mock_message.reply_text.assert_called_once()
@@ -104,6 +114,11 @@ class TestFixedCommands(unittest.TestCase):
             
     async def test_broadcast_command_non_admin(self):
         """בדיקה שפקודת שידור דוחה משתמש רגיל"""
+        # הבטחה שהמשתמש אינו מנהל
+        from telegram import User
+        non_admin_user = User(id=999999999, first_name="NonAdmin", is_bot=False)
+        self.mock_update.effective_user = non_admin_user
+        
         await self.bot.broadcast_command(self.mock_update, self.mock_context)
         
         self.mock_message.reply_text.assert_called_once()

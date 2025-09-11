@@ -1,0 +1,65 @@
+{
+  "test_summary": {
+    "total_tests": 9,
+    "passed": 8,
+    "failed": 1,
+    "success_rate": 88.88888888888889,
+    "test_date": "2025-09-11T09:14:01.641612"
+  },
+  "test_results": [
+    {
+      "test_name": "Config - Thread IDs",
+      "success": true,
+      "details": "Found 9 categories with 8 valid thread IDs",
+      "timestamp": "2025-09-11T09:14:01.641297"
+    },
+    {
+      "test_name": "RequestService - Initialization",
+      "success": true,
+      "details": "Service created without database connection",
+      "timestamp": "2025-09-11T09:14:01.641312"
+    },
+    {
+      "test_name": "RequestService - Priority Distribution",
+      "success": true,
+      "details": "Returned 3 priority entries",
+      "timestamp": "2025-09-11T09:14:01.641383"
+    },
+    {
+      "test_name": "RequestService - Response Times",
+      "success": true,
+      "details": "All expected response time metrics present",
+      "timestamp": "2025-09-11T09:14:01.641391"
+    },
+    {
+      "test_name": "RequestService - Top Users",
+      "success": true,
+      "details": "Returned 0 top users",
+      "timestamp": "2025-09-11T09:14:01.641416"
+    },
+    {
+      "test_name": "Cache - Response Time Calculation",
+      "success": true,
+      "details": "Calculated response times from 2 cached requests",
+      "timestamp": "2025-09-11T09:14:01.641447"
+    },
+    {
+      "test_name": "Notifications - Callback System",
+      "success": true,
+      "details": "Successfully sent 2 notifications",
+      "timestamp": "2025-09-11T09:14:01.641463"
+    },
+    {
+      "test_name": "Thread Validation - ID Mapping",
+      "success": true,
+      "details": "8/8 correct mappings (100.0%)",
+      "timestamp": "2025-09-11T09:14:01.641475"
+    },
+    {
+      "test_name": "Export/Backup - Functions",
+      "success": false,
+      "details": "Export should include metadata",
+      "timestamp": "2025-09-11T09:14:01.641536"
+    }
+  ]
+}

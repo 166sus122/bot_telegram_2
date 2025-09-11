@@ -12,12 +12,12 @@ from typing import Dict, List, Tuple
 # הוספת path לקבצי המערכת
 sys.path.append('.')
 
-from core.content_analyzer import AdvancedContentAnalyzer
-from utils.duplicate_detector import DuplicateDetector
-from services.request_service import RequestService
-from core.storage_manager import StorageManager
-from utils.cache_manager import CacheManager
-from main.config import CONTENT_CATEGORIES
+from pirate_content_bot.core.content_analyzer import AdvancedContentAnalyzer
+from pirate_content_bot.utils.duplicate_detector import DuplicateDetector
+from pirate_content_bot.services.request_service import RequestService
+from pirate_content_bot.core.storage_manager import StorageManager
+from pirate_content_bot.utils.cache_manager import CacheManager
+from pirate_content_bot.main.config import CONTENT_CATEGORIES
 
 # הגדרת לוגים
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

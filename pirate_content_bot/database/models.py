@@ -36,7 +36,8 @@ class BaseModel:
     
     def to_json(self) -> str:
         """המרה ל-JSON"""
-        return json.dumps(self.to_dict(), ensure_ascii=False, indent=2)
+        from pirate_content_bot.utils.json_helpers import safe_json_dumps
+        return safe_json_dumps(self.to_dict())
     
     @classmethod
     def from_dict(cls, data: Dict):

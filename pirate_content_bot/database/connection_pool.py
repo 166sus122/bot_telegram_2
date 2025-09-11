@@ -156,8 +156,8 @@ class DatabaseConnectionPool:
                     logger.error(f"Reconnection failed: {reconnect_error}")
                     try:
                         connection.close()
-                    except:
-                        pass
+                    except Exception as e:
+                        logger.debug(f"Error closing connection during cleanup: {e}")
                     return None
             
             return connection

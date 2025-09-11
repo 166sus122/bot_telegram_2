@@ -38,6 +38,29 @@ class RequestService:
         
         logger.info("Request Service initialized")
     
+    def _execute_query(self, query: str, params: tuple = (), fetch_one: bool = False, fetch_all: bool = True):
+        """Helper method to execute database queries without await"""
+        if not self.storage.pool:
+            return None if fetch_one else []
+        
+        try:
+            with self.storage.pool.get_connection() as connection:
+                cursor = connection.cursor(dictionary=True)
+                cursor.execute(query, params)
+                
+                if fetch_one:
+                    result = cursor.fetchone()
+                elif fetch_all:
+                    result = cursor.fetchall()
+                else:
+                    result = cursor.rowcount
+                
+                cursor.close()
+                return result
+        except Exception as e:
+            logger.error(f"Database query error: {e}")
+            return None if fetch_one else []
+    
     # ========================= יצירת בקשות =========================
     
     async def create_request(self, user_data: Dict, content_text: str, 
@@ -490,7 +513,7 @@ class RequestService:
             """
             
             query_params.extend([limit, offset])
-            results = await self.storage.pool.execute_query(data_query, tuple(query_params), fetch_all=True)
+            results = self._execute_query(data_query, tuple(query_params), fetch_all=True)
             
             # העשרת נתונים
             enriched_results = []
@@ -740,7 +763,7 @@ class RequestService:
             WHERE id = %s
             """
             
-            result = await self.storage.pool.execute_query(query, (request_id,), fetch_one=True)
+            result = self._execute_query(query, (request_id,), fetch_one=True)
             
             if result:
                 # המרת תוצאה למילון
@@ -795,7 +818,7 @@ class RequestService:
             GROUP BY status
             """
             
-            results = await self.storage.pool.execute_query(query, tuple(params), fetch_all=True)
+            results = self._execute_query(query, tuple(params), fetch_all=True)
             
             processing_times = {
                 'fulfilled_avg': 24.0,  # ברירת מחדל
@@ -904,7 +927,7 @@ class RequestService:
             WHERE created_at >= %s
             """
             
-            result = await self.storage.pool.execute_query(query, (start_date,), fetch_one=True)
+            result = self._execute_query(query, (start_date,), fetch_one=True)
             
             if result:
                 # חישוב שיעורים
@@ -944,7 +967,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date,), fetch_all=True)
+            results = self._execute_query(query, (start_date,), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -989,7 +1012,7 @@ class RequestService:
             ORDER BY count DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_all=True)
+            results = self._execute_query(query, (start_date, start_date), fetch_all=True)
             
             # חישוב אחוזים
             total = sum(r['count'] for r in results)
@@ -1032,7 +1055,7 @@ class RequestService:
             WHERE created_at >= %s OR %s IS NULL AND status != 'pending'
             """
             
-            result = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_one=True)
+            result = self._execute_query(query, (start_date, start_date), fetch_one=True)
             
             if result and any(result.values()):
                 return {
@@ -1161,7 +1184,7 @@ class RequestService:
             LIMIT %s
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, start_date, limit), fetch_all=True)
+            results = self._execute_query(query, (start_date, start_date, limit), fetch_all=True)
             
             enriched_results = []
             for result in results:
@@ -1205,7 +1228,7 @@ class RequestService:
             ORDER BY date DESC
             """
             
-            results = await self.storage.pool.execute_query(query, (start_date, start_date), fetch_all=True)
+            results = self._execute_query(query, (start_date, start_date), fetch_all=True)
             
             # העשרת התוצאות
             enriched_results = []
@@ -1609,6 +1632,17 @@ class RequestService:
                     
                 export_data.append(export_item)
             
+            # הוספת metadata לexport
+            export_with_metadata = {
+                'metadata': {
+                    'export_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'total_records': len(export_data),
+                    'bot_version': '1.0',
+                    'export_format': format
+                },
+                'data': export_data
+            }
+            
             # יצירת שם קובץ
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f"pirate_bot_export_{timestamp}.{format}"
@@ -1619,7 +1653,7 @@ class RequestService:
             from pirate_content_bot.utils.json_helpers import safe_json_dumps
             
             if format.lower() == 'json':
-                export_content = safe_json_dumps(export_data)
+                export_content = safe_json_dumps(export_with_metadata)
             elif format.lower() == 'csv':
                 import csv
                 import io
@@ -1682,6 +1716,7 @@ class RequestService:
             }
             
             # חישוב גודל
+            from pirate_content_bot.utils.json_helpers import safe_json_dumps
             backup_json = safe_json_dumps(backup_data)
             size_mb = len(backup_json.encode('utf-8')) / (1024 * 1024)
             

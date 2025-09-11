@@ -330,7 +330,8 @@ class ExportManager:
                 clean_row = {}
                 for key, value in row.items():
                     if isinstance(value, (dict, list)):
-                        clean_row[key] = json.dumps(value, ensure_ascii=False)
+                        from pirate_content_bot.utils.json_helpers import safe_json_dumps
+                        clean_row[key] = safe_json_dumps(value)
                     elif isinstance(value, datetime):
                         clean_row[key] = value.isoformat()
                     else:

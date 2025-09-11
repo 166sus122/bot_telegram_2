@@ -379,7 +379,7 @@ class EnhancedPirateBot:
         try:
             return user_id in ADMIN_IDS
         except Exception as e:
-            self.logger.error(f"Error checking admin status for user {user_id}: {e}")
+            logger.error(f"Error checking admin status for user {user_id}: {e}")
             return False
     
     def _convert_to_israel_time(self, dt_obj, format_str='%d/%m/%Y %H:%M'):
@@ -3124,7 +3124,7 @@ class EnhancedPirateBot:
                 failed_count = 0
                 
             except Exception as e:
-                self.logger.error(f"Failed to send broadcast to updates thread: {e}")
+                logger.error(f"Failed to send broadcast to updates thread: {e}")
                 sent_count = 0
                 failed_count = 1
             
