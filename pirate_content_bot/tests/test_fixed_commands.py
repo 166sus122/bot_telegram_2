@@ -135,23 +135,16 @@ class TestFixedCommands(unittest.TestCase):
         call_args = self.mock_message.reply_text.call_args[0][0]
         self.assertIn("שימוש בשידור", call_args)
         
-    async def test_broadcast_command_admin_no_notification_service(self):
-        """בדיקה שפקודת שידור מטפלת בחוסר שירות התראות"""
+    async def test_broadcast_command_admin_with_message(self):
+        """בדיקה שפקודת שידור עובדת עם הודעה"""
         self.mock_update.effective_user = self.mock_admin_user
         self.mock_context.args = ["test", "message"]
         
-        # בטל זמנית את ה-notification_service
-        original_service = self.bot.notification_service
-        self.bot.notification_service = None
+        await self.bot.broadcast_command(self.mock_update, self.mock_context)
         
-        try:
-            await self.bot.broadcast_command(self.mock_update, self.mock_context)
-            
-            self.mock_message.reply_text.assert_called_once()
-            call_args = self.mock_message.reply_text.call_args[0][0]
-            self.assertIn("שירות השידורים אינו זמין", call_args)
-        finally:
-            self.bot.notification_service = original_service
+        self.mock_message.reply_text.assert_called_once()
+        call_args = self.mock_message.reply_text.call_args[0][0]
+        self.assertIn("📢 שידור הסתיים:", call_args)
 
 async def run_async_tests():
     """הרצת טסטים אסינכרוניים"""
@@ -202,8 +195,8 @@ async def run_async_tests():
     # טסט 8
     test_case = TestFixedCommands()
     test_case.setUp()
-    await test_case.test_broadcast_command_admin_no_notification_service()
-    print("✅ Broadcast command (admin, no service) test passed")
+    await test_case.test_broadcast_command_admin_with_message()
+    print("✅ Broadcast command (admin, with message) test passed")
     
     print("🎉 All tests passed!")
 

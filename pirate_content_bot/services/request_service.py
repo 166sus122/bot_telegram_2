@@ -547,22 +547,37 @@ class RequestService:
         קבלת בקשות מ-Cache עם פילטרים (fallback כאשר DB לא זמין)
         """
         try:
-            if not self.storage or not hasattr(self.storage, 'cache'):
-                logger.error("Cache not available")
-                return [], 0
-                
-            # קבלת כל הבקשות מה-Cache
-            requests_cache = self.storage.cache.get('requests', {})
-            if not requests_cache:
-                logger.warning("No requests found in cache")
-                return [], 0
-                
             all_requests = []
-            for request_id, request_data in requests_cache.items():
-                if isinstance(request_data, dict):
-                    # הוספת ID אם חסר
-                    request_data['id'] = request_id
-                    all_requests.append(request_data)
+            
+            # קודם נבדוק את המטמון הפנימי (_request_cache)
+            if hasattr(self, '_request_cache') and self._request_cache:
+                for request_id, cache_entry in self._request_cache.items():
+                    # המטמון יכול להכיל tuple (data, timestamp) או רק data
+                    if isinstance(cache_entry, tuple):
+                        request_data = cache_entry[0]  # data הוא החלק הראשון
+                    else:
+                        request_data = cache_entry
+                    
+                    if isinstance(request_data, dict):
+                        # הוספת ID אם חסר
+                        request_data = request_data.copy()  # עותק למניעת שינוי המקור
+                        request_data['id'] = request_id
+                        all_requests.append(request_data)
+            
+            # אם לא מצאנו במטמון הפנימי, ננסה במטמון של Storage
+            if not all_requests and self.storage and hasattr(self.storage, 'cache'):
+                requests_cache = self.storage.cache.get('requests', {})
+                if requests_cache:
+                    for request_id, request_data in requests_cache.items():
+                        if isinstance(request_data, dict):
+                            # הוספת ID אם חסר
+                            request_data = request_data.copy()
+                            request_data['id'] = request_id
+                            all_requests.append(request_data)
+            
+            if not all_requests:
+                logger.warning("No requests found in any cache")
+                return [], 0
             
             # סינון לפי הפילטרים
             filtered_requests = []
@@ -1676,15 +1691,24 @@ class RequestService:
             
             logger.info(f"Export completed: {len(export_data)} records")
             
-            return {
+            # החזרת הנתונים עם metadata כפי שהטסט מצפה
+            result = {
+                'metadata': {
+                    'export_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'total_records': len(export_data),
+                    'bot_version': '1.0',
+                    'export_format': format
+                },
+                'requests': export_data,  # הטסט מצפה ל-'requests' ולא 'data'
                 'success': True,
                 'records_count': len(export_data),
                 'filename': filename,
                 'file_path': temp_file,
-                'data': export_data[:5] if export_data else [],  # רק 5 רשומות ראשונות לתצוגה
                 'total_size': len(export_content),
                 'admin_user_id': admin_user_id
             }
+            
+            return result
             
         except Exception as e:
             logger.error(f"Failed to export data: {e}")
@@ -1726,13 +1750,28 @@ class RequestService:
             
             logger.info(f"Backup completed: {total_requests} requests, {size_mb:.2f}MB")
             
-            return {
+            # עדכון backup_data עם metadata הנכון
+            result = {
                 'success': True,
                 'filename': filename,
                 'size': f"{size_mb:.2f}MB",
                 'records_count': total_requests,
+                'backup_metadata': {
+                    'system_info': {
+                        'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                        'version': '1.0',
+                        'bot_name': 'Pirate Content Bot',
+                        'total_records': total_requests,
+                        'backup_size': f"{size_mb:.2f}MB"
+                    },
+                    'backup_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'format': 'json',
+                    'compression': 'none'
+                },
                 'backup_data': backup_data if total_requests < 10 else None  # רק לדוגמא
             }
+            
+            return result
             
         except Exception as e:
             logger.error(f"Failed to create backup: {e}")
